@@ -1,0 +1,93 @@
+.ac-calendar-container table.ac-table {
+    border: 1px solid #dddddd;
+    border-collapse: separate;
+    border-spacing: 2px;
+    table-layout: fixed;
+    float: left;
+    padding: 10px 8px 6px 10px !important;
+    margin: 5px 10px 5px 0px;
+    width: 172px;
+    display: block;
+    height: 218px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    background-color: #eeeeee;
+}
+.ac-calendar-container .ac-prev {
+    text-decoration: none;
+    width: 20px;
+    height: 19px;
+    float: left;
+    margin-left: 0px;
+    border: none;
+    background: transparent url(../../upload/left-arrow1.png) no-repeat left top;
+}
+.ac-calendar-container .ac-next {
+    text-decoration: none;
+    width: 20px;
+    height: 19px;
+    float: right;
+    border: none;
+    background: transparent url(../../upload/right-arrow1.png) no-repeat left top;
+}
+.ac-calendar-container th.ac-heading {
+    height:24px;
+    display:block;
+    float:left;
+    width:100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight:normal;
+    border-collapse:collapse;
+    border-bottom: 0px solid #000000;
+    background-color: #ffffff00;
+    padding-bottom:11px;
+    height:20px;
+    line-height:20px;
+}
+.ac-calendar-container table.ac-table td {
+    width:22px;
+    height:22px;
+    display:block;
+    float:left;
+    position:relative;
+    margin-right:2px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+    font-weight:normal;
+    border-collapse:collapse;
+    text-align:center;
+    line-height:22px;
+}
+.ac-calendar-container .ac-pad{
+    background-color: #fff; /*old*/
+    width:22px;
+    height:22px;
+    background-color: #e3eefa00;
+}
+.status-default {
+    background-color: #d6ff93 !important;
+}
+.status-1 {
+    background-color: #fd5f4a !important;
+}
+.ac-day-split-bottom-2 {
+    border-color: transparent transparent #fd5f4a transparent !important;
+    _border-color: #000000 #000000 #fd5f4a #000000 !important;
+}
+.ac-day-split-top-3 {
+    border-color: #fd5f4a transparent transparent transparent !important;
+    _border-color: #fd5f4a #000000 #000000 #000000 !important;
+}
+.ac-day-split-top-2 {
+    border-color: #d6ff93 transparent transparent transparent !important;
+    _border-color: #DDFFCC #d6ff93 #d6ff93 #d6ff93 !important;
+}
+.ac-day-split-bottom-3 {
+    border-color: transparent transparent #d6ff93 transparent !important;
+    _border-color: #d6ff93 #d6ff93 #d6ff93 #000000 !important;
+}
+.status-ac-grey-out-history {
+    background-color: #dfdfdf;
+}

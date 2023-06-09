@@ -1,0 +1,5 @@
+User-agent: Googlebot
+Allow: /*.js*
+Allow: /*.css
+Disallow: /*?
+Sitemap: https://www.inspiringvillas.com/sitemap.xml
