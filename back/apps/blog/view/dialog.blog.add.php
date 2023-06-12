@@ -46,7 +46,7 @@
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#Information" aria-controls="Information" role="tab" data-toggle="tab">Information</a></li>
                     <!--<li role="presentation"><a href="#Detail" aria-controls="Detail" role="tab" data-toggle="tab">Detail</a></li>-->
-                    <li role="presentation"><a href="#Photo" aria-controls="Photo" role="tab" data-toggle="tab">Cover Photo</a></li>
+                    <!--<li role="presentation"><a href="#Photo" aria-controls="Photo" role="tab" data-toggle="tab">Cover Photo</a></li>-->
                 </ul>
 
   				<!-- Tab panes -->
@@ -61,6 +61,20 @@
                                 <label for="txtName" class="col-sm-2 control-label">Name (Title,H1)</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="txName" name="txName" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtName" class="col-sm-2 control-label">Category</label>
+                                <div class="col-sm-10">
+                                	<select name="cbb_cate" id="cbb_cate" class="form-control">
+                                    <?php 
+									$sql_cate = $dbc->Query("select * from blog_category where status > 0 order by name asc");
+									while($cate = $dbc->Fetch($sql_cate))
+									{
+										echo '<option value="'.$cate['id'].'" '.$act.'>'.$cate['name'].'</option>';	
+									}
+									?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">

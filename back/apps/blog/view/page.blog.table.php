@@ -122,6 +122,8 @@ $(function(){
 			s += fn.engine.datatable.button('btn-default','fa-pencil','fn.app.blog.blog.change('+data[0]+')');
 			s += ' ';
 			s += fn.engine.datatable.button('btn-info','fa-link','fn.app.blog.blog.preview('+data[0]+')','Preview',' Preview');
+			s += ' ';
+			s += fn.engine.datatable.button('btn-warning',' fa-picture-o','fn.app.blog.blog.photo('+data[0]+')','Photo',' Photo');
 			/*s += ' ';
 			s += fn.engine.datatable.button('btn-warning','fa-calendar','fn.app.blog.blog.popup_pricing('+data[0]+')');*/
 			$('td', row).eq(8).html(s);

@@ -26,13 +26,14 @@
 			'name' => $_REQUEST['txName_e'],
 			'brief' => base64_encode($_REQUEST['txBrief_e']),
 			'detail' => base64_encode($_REQUEST['txDetail_e']),
-			'photo' => json_encode($_REQUEST['txt_photo_e']),
+			//'photo' => json_encode($_REQUEST['txt_photo_e']),
 			'#updated' => 'NOW()',
 			'#status' => '0',
 			'#users' => $_SESSION['auth']['user_id'],
 			'snippet' => base64_encode($_REQUEST['txSnippet_e']),
 			'byname' => $_REQUEST['txSign_e'],
-			'day' => $_REQUEST['txDate_e']
+			'day' => $_REQUEST['txDate_e'],
+			'#category' => $_REQUEST['cbb_cate_e']
 		);
 		
 		if($dbc->Update("blogs",$data,"id=".$id)){

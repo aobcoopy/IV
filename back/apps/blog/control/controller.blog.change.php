@@ -2,6 +2,101 @@
 	
 ?>
 <script tyle="text/javascript">
+	fn.app.blog.blog.choose_photo_popup = function(button)
+	{
+		$("#"+button).click();
+	};
+	fn.app.blog.blog.showImgPopup = function (input) 
+	{
+		let fileName = input.files[0].name;
+		if ($.trim(fileName)) {
+			$(input).parent().find('label[for="img"]').text(fileName);
+			if (input.files && input.files[0]) {
+				let reader = new FileReader();
+				reader.onload = function (e) {
+					var img = '<img src="' + e.target.result + '" width="100%" />';
+					
+					$(input).parent().parent().find('#preview-img').html(img);
+					$(input).parent().parent().find(".paths").val(fileName);
+				};
+				reader.readAsDataURL(input.files[0]);
+			}
+		} else {
+			$('label[for="img"]').text('Choose file');
+		}
+	};
+	
+	//----------------------------
+	
+	fn.app.blog.blog.choose_photo = function()
+	{
+		$("#img").click();
+	}
+	
+	fn.app.blog.blog.showImg = function (input) 
+	{
+		let fileName = input.files[0].name;
+		if ($.trim(fileName)) {
+			$('label[for="img"]').text(fileName);
+			if (input.files && input.files[0]) {
+				let reader = new FileReader();
+				reader.onload = function (e) {
+					var img = '<img src="' + e.target.result + '" width="100%" />';
+					
+					$('#preview-img').html(img);
+					$("#path_photo").val(fileName);
+				};
+				reader.readAsDataURL(input.files[0]);
+			}
+		} else {
+			$('label[for="img"]').text('Choose file');
+		}
+	};
+	
+	fn.app.blog.blog.remove_cover = function(file_path){
+		//var file_path = $(me).val();
+		//alert(file_path);
+		$.ajax({
+			url:"apps/yacth_cover/xhr/action-remove-photo.php",
+			type:"POST",
+			dataType:"json",
+			data:{path:file_path},
+			success: function(resp){
+				if(resp.status==true)
+				{
+					fn.engine.alert("Alert",resp.msg);
+					setTimeout(function(){
+						$("#bt_save").click();
+					},1000);
+					
+				}
+				else
+				{
+					fn.engine.alert("Alert",resp.msg);
+				}
+				
+			}
+		});
+	};
+	
+	fn.app.blog.blog.add = function(form){
+		var formData = new FormData($(form)[0]);
+		$.ajax({
+			url: 'apps/blog/xhr/action-edit-yacth_cover.php',
+			cache: false,
+			contentType: false,
+			processData: false,
+			type: 'POST',
+			dataType: 'json',
+			data: formData,
+			beforeSend: function () {
+			},
+			success: function (response) {
+					window.location.reload();
+				} 
+		});
+	};
+
 	fn.app.blog.blog.change = function(id) {
 		$.ajax({
 			url: "apps/blog/view/dialog.blog.edit.php",
@@ -13,7 +108,17 @@
 			}	
 		});
 	};
-	
+	fn.app.blog.blog.photo = function(id) {
+		$.ajax({
+			url: "apps/blog/view/dialog.blog.photo.php",
+			data: {id:id},
+			type: "POST",
+			dataType: "html",
+			success: function(html){
+				$("body").append(html);
+			}	
+		});
+	};
 	
 	fn.app.blog.blog.check = function(id) {
 		$.ajax({

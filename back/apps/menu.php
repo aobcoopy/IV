@@ -174,6 +174,10 @@
 					'app' => 'blog'
 				),
 				array(
+					'name' => 'Blog Category',
+					'app' => 'blog_category'
+				),
+				array(
 					'name' => 'IG Photo',
 					'app' => 'blog_instagram'
 				),

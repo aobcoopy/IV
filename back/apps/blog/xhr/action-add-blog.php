@@ -25,14 +25,15 @@
 			'name' => $_REQUEST['txName'],
 			'brief' => base64_encode($_REQUEST['txBrief']),
 			'detail' => base64_encode($_REQUEST['txDetail']),
-			'photo' => json_encode($photo),
+			//'photo' => json_encode($photo),
 			'#created' => 'NOW()',
 			'#updated' => 'NOW()',
 			'#status' => '0',
 			'#users' => $_SESSION['auth']['user_id'],
 			'snippet' => base64_encode($_REQUEST['txSnippet']),
 			'byname' => $_REQUEST['txSign'],
-			'day' => $_REQUEST['txDate']
+			'day' => $_REQUEST['txDate'],
+			'#category' => $_REQUEST['cbb_cate']
 		);
 		
 		if($dbc->Insert("blogs",$data)){
