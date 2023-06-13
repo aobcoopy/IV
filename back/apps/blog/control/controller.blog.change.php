@@ -2,10 +2,12 @@
 	
 ?>
 <script tyle="text/javascript">
+	//----------------------------
 	fn.app.blog.blog.choose_photo_popup = function(button)
 	{
 		$("#"+button).click();
 	};
+	
 	fn.app.blog.blog.showImgPopup = function (input) 
 	{
 		let fileName = input.files[0].name;
@@ -26,9 +28,71 @@
 		}
 	};
 	
+	fn.app.blog.blog.save_photo = function(form){
+		var formData = new FormData($(form)[0]);
+		$.ajax({
+			url: 'apps/blog/xhr/action-up-multi-photo.php',
+			cache: false,
+			contentType: false,
+			processData: false,
+			type: 'POST',
+			dataType: 'json',
+			data: formData,
+			beforeSend: function () {
+			},
+			success: function (response) {
+					window.location.reload();
+				} 
+		});
+	};
+	
+	fn.app.blog.blog.remove_multi_photo = function(path,me,imgs,id){
+        $.ajax({
+            url: 'apps/blog/xhr/action-remove-multi-photo.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {path:path,img:imgs,id:id},
+            beforeSend: function () {
+            },
+            success: function (response) {
+					$(me).attr('disabled',true);
+					$("label."+imgs).text('');
+					$("img."+imgs).attr('src','../../../../upload/photo.jpg');
+                } 
+        });
+	};
 	//----------------------------
 	
-	fn.app.blog.blog.choose_photo = function()
+	
+	
+	fn.app.blog.blog.remove_photo = function(file_path){
+		//var file_path = $(me).val();
+		//alert(file_path);
+		$.ajax({
+			url:"apps/blog/xhr/action-remove-photo.php",
+			type:"POST",
+			dataType:"json",
+			data:{path:file_path},
+			success: function(resp){
+				if(resp.status==true)
+				{
+					fn.engine.alert("Alert",resp.msg);
+					setTimeout(function(){
+						//$("#bt_save").click();
+					},1000);
+					
+				}
+				else
+				{
+					fn.engine.alert("Alert",resp.msg);
+				}
+				
+			}
+		});
+	};
+	
+	
+	/*fn.app.blog.blog.choose_photo = function()
 	{
 		$("#img").click();
 	}
@@ -51,33 +115,9 @@
 		} else {
 			$('label[for="img"]').text('Choose file');
 		}
-	};
+	};*/
 	
-	fn.app.blog.blog.remove_cover = function(file_path){
-		//var file_path = $(me).val();
-		//alert(file_path);
-		$.ajax({
-			url:"apps/yacth_cover/xhr/action-remove-photo.php",
-			type:"POST",
-			dataType:"json",
-			data:{path:file_path},
-			success: function(resp){
-				if(resp.status==true)
-				{
-					fn.engine.alert("Alert",resp.msg);
-					setTimeout(function(){
-						$("#bt_save").click();
-					},1000);
-					
-				}
-				else
-				{
-					fn.engine.alert("Alert",resp.msg);
-				}
-				
-			}
-		});
-	};
+	
 	
 	fn.app.blog.blog.add = function(form){
 		var formData = new FormData($(form)[0]);

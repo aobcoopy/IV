@@ -13,7 +13,7 @@
 
 	$aColumns = array(
 		'id',
-		'photo',
+		'photo_main',
 		'users',
 		'updated',
 		'status',
@@ -119,7 +119,8 @@
 				}
 				else
 				{
-					$row[] = imagePath( json_decode($aRow[$i],true)[0]); 
+					//$row[] = imagePath( json_decode($aRow[$i],true)[0]); 
+					$row[] = '../'.json_decode($aRow[$i],true); 
 				}
 			}
 			elseif($i==10)

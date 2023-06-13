@@ -51,9 +51,10 @@
 <!--<script src="http://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"></script>-->
 
 <div class="modal fade" id="dialog_edit_group" data-backdrop="static">
-  	<div class="modal-dialog  modal-lg" >
-		<form id="form_edit_property" class="form-horizontal" role="form" enctype="multipart/form-data"  onsubmit="fn.app.blog.blog.save_change();return false;">
+  	<div class="modal-dialog  modal-lg" style="width:90%">
+		<form id="form_edit_property" class="form-horizontal" role="form" enctype="multipart/form-data"  onsubmit="fn.app.blog.blog.save_photo(this);return false;">
 		<input type="hidden" name="txtID" value="<?php echo $blog['id'];?>">
+        <input type="hidden" name="txtName" value="<?php echo $blog['name'];?>">
     	<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -71,17 +72,17 @@
                     <div role="tabpanel" class="tab-pane active" id="Information_e">
                     	<div class="col-md-12">
                         
-                        	<div class="form-group col-md-6">
+                        	<div class="form-group col-md-4">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_main');">Upload</button>
-                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_main!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_photo('<?php echo $path_photo_main;?>',this,'img_photo_main','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
+                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_main!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_main;?>',this,'img_photo_main','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Save</button>-->
-                                    <font color="#ff0000"> (Photo Size) 800 x 460 px</font>
+                                    <font color="#ff0000">  (Main Photo) 800 x 460 px</font>
                                     
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input validate hidden" id="butUploadPhoto_photo_main" name="butUploadPhoto_photo_main" placeholder="img" onchange="fn.app.blog.blog.showImgPopup(this);">
                                         
-                                        <input type="text" class="paths" id="path_photo" name="path_photo">
+                                        <!--<input type="text" class="paths" id="path_photo" name="path_photo">-->
                                     </div>
                                     <div class="form-group row"><br>
                                         <div class="col-sm-6" id="preview-img">
@@ -96,17 +97,17 @@
                                 </div>
                             </div>
                         
-                        	<div class="form-group col-md-6">
+                        	<div class="form-group col-md-4">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_hl_1');">Upload</button>
-                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_hl_1!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_photo('<?php echo $path_photo_hl_1;?>',this,'img_photo_hl_1','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
+                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_hl_1!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_hl_1;?>',this,'img_photo_hl_1','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Save</button>-->
-                                    <font color="#ff0000"> (Photo Size) 534 x 468 px</font>
+                                    <font color="#ff0000">  534 x 468 px</font>
                                     
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input validate hidden" id="butUploadPhoto_photo_hl_1" name="butUploadPhoto_photo_hl_1" placeholder="img" onchange="fn.app.blog.blog.showImgPopup(this);">
                                         
-                                        <input type="text" class="paths" id="path_photo" name="path_photo">
+                                        <!--<input type="text" class="paths" id="path_photo" name="path_photo">-->
                                     </div>
                                     <div class="form-group row"><br>
                                         <div class="col-sm-6" id="preview-img">
@@ -121,17 +122,19 @@
                                 </div>
                             </div>
                             
-                            <div class="form-group col-md-6">
+                            
+                            
+                            <div class="form-group col-md-4">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_hl_2');">Upload</button>
-                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_hl_2!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_photo('<?php echo $path_photo_hl_2;?>',this,'img_photo_hl_2','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
+                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_hl_2!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_hl_2;?>',this,'img_photo_hl_2','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Save</button>-->
-                                    <font color="#ff0000"> (Photo Size) 533 x 261 px</font>
+                                    <font color="#ff0000">  533 x 261 px</font>
                                     
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input validate hidden" id="butUploadPhoto_photo_hl_2" name="butUploadPhoto_photo_hl_2" placeholder="img" onchange="fn.app.blog.blog.showImgPopup(this);">
                                         
-                                        <input type="text" class="paths" id="path_photo" name="path_photo">
+                                        <!--<input type="text" class="paths" id="path_photo" name="path_photo">-->
                                     </div>
                                     <div class="form-group row"><br>
                                         <div class="col-sm-6" id="preview-img">
@@ -146,17 +149,19 @@
                                 </div>
                             </div>
                             
-                            <div class="form-group col-md-6">
+                            <div class="col-sm-12"></div>
+                            
+                            <div class="form-group col-md-4">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_hl_3');">Upload</button>
-                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_hl_3!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_photo('<?php echo $path_photo_hl_3;?>',this,'img_photo_hl_3','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
+                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_hl_3!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_hl_3;?>',this,'img_photo_hl_3','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Save</button>-->
-                                    <font color="#ff0000"> (Photo Size) 800 x 598 px</font>
+                                    <font color="#ff0000">  800 x 598 px</font>
                                     
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input validate hidden" id="butUploadPhoto_photo_hl_3" name="butUploadPhoto_photo_hl_3" placeholder="img" onchange="fn.app.blog.blog.showImgPopup(this);">
                                         
-                                        <input type="text" class="paths" id="path_photo" name="path_photo">
+                                        <!--<input type="text" class="paths" id="path_photo" name="path_photo">-->
                                     </div>
                                     <div class="form-group row"><br>
                                         <div class="col-sm-6" id="preview-img">
@@ -172,17 +177,18 @@
                             </div>
                             
                             
-                            <div class="form-group col-md-6">
+                            
+                            <div class="form-group col-md-4">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_width');">Upload</button>
-                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_width!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_photo('<?php echo $path_photo_width;?>',this,'img_photo_width','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
+                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_width!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_width;?>',this,'img_photo_width','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Save</button>-->
-                                    <font color="#ff0000"> (Photo Size) 1024 x 550 px</font>
+                                    <font color="#ff0000">  1024 x 550 px</font>
                                     
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input validate hidden" id="butUploadPhoto_photo_width" name="butUploadPhoto_photo_width" placeholder="img" onchange="fn.app.blog.blog.showImgPopup(this);">
                                         
-                                        <input type="text" class="paths" id="path_photo" name="path_photo">
+                                        <!--<input type="text" class="paths" id="path_photo" name="path_photo">-->
                                     </div>
                                     <div class="form-group row"><br>
                                         <div class="col-sm-6" id="preview-img">
@@ -197,17 +203,17 @@
                                 </div>
                             </div>
                             
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_high');">Upload</button>
-                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_high!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_photo('<?php echo $path_photo_high;?>',this,'img_photo_high','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
+                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_high!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_high;?>',this,'img_photo_high','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Save</button>-->
-                                    <font color="#ff0000"> (Photo Size) 690 x 1024 px</font>
+                                    <font color="#ff0000">  690 x 1024 px</font>
                                     
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input validate hidden" id="butUploadPhoto_photo_high" name="butUploadPhoto_photo_high" placeholder="img" onchange="fn.app.blog.blog.showImgPopup(this);">
                                         
-                                        <input type="text" class="paths" id="path_photo" name="path_photo">
+                                        <!--<input type="text" class="paths" id="path_photo" name="path_photo">-->
                                     </div>
                                     <div class="form-group row"><br>
                                         <div class="col-sm-6" id="preview-img">
@@ -222,17 +228,19 @@
                                 </div>
                             </div>
                             
-                            <div class="form-group col-md-6">
+                            <div class="col-sm-12"></div>
+                            
+                            <div class="form-group col-md-4">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_sq');">Upload</button>
-                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_sq!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_photo('<?php echo $path_photo_sq;?>',this,'img_photo_sq','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
+                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_sq!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_sq;?>',this,'img_photo_sq','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
                                     <!--<button type="submit" class="btn btn-primary pull-right">Save</button>-->
-                                    <font color="#ff0000"> (Photo Size) 800 x 800 px</font>
+                                    <font color="#ff0000">  800 x 800 px</font>
                                     
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input validate hidden" id="butUploadPhoto_photo_sq" name="butUploadPhoto_photo_sq" placeholder="img" onchange="fn.app.blog.blog.showImgPopup(this);">
                                         
-                                        <input type="text" class="paths" id="path_photo" name="path_photo">
+                                        <!--<input type="text" class="paths" id="path_photo" name="path_photo">-->
                                     </div>
                                     <div class="form-group row"><br>
                                         <div class="col-sm-6" id="preview-img">
@@ -269,7 +277,7 @@
                     
                     
                     
-                    <div role="tabpanel" class="tab-pane" id="Photo_e">
+                    <?php /*?><div role="tabpanel" class="tab-pane" id="Photo_e">
                     	<div class="col-md-12">
                         	<div class="form-group">
                                 <label class="col-sm-2 control-label">Photo</label>
@@ -300,7 +308,7 @@
                                
                             </div>
                         </div>
-                    </div>
+                    </div><?php */?>
                     
                     
                     

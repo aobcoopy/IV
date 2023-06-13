@@ -10,8 +10,16 @@
 	$dbc = new dbc;
 	$dbc->Connect();
 	
-	if(unlink('../../../../'.$_REQUEST['path']))
+	$img = str_replace("img_","",$_REQUEST['img']);//img_photo_sq
+	$data = array(
+		$img => NULL
+	);
+	//echo $img;
+		
+	if(unlink(''.$_REQUEST['path']))
 	{
+		
+		$dbc->Update("blogs",$data,"id = '".$_REQUEST['id']."'");
 		echo json_encode(
 			array(
 				'status' => true,

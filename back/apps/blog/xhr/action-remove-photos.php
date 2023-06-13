@@ -10,12 +10,19 @@
 	$dbc = new dbc;
 	$dbc->Connect();
 	
-	if(unlink('../../../../'.$_REQUEST['path']))
+	$id =$_POST['id'];
+	$data = array(
+		$_POST['img'] => NULL,
+		'#user' => $_SESSION['auth']['user_id']
+	);
+	$dbc->Update("yacht",$data,"id=".$id);
+	
+	if(unlink($_POST['path']))
 	{
 		echo json_encode(
 			array(
 				'status' => true,
-				'msg' => 'ดำเนินการเรียบร้อย'
+				'msg' => 'Successful'
 			)
 		);
 	}
@@ -24,7 +31,7 @@
 		echo json_encode(
 			array(
 				'status' => false,
-				'msg' => 'ไม่สามารถลบไฟล์ได้ กรุณาลองใหม่อีกครั้ง'
+				'msg' => 'Please  try again'
 			)
 		);
 
