@@ -158,8 +158,21 @@ $(document).ready(function(e) {
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                     <center>
-                    <h1 class="hidden-xs1 mtop255_2" >Luxury Villas Thailand</h1>
-                    <h2 class="f16" style="    font-family: pt !important;">Discover Luxury Villas</h2>
+                    <h1 class="hidden-xs1 mtop255_2" >Explore luxury villa Thailand, private luxury villas for rent</h1>
+                    <h2 class="f16" style="font-family: pr !important;">Discover Luxury Villas</h2>
+                    <p class="f16 top20" style="font-family: pt !important;">
+                    	With an exceptional collection of luxury villas in Thailand, one can truly get away from the pressures of everyday life and escape to the tropical beauty of Southeast Asia. For a wedding, honeymoon or a family vacation, Inspiring Villas offers a complete range of luxury villas to choose from. 
+                    </p>
+                    
+                    <h2 class="f16" style="font-family: pr !important;">A handpicked collection</h2>
+                    <p class="f16 top20" style="font-family: pt !important;">
+                    	Privacy, exclusivity and location are what make a private villa in Thailand an unforgettable experience. Each property in the Inspiring Villas collection has been personally inspected and selected for its unique style, design and potential to make an otherwise ordinary vacation exceptional. 
+                    </p>
+                    
+                    <h2 class="f16" style="font-family: pr !important;">Personalised service</h2>
+                    <p class="f16 top20" style="font-family: pt !important;">
+                    	Each one of our Thailand villas comes with the complete and personalised service of our incredible team. Whether you choose to visit the lush island shores of Koh Samui, the thriving beach metropolis of Phuket or the laid-back vibes in Koh Phangan, your experience will come with 100% support from a dedicated team to ensure that your holiday is nothing short of extraordinary. 
+                    </p>
                     </center>
                 <br>
                 <div class="row">
@@ -390,7 +403,29 @@ $(window).scroll(function () {
 
 <div class="container">
 	<div class="row">
-    	<div class="col-xs-12 col-xs-offset-0 col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1">
+    	<div class="col-md-8 col-md-offset-2">
+        	<center>
+                <h2 class="f16" style="font-family: pr !important;">Find your ideal beach villa in Thailand today</h2>
+                <p class="f16 top20" style="font-family: pt !important;">
+                    Finding the right luxury villa for rent in Thailand is key to creating the kind of experience that will be truly unforgettable. Browse our collection of luxury villas online today to find the perfect property for your dream Thailand holiday. 
+                </p>
+                
+                <h2 class="f16" style="font-family: pr !important;">The ultimate Thailand beach villa with a private pool</h2>
+                <p class="f16 top20" style="font-family: pt !important;">
+                    If a luxury pool villa in Thailand is on your list, then there is no better choice than a trip to the lush shores of Koh Samui. Select your villa location from one of the 15 stunning beach destinations dotted around the island and fast-track your way to relaxing in your private infinity pool while looking out at the azure waters beyond.   
+                </p>
+                
+                <h2 class="f16" style="font-family: pr !important;">Find the perfect beach villa in Phuket, Thailand</h2>
+                <p class="f16 top20" style="font-family: pt !important;">
+                    The ideal beach villa for rent awaits you in the ever-popular tourism destination of Phuket. Our Phuket collection features a range of luxury villas that can accommodate groups of all shapes and sizes. From a romantic getaway for two to a trip with friends that will be beyond compare, you will find all you need in our stunning collection of luxury villas in Phuket. 
+                </p>
+                
+                <h2 class="f16" style="font-family: pr !important;">Koh Phangan luxury vacation rentals in Thailand </h2>
+                <p class="f16 top20" style="font-family: pt !important;">
+                    If the blissful calm shores of an island paradise are calling, then Inspiring Villas can answer that call. Choose from one of our stunning villa options for the perfect escape from the rest of the world. Whether you're perched atop a cliff overlooking the sparkling bay below or want to open your patio doors right onto the beach, there's a private villa for rent in Koh Phangan perfectly suited to you. 
+                </p>
+           </center>
+                    
         	<div class="col-xs-12 col-sm-12 col-md-12 text-center t_t1- ql_text" style="margin-bottom:30px;">
             	<div class="bar_inside">
                 <button class="but_ql but_main tb"><strong>Quick Links >>></strong></button>
@@ -417,8 +452,8 @@ $(window).scroll(function () {
 	}
 	.ql_text 
 	{
-		margin-top: -10px;
-		margin-bottom: 40px !important;
+		margin-top: -20px;
+		margin-bottom:30px !important;
 	}
 }
 @media screen and (min-width: 768px) 
