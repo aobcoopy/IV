@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2023 at 12:40 PM
+-- Generation Time: Jun 18, 2023 at 05:08 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -39,6 +39,18 @@ CREATE TABLE `blog_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Dumping data for table `blog_category`
+--
+
+INSERT INTO `blog_category` (`id`, `name`, `slug`, `status`, `created`, `updated`, `user`) VALUES
+(1, 'Lifestyle', 'lifestyle', 1, '2023-06-12 15:49:16', '2023-06-12 15:59:13', NULL),
+(3, 'Fashion', 'fashion', 1, '2023-06-12 15:58:03', '2023-06-12 15:59:14', NULL),
+(4, 'Travel', 'travel', 1, '2023-06-12 15:58:10', '2023-06-12 15:59:14', NULL),
+(5, 'Vlogs', 'vlogs', 1, '2023-06-12 15:58:25', '2023-06-12 15:59:16', NULL),
+(6, 'Food', 'food', 1, '2023-06-12 15:58:33', '2023-06-12 15:59:16', NULL),
+(7, 'Health', 'health', 1, '2023-06-12 15:58:39', '2023-06-12 15:59:17', NULL);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -56,7 +68,7 @@ ALTER TABLE `blog_category`
 -- AUTO_INCREMENT for table `blog_category`
 --
 ALTER TABLE `blog_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
