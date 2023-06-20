@@ -17,7 +17,9 @@
 		'slug',
 		'updated',
 		'status',
-		'id'
+		'sort',
+		'id',
+		'color'
 	);
 	$sIndexColumn = "id";
 	
@@ -44,7 +46,7 @@
 			$sOrder = "";
 		}
 	}
-	$sOrder = "ORDER BY id ASC";
+	$sOrder = "ORDER BY sort ASC";
 
 	$sWhere = "";
 	if ( $_REQUEST['search']['value'] != "" ){

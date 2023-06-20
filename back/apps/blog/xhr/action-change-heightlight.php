@@ -17,12 +17,12 @@
 	
 	if($check['heightlight']==0)
 	{
-		if($dbc->GetCount("blogs"," heightlight = '1'")>=2)
+		if($dbc->GetCount("blogs"," heightlight = '1'")>=5)
 		{
 			echo json_encode(
 				array(
 					'status' => false,
-					'msg' => 'Limit 2 Heightlight please try again.'
+					'msg' => 'Limit 5 Heightlight please try again.'
 				)
 			);
 		}

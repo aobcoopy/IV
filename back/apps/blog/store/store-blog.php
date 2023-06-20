@@ -18,11 +18,12 @@
 		'updated',
 		'status',
 		'heightlight',
-		'lifestyle',
+		'category',
 		'sort',
 		'id',
 		'name',
-		'brief'
+		'brief',
+		'photo'
 	);
 	$sIndexColumn = "id";
 	
@@ -120,8 +121,13 @@
 				else
 				{
 					//$row[] = imagePath( json_decode($aRow[$i],true)[0]); 
-					$row[] = '../'.json_decode($aRow[$i],true); 
+					$row[] = imagePath('/'.json_decode($aRow[$i],true)); 
+					//$row[] = '../'.json_decode($aRow[$i],true); 
 				}
+			}
+			elseif($i==11)
+			{
+				$row[] = imagePath('/'.json_decode($aRow[$i],true)[0]); 
 			}
 			elseif($i==10)
 			{
@@ -131,6 +137,20 @@
 			{
 				$user = $dbc->GetRecord("users","*","id=".$aRow[$i]);
 				$row[] = $user['name'];
+			}
+			elseif($i==6)
+			{
+				if($aRow[$i]!='')
+				{
+					$blog_cate = $dbc->GetRecord("blog_category","*","id=".$aRow[$i]);
+					$row[] = $blog_cate['name'];
+				}
+				else
+				{
+					$row[] = '-';
+				}
+				
+				
 			}
 			elseif($i==3)
 			{

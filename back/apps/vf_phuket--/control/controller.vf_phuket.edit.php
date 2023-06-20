@@ -18,6 +18,7 @@ fn.app.vf_phuket.dialog_add_user = function(id,vid){
 		});
 };
 
+
 fn.app.vf_phuket.save_customer_data = function(){
 	if($("#txCustomer").val()=='')
 	{

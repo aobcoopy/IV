@@ -33,7 +33,8 @@
 			'snippet' => base64_encode($_REQUEST['txSnippet_e']),
 			'byname' => $_REQUEST['txSign_e'],
 			'day' => $_REQUEST['txDate_e'],
-			'#category' => $_REQUEST['cbb_cate_e']
+			'#category' => $_REQUEST['cbb_cate_e'],
+			'#users' => $_SESSION['auth']['user_id']
 		);
 		
 		if($dbc->Update("blogs",$data,"id=".$id)){

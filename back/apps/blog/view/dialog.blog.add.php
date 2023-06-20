@@ -68,7 +68,7 @@
                                 <div class="col-sm-10">
                                 	<select name="cbb_cate" id="cbb_cate" class="form-control">
                                     <?php 
-									$sql_cate = $dbc->Query("select * from blog_category where status > 0 order by name asc");
+									$sql_cate = $dbc->Query("select * from blog_category where status > 0 order by sort asc");
 									while($cate = $dbc->Fetch($sql_cate))
 									{
 										echo '<option value="'.$cate['id'].'" '.$act.'>'.$cate['name'].'</option>';	

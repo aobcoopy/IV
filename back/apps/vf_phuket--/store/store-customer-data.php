@@ -19,7 +19,8 @@
 		'vfm.created',
 		//'vfm.updated',
 		'vfm.id',
-		'vfm.links'
+		'vfm.links',
+		'vfm.status'
 	);
 	$sIndexColumn = "vfm.id";
 	

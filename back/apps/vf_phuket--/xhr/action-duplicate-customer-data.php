@@ -40,6 +40,26 @@
 		'links' => $renew,
 		'#created' => 'NOW()',
 		'#status' => 0,
+		
+		'arrive' => $old_data['arrive'],
+		'arrive_to' => $old_data['arrive_to'],
+		'dear_name' => $old_data['dear_name'],
+		'arrival' => $old_data['arrival'],
+		
+		'airport_transfer' => $old_data['airport_transfer'],
+		'guest' => $old_data['guest'],
+		
+		/*'dinner' => $old_data['dinner'],
+		'breakfast' => $old_data['breakfast'],
+		'provisioning' => $old_data['provisioning'],
+		'dietary' => $old_data['dietary'],
+		'informations' => $old_data['informations'],
+		'services' => $old_data['services'],
+		'onsite_con' => $old_data['onsite_con'],
+		'phone' => $old_data['phone'],
+		'deposit' => $old_data['deposit'],
+		'service' => $old_data['service'],*/
+				
 		'#user' => $_SESSION['auth']['user_id']
 	);
 	

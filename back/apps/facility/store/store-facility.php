@@ -2,7 +2,6 @@
 	session_start();
 	include_once "../../../config/define.php";
 	include_once "../../../libs/class/db.php";
-    include_once "../../../inc/functions.inc.php";
 	
 	@ini_set('display_errors',DEBUG_MODE?1:0);
 	date_default_timezone_set(DEFAULT_TIMEZONE);
@@ -15,7 +14,6 @@
 		'id',
 		'icon',
 		'name',
-		'icon_group',
 		'users',
 		'updated',
 		'status',
@@ -23,7 +21,7 @@
 	);
 	$sIndexColumn = "id";
 	
-	$sTable = "icons";
+	$sTable = "icons WHERE catgory = '1' ORDER BY id ASC";
 	$sLimit = "";
 	
 	if ( isset( $_REQUEST['start'] ) && $_REQUEST['length'] != '-1' ){
@@ -46,24 +44,9 @@
 			$sOrder = "";
 		}
 	}
-	$sOrder = " ORDER BY id ASC";
+	
 
 	$sWhere = "";
-	if ( $_REQUEST['search']['value'] != "" ){
-		//$sWhere = "WHERE (";
-		$sWhere = "WHERE catgory = '1' AND (  ";
-		for ( $i=0 ; $i<count($aColumns) ; $i++ ){
-			$sWhere .= $aColumns[$i]." LIKE '%".$dbc->Escape_String( $_REQUEST['search']['value'] )."%' OR ";
-		}
-		$sWhere = substr_replace( $sWhere, "", -3 );
-		$sWhere .= ')';
-	}
-	else
-	{
-		$sWhere .="WHERE catgory = '1'";
-	}
-
-	/*$sWhere = "";
 	if ( $_REQUEST['search']['value'] != "" ){
 		$sWhere = "WHERE (";
 		for ( $i=0 ; $i<count($aColumns) ; $i++ ){
@@ -71,7 +54,7 @@
 		}
 		$sWhere = substr_replace( $sWhere, "", -3 );
 		$sWhere .= ')';
-	}*/
+	}
 	
 	
 	if ( isset($_REQUEST['filter'])){
@@ -125,27 +108,14 @@
 		for ( $i=0 ; $i<count($aColumns) ; $i++ ){
 			if($i==1)
 			{
-				//$row[] = json_decode($aRow[$i],true);
-                $row[] = imagePath( json_decode($aRow[$i],true) );
+				$row[] = json_decode($aRow[$i],true);
 			}
 			elseif($i==3)
-			{
-				if($aRow[$i]!='')
-				{
-					$groups = $dbc->GetRecord("icon_group","*","id=".$aRow[$i]);
-					$row[] = $groups['name'];
-				}
-				else
-				{
-					$row[] = '-';
-				}
-			}
-			elseif($i==4)
 			{
 				$user = $dbc->GetRecord("users","*","id=".$aRow[$i]);
 				$row[] = $user['name'];
 			}
-			elseif($i==5)
+			elseif($i==4)
 			{
 				$y = substr($aRow[$i],0,4);
 				$m = substr($aRow[$i],5,2);

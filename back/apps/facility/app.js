@@ -31,26 +31,6 @@ var edit = {
 					}
 				}
 		});
-	},
-	change_group:function(me,id){
-		//alert(id+'----'+$(me).val());
-		$.ajax({
-				url: "apps/bedroom/xhr/action-change-group.php",
-				type: "POST",
-				dataType:"json",
-				data: {id:id,cbb:$(me).val()},
-				success : function(response)
-				{
-					if(response.success){
-						//$("#tblSlide").DataTable().draw();
-						$("#tblSlide").DataTable().ajax.reload(null,false);
-
-
-					}else{
-						//fn.engine.alert("Alert",response.msg);
-					}
-				}
-		});
 	}
 };
 

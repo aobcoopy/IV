@@ -33,6 +33,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="txtName" class="col-sm-2 control-label">Color</label>
+                    <div class="col-sm-10">
+                        <input type="color" class="form-control" id="tx_color_e" name="tx_color_e" value="<?php echo $blog_category['color'];?>">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="txtName" class="col-sm-2 control-label">link name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="tx_link_e" name="tx_link_e" value="<?php echo $blog_category['slug'];?>" readonly>

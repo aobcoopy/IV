@@ -1,0 +1,173 @@
+##AuthUserFile /var/www/html/.htpasswd
+##AuthGroupFile /dev/null
+##AuthName "Administrator Access"
+##AuthType Basic
+##require user admin
+
+## ENABLE GZIP COMPRESSION ##
+<IfModule mod_deflate.c>
+	# Insert filters
+	AddOutputFilterByType DEFLATE text/plain
+	AddOutputFilterByType DEFLATE text/html
+	AddOutputFilterByType DEFLATE text/xml
+	AddOutputFilterByType DEFLATE text/css
+	AddOutputFilterByType DEFLATE application/xml
+	AddOutputFilterByType DEFLATE application/xhtml+xml
+	AddOutputFilterByType DEFLATE application/rss+xml
+	AddOutputFilterByType DEFLATE application/javascript
+	AddOutputFilterByType DEFLATE application/x-javascript
+	AddOutputFilterByType DEFLATE application/x-httpd-php
+	AddOutputFilterByType DEFLATE application/x-httpd-fastphp
+	AddOutputFilterByType DEFLATE image/svg+xml
+	
+	AddType x-font/otf .otf
+	AddType x-font/ttf .ttf
+	AddType x-font/eot .eot
+	AddType x-font/woff .woff
+	AddType image/x-icon .ico
+	AddType image/png .png
+	
+	# Drop problematic browsers
+	BrowserMatch ^Mozilla/4 gzip-only-text/html
+	BrowserMatch ^Mozilla/4\.0[678] no-gzip
+	BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+
+	# Make sure proxies don't deliver the wrong content
+	Header append Vary User-Agent env=!dont-vary
+</IfModule>
+## ENABLE GZIP COMPRESSION ##
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 7 days"
+  ExpiresByType image/x-icon "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 7 days"
+  ExpiresByType image/jpg "access plus 7 days"
+  ExpiresByType image/png "access plus 7 days"
+  ExpiresByType image/gif "access plus 7 days"
+  ExpiresByType application/x-shockwave-flash "access plus 7 days"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType text/javascript "access plus 7 days "
+  ExpiresByType text/x-javascript "access plus 7 days "
+  ExpiresByType application/x-javascript "access plus 7 days"
+  ExpiresByType application/xhtml+xml "access plus 7 days"
+  
+  #WEEK
+  Header set Cache-Control "max-age=7776000"
+
+  Header append Cache-Control "public"
+</IfModule>
+
+
+RewriteEngine On
+
+
+RewriteCond %{REQUEST_URI} !\.php
+RewriteCond %{REQUEST_URI} !\.js
+RewriteCond %{REQUEST_URI} !\.html
+RewriteCond %{REQUEST_URI} !\.css
+RewriteCond %{REQUEST_URI} !\.json
+RewriteCond %{REQUEST_URI} !\.xml
+
+
+ErrorDocument 403 https://www.inspiringvillas.com
+ErrorDocument 404 /libs/pages/404.php
+#ErrorDocument 410 /libs/pages/410.php
+
+#RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
+#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]
+
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+
+RewriteRule ^(home)(.*)$ /index.php?page=home
+#RewriteRule ^(collections)(.*)$ /index.php?page=villas
+
+RewriteRule ^(our-service)(.*)$ /index.php?page=service
+RewriteRule ^(for-rent)(.*)$ /index.php?page=forrent
+#RewriteRule ^blog(.*)$ /index.php?page=blog
+RewriteRule ^blog$ /index.php?page=blog [L]
+RewriteRule ^(faq)(.*)$ /index.php?page=faq
+RewriteRule ^(contact)(.*)$ /index.php?page=contact
+RewriteRule ^(aboutus)(.*)$ /index.php?page=about
+RewriteRule ^(terms)(.*)$ /index.php?page=terms
+RewriteRule ^(privacy)(.*)$ /index.php?page=privacy
+RewriteRule ^(recently)(.*)$ /index.php?page=recently
+RewriteRule ^(favorite)(.*)$ /index.php?page=favorite
+RewriteRule ^(villa-promotions)(.*)$ /index.php?page=villa-promotions
+RewriteRule ^(yacht)(.*)$ /index.php?page=yacht
+
+
+#RewriteRule ^(thanks)(.*)$ /index.php?page=thanks
+
+RewriteRule ^thanks/([^/]*)\.html$ /index.php?page=thanks&desti=$1 [L]
+RewriteRule ^thank-you-question/([^/]*)\.html$ /index.php?page=thank-you-question&desti=$1 [L]
+
+#RewriteRule ^(thank-you-question)(.*)$ /index.php?page=thank-you-question
+
+
+RewriteRule ^(thank-you-contact)(.*)$ /index.php?page=thank-you-contact
+#RewriteRule ^(410)(.*)$ /index.php?page=410
+RewriteRule ^(booking)(.*)$ /index.php?page=booking
+
+RewriteRule ^testpage\.html$ /index.php?page=testpage [L]
+RewriteRule ^testpage2\.html$ /index.php?page=testpage2 [L]
+RewriteRule ^testpage3\.html$ /index.php?page=testpage3 [L]
+
+#RewriteRule ^Lifestyle-([^-]*)\.html$ /?page=blogdetail&id=$1 [L]
+RewriteRule ^Lifestyle-6\.html$ /blog/a-quick-guide-to-thai-islands.html [L,R=301]
+RewriteRule ^Lifestyle-4\.html$ /blog/phuket-vegetarian-festival.html [L,R=301]
+RewriteRule ^Lifestyle-7\.html$ /blog/the-10-best-phuket-luxury-villas.html [L,R=301]
+
+RewriteRule ^vill\.html$ /?page=villas [L]
+RewriteRule ^villaform-([^-]*)\.html$ /?page=villaform&id=$1 [L]
+RewriteRule ^view-villaform-([^-]*)\.html$ /?page=viewvillaform&id=$1 [L]
+RewriteRule ^villa-review-([^-]*)\.html$ /?page=villa_review&id=$1 [L]
+RewriteRule ^villa-private/([^/]*)\.html$ /?page=villa_private&id=$1 [L]
+
+
+#------301----------------------------------------------------------------------------------------------------  
+RewriteRule ^vill/$ / [L,R=301]
+RewriteRule ^search-forrent/$ / [L,R=301] 
+RewriteRule ^forrentt/$ / [L,R=301]
+RewriteRule ^forrent$ / [L,R=301]
+RewriteRule ^search-forrent$ / [L,R=301]
+RewriteRule ^(collections)(.*)$ / [L,R=301]
+RewriteRule ^(villa-collections)(.*)$ /index.php [L]
+
+RewriteRule ^/blog/top-10-phuket-luxury-villas\.html$ /blog/the-10-best-phuket-luxury-villas.html [L,R=301]
+
+RewriteRule ^(.*)\.html$ /index.php [L]
+
+
+
+
+RewriteRule ^test\.html$ /index.php?page=propertydetail&id=45 [L]
+
+
+
+Options -Indexes
+
+Redirect 301 /upload/map/ok/ https://www.inspiringvillas.com/
+Redirect 301 /upload/email/ https://www.inspiringvillas.com/
+Redirect 301 /upload/bedroom_photo/ https://www.inspiringvillas.com/
+Redirect 301 /upload/property/mobile/ https://www.inspiringvillas.com/
+Redirect 301 /upload/ckeditor/ https://www.inspiringvillas.com/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

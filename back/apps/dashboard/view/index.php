@@ -3,7 +3,6 @@
 	<li><a href="#">Home</a></li>					
 	<li class="active">Dashboard</li>
 </ul>
-<iframe src="https://www.inspiringvillas.com/back/inc/tool.php?authen=Aj3@ifks" width="100%" frameborder="0"></iframe>
 <div class="page-content-wrap">
 	<div class="row">
     	<div class="col-md-12">
@@ -12,12 +11,7 @@
                 include_once "apps/dashboard/view/widget-villa.php";
             ?>
             </div>
-            <div class="col-md-3">
-            <?php
-                include_once "apps/dashboard/view/widget-clock.php";
-            ?>
-            </div>
-            <div class="col-md-3">
+            <div class="col-md-6">
             <?php
                 include_once "apps/dashboard/view/widget-clock.php";
             ?>

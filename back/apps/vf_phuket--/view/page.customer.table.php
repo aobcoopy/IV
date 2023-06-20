@@ -10,7 +10,7 @@ $v_name = $ex[0].' Customer Histories';
 	    </div>
 	    <div class="panel-body">
 	        <div class="table-responsive">
-	            <table id="tblSlide" class="table table-striped table-bordered datatable">
+	            <table id="tblSlide" class="table table-striped table-bordered datatable ">
 	                <thead>
 	                    <tr>
 	                        <th>
@@ -36,6 +36,11 @@ $v_name = $ex[0].' Customer Histories';
 	</div>
 </div>
 <style>
+.table > tbody > tr > td
+{
+	padding:10px 3px !important;
+	transition:all 1s;
+}
 .rows img
 {
   height:50px !important; 
@@ -127,16 +132,38 @@ $(function(){
 			
 			var encode = data[6];//btoa(data[6]);
 			s = '';
+			s += fn.engine.datatable.button('btn-default','fa-pencil','fn.app.vf_phuket.edit_customer_detail('+data[0]+',this)','Edit',' Edit ');
+			s += ' ';
 			s += '<input type="hidden" class="tx_encode" value="'+encode+'">';
+			s += fn.engine.datatable.button('btn-danger','fa-pencil-square-o','fn.app.vf_phuket.edit_customer_form(this)','Edit Form Detail',' Edit Form Detail');
+			s += ' ';
+			
+			s += fn.engine.datatable.button('btn-info','fa-search','fn.app.vf_phuket.view_customer_form(this)','View Form',' View Form');
+			s += ' ';
+			//s += '<input type="text" class="tx_link" value="../villaform-customer-'+encode+'.html">';
+			s += fn.engine.datatable.button('btn-success','fa-clipboard','fn.app.vf_phuket.copy_customer_link(this)','Customer Link',' Customer Link');
+			s += ' ';
+			s += fn.engine.datatable.button('btn-danger','fa-remove','fn.app.vf_phuket.remove_customer('+data[0]+')','Remove',' Remove');
+			s += ' ';
+			if(data[7]==0)
+			{
+				s += fn.engine.datatable.button('btn-warning','fa-files-o','fn.app.vf_phuket.customer_duplicate('+data[0]+')','Duplicate',' Duplicate');
+			}
+			/*
 			s += fn.engine.datatable.button('btn-default','fa-pencil','fn.app.vf_phuket.edit_customer_form(this)','Edit Form',' ');
 			s += ' ';
 			s += fn.engine.datatable.button('btn-info','fa-search','fn.app.vf_phuket.view_customer_form(this)','View Form',' ');
 			s += ' ';
 			//s += '<input type="text" class="tx_link" value="../villaform-customer-'+encode+'.html">';
 			s += fn.engine.datatable.button('btn-success','fa-clipboard','fn.app.vf_phuket.copy_customer_link(this)','Customer Link',' ');
-			/*s += ' ';
-			s += fn.engine.datatable.button('btn-warning','fa-history','fn.app.vf_phuket.customer_history('+data[7]+')','Customer History',' ');
-			s += ' ';*/
+			s += ' ';
+			s += fn.engine.datatable.button('btn-danger','fa-remove','fn.app.vf_phuket.remove_customer('+data[0]+')','Remove',' ');
+			s += ' ';
+			if(data[7]==0)
+			{
+				s += fn.engine.datatable.button('btn-warning','fa-files-o','fn.app.vf_phuket.customer_duplicate('+data[0]+')','Duplicate',' ');
+			}*/
+			/*s += ' ';*/
 			//s += fn.engine.datatable.button('btn-warning','fa-lock','fn.app.vf_phuket.group.permission('+data[0]+')');
 			$('td', row).eq(5).html(s);
 			

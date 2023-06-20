@@ -20,11 +20,11 @@
 			'#user' => $_SESSION['auth']['user_id']
 		);
 		
-		if($dbc->Update("categories",$data,"id=".$table['id'])){
+		if($dbc->Update("blog_category",$data,"id=".$table['id'])){
 			
 			
-			$banners = $dbc->GetRecord("categories","*","id=".$table['id']);
-			$os->save_log(0,$_SESSION['auth']['user_id'],"categories-sort",$table['id'],$banners);
+			$banners = $dbc->GetRecord("blog_category","*","id=".$table['id']);
+			$os->save_log(0,$_SESSION['auth']['user_id'],"blog_category-sort",$table['id'],$banners);
 		}else{
 			/*echo json_encode(array(
 				'success'=>false,

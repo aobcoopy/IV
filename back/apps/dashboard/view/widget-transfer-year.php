@@ -26,6 +26,7 @@ $today = date("Y-m-d");
 $this_year = date("Y");
 //$this_year = '20250';
 $z=0;
+$color = '';
 while($row = $dbc->Fetch($sql))
 {
 	if($row['transfer_year']>=$this_year)

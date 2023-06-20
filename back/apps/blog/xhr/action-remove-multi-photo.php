@@ -3,6 +3,7 @@
 	include_once "../../../config/define.php";
 	include_once "../../../libs/class/db.php";
 	include_once "../../../libs/class/minerva.php";
+	include_once "../../../inc/functions.inc.php";
 	
 	@ini_set('display_errors',DEBUG_MODE?1:0);
 	date_default_timezone_set(DEFAULT_TIMEZONE);
@@ -15,8 +16,8 @@
 		$img => NULL
 	);
 	//echo $img;
-		
-	if(unlink(''.$_REQUEST['path']))
+	$path = $_REQUEST['path'];
+	if(deleteFile($path))//unlink(''.$_REQUEST['path'])
 	{
 		
 		$dbc->Update("blogs",$data,"id = '".$_REQUEST['id']."'");
@@ -39,9 +40,6 @@
 	}
 	
 	
-?>
-
-<?php
 	
 	$dbc->Close();
 ?>

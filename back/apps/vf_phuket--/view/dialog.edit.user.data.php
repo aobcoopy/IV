@@ -12,7 +12,7 @@
 	$dbc->Connect();
 	
 	$form = $dbc->GetRecord("villa_form_mapping","*","id=".$_REQUEST['id']);
-	$villa = $dbc->GetRecord("properties","*","id=".$form['villaform_id']);
+	$villa = $dbc->GetRecord("properties","*","id=".$form['villa']);
 	//$photo = json_decode($blog['photo'],true);
 	
 ?>
@@ -25,9 +25,9 @@
 
 <div class="modal fade" id="dialog_edit_group" data-backdrop="static">
   	<div class="modal-dialog  modal-lg" >
-		<form id="form_add_customer_data" class="form-horizontal" role="form" onsubmit="fn.app.vf_phuket.save_customer_data();return false;">
-		<input type="text" name="txtID" value="<?php echo $_REQUEST['id'];?>">
-        <input type="text" name="txtVillaID" value="<?php echo $villa['id'];?>">
+		<form id="form_ed_customer_data" class="form-horizontal" role="form" onsubmit="fn.app.vf_phuket.save_edit_customer_data();return false;">
+		<input type="hidden" name="txtID" value="<?php echo $_REQUEST['id'];?>">
+        <input type="hidden" name="txtVillaID" value="<?php echo $villa['id'];?>">
     	<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -53,13 +53,13 @@
                             <div class="form-group">
                                 <label for="txtName" class="col-sm-2 control-label">Customer Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="txCustomer" name="txCustomer"  >
+                                    <input type="text" class="form-control" id="txCustomer_ed" name="txCustomer_ed"  value="<?php echo $form['cus_name'];?>" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="txtName" class="col-sm-2 control-label">Invoice</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="txInvoice" name="txInvoice"  onKeyUp="setValue(this)">
+                                    <input type="text" class="form-control" id="txInvoice" name="txInvoice_ed"  onKeyUp="setValue(this)"  value="<?php echo $form['invoice'];?>">
                                 </div>
                             </div>
                             <?php 
@@ -70,7 +70,7 @@
                                 <label for="txtName" class="col-sm-2 control-label">Link Name</label>
                                 <div class="col-sm-10">
                                     Ex. <?php echo $f_link;?><span class="t_link"></span>
-                                    <input type="text" class="form-control" id="txLink" name="txLink"  onKeyUp="setValue_inv(this)">
+                                    <input type="text" class="form-control" id="txLink" name="txLink_ed"  onKeyUp="setValue_inv(this)"  value="<?php echo $form['links'];?>">
                                 </div>
                             </div>
 

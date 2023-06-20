@@ -8,14 +8,14 @@ class meClass{
 	}
 	
 	private $header_meta = array(
-		array('Yacht Management'	,"Cover",	'fa fa-group'),
+		array('Yacth Management'	,"Cover",	'fa fa-group'),
 		//array('user'	,"User",	'fa fa-user')
 	);
 	
 	function PageHeader($active){
 		echo '<div id="breadcrumb">';
 			echo '<ul class="breadcrumb push-down-0">';
-				echo ' <li><a href="?app='.$this->app.'"> Yacht Management</a></li>';
+				echo ' <li><a href="?app='.$this->app.'"> Yacth Management</a></li>';
 				echo ' <li><a href="?app='.$this->app.'"> Cover</a></li>';
 				foreach($this->header_meta as $header){
 					if($header[0]==$active){

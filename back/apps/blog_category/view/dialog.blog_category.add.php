@@ -14,6 +14,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="txtName" class="col-sm-2 control-label">Color</label>
+                    <div class="col-sm-10">
+                        <input type="color" class="form-control" id="tx_color" name="tx_color" value="#000">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="txtName" class="col-sm-2 control-label">link name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="tx_link" name="tx_link" readonly>

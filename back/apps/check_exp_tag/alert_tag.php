@@ -41,7 +41,7 @@
 	
 	//--------mail------------------
 	
-		//$strTo = $strTo;//.",aobcoopy@gmail.com";
+		$strTo = $strTo;//.",aobcoopy@gmail.com";
 		$strHeader = "Content-type: text/html; charset=UTF-8\r\n"; // or UTF-8 //
 		$strHeader.= "From: info_noti@inspiringvillas.com";
 		$strSubject = "Alert";
@@ -164,8 +164,8 @@
 		
 
         $strTo = "aobcoopy@gmail.com";
-		mail($strTo,$strSubject,$strMessage,$strHeader);
-		//newSendMail($strTo,$strSubject,$strMessage,$strHeader);
+		//mail($strTo,$strSubject,$strMessage,$strHeader);
+		newSendMail($strTo,$strSubject,$strMessage,$strHeader);
 		//if(mail($strTo,$strSubject,$strMessage,$strHeader))// @ = No Show Error //
 //		{
 //			echo json_encode(

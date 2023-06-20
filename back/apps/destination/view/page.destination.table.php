@@ -117,7 +117,10 @@ $(function(){
 			$('td', row).eq(0).html(s).addClass("text-center");
 			s = '';
 			s += fn.engine.datatable.button('btn-default','fa-pencil','fn.app.destination.destination.change('+data[0]+')','Edit',' ');
-			
+			s += ' ';
+			var em = '';
+			if(data[7]!=null){em = data[7];}else{em = '';}
+			s += fn.engine.datatable.button('btn-info','fa-envelope','fn.app.destination.destination.setemail('+data[0]+')','Email',' '+em+' ','');
 			s += ' ';
 			//s += fn.engine.datatable.button('btn-warning','fa-lock','fn.app.destination.group.permission('+data[0]+')');
 			$('td', row).eq(6).html(s);

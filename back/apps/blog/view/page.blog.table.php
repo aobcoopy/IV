@@ -21,8 +21,8 @@
 	                        <th>user</th>
                             <th>Updated</th>
                             <th>Status</th>
-                            <th>Heightlight</th>
-                            <th>lifestyle</th>
+                            <th>Highlight</th>
+                            <th>category</th>
                             <th>Sort</th>
 							<th>Action</th>
 	                    </tr>
@@ -140,11 +140,12 @@ $(function(){
 			}
 			else
 			{
-				p+= '<img src="../../../upload/photo.jpg" width="150">';
+				p+= 'Old Photo <br><img src="'+data[11]+'" width="100"> <br><br><img src="../../../upload/photo.jpg" width="150">';
 				p+= '<input type="hidden" name="tid" value="'+data[0]+'">';
 				p+= '<input type="hidden" name="sor" value="'+ii+'">';
 			}
 			p+= '<br><strong>Name</strong> : '+data[9];
+			
 			//p+= '<br><strong>Brief</strong> : '+data[10];
 			
 			$('td', row).eq(1).html(p);
@@ -178,7 +179,7 @@ $(function(){
 			}
 			$('td', row).eq(5).html(a);
 			
-			a = '';
+			/*a = '';
 			if(data[6]==1){
 				a +='<div class="switch">';
 				a +='<input id="cmn-toggle-l-'+data[0]+'" class="cmn-toggle cmn-toggle-round" checked type="checkbox" onClick="fn.app.edit.change_lifestyle('+data[0]+',this)">';
@@ -190,7 +191,7 @@ $(function(){
 				a += ' <label for="cmn-toggle-l-'+data[0]+'"></label>';
 				a += '</div>';
 			}
-			$('td', row).eq(6).html(a);
+			$('td', row).eq(6).html(a);*/
 		}
 	});
 	fn.engine.datatable.add_selectable('tblSlide','chk_group');

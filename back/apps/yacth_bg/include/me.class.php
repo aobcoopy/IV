@@ -1,6 +1,6 @@
 <?php
 class meClass{
-	private $app = "Yacht_bg";
+	private $app = "yacth_bg";
 	private $dbc = null;
 	
 	function __construct($dbc=null){
@@ -8,14 +8,14 @@ class meClass{
 	}
 	
 	private $header_meta = array(
-		array('Yacht_bg'	,"Backgroud",	'fa fa-group'),
+		array('yacth_bg'	,"Backgroud",	'fa fa-group'),
 		//array('user'	,"User",	'fa fa-user')
 	);
 	
 	function PageHeader($active){
 		echo '<div id="breadcrumb">';
 			echo '<ul class="breadcrumb push-down-0">';
-				echo ' <li><a href="?app='.$this->app.'"> Yacht Management</a></li>';
+				echo ' <li><a href="?app='.$this->app.'"> Yacth Management</a></li>';
 				echo ' <li><a href="?app='.$this->app.'"> Background</a></li>';
 				foreach($this->header_meta as $header){
 					if($header[0]==$active){

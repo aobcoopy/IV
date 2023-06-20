@@ -18,6 +18,28 @@ function string_len_2b($text,$amount)
 		return $text;
 	}
 }
+function dateType2($data)
+{
+	$y = substr($data,0,4);
+	$m = substr($data,5,2);
+	$d = substr($data,8,2);
+	switch($m)
+	{
+		case'01':  $month = 'Jan';break;
+		case'02':  $month = 'Feb';break;
+		case'03':  $month = 'Mar';break;
+		case'04':  $month = 'Apr';break;
+		case'05':  $month = 'May';break;
+		case'06':  $month = 'Jun';break;
+		case'07':  $month = 'Jul';break;
+		case'08':  $month = 'Aug';break;
+		case'09':  $month = 'Sep';break;
+		case'10':  $month = 'Oct';break;
+		case'11':  $month = 'Nov';break;
+		case'12':  $month = 'Dec';break;
+	}
+	return  $d.' '.$month .', '.$y;
+}
 ?>
 <style>
 @media screen and (max-width:663px)
@@ -117,50 +139,114 @@ function string_len_2b($text,$amount)
 <section class="section first-section">
             <div class="container-fluid">
                 <div class="masonry-blog clearfix">
-                    <div class="left-side">
+                <?php 
+				$sql_hl = $dbc->Query("select * from blogs where status > 0 and heightlight > 0 order by sort asc");
+				$ro = 1;
+				while($b_row = $dbc->Fetch($sql_hl))
+				{
+					$cate = $dbc->GetRecord("blog_category","*","id='".$b_row['category']."' and status > 0");
+					$urll = "/blog/" . strtolower(str_replace(" ", "-", $b_row['name']) ) . ".html";
+					if($ro==2)
+					{
+						echo '<div class="center-side">';
+					}
+					
+					if($ro==1)
+					{
+						$img_photo_main = imageP('/'.json_decode($b_row['photo_hl_1'],true));
+						?>
+						<div class="left-side">
+                            <div class="masonry-box post-media">
+                                 <img src="<?php echo $img_photo_main;?>" alt="" class="img-fluid"><!--../../upload/b1.jpg-->
+                                 <div class="shadoweffect">
+                                    <div class="shadow-desc">
+                                        <div class="blog-meta">
+                                            <span class="bg-aqua" style="background:<?php echo $cate['color'];?> !important;"><a href="blog-category-01.html" title=""><?php echo $cate['name'];?></a></span>
+                                            <h4><a href="<?php echo $urll;?>" title=""><?php echo $b_row['name'];?></a></h4>
+                                            <small><a href="<?php echo $urll;?>" title=""><?php echo dateType2($b_row['day']);?></a></small><!--24 July, 2017-->
+                                            <small><a href="<?php echo $urll;?>" title="">by <?php echo $b_row['byname'];?></a></small>
+                                        </div><!-- end meta -->
+                                    </div><!-- end shadow-desc -->
+                                </div><!-- end shadow -->
+                            </div><!-- end post-media -->
+                        </div><!-- end left-side -->
+                        <?php
+					}
+					elseif($ro==5)
+					{
+						$img_photo_main = imageP('/'.json_decode($b_row['photo_hl_1'],true));
+						?>
+                        <div class="right-side hidden-md-down">
+                            <div class="masonry-box post-media">
+                                 <img src="<?php echo $img_photo_main;?>" alt="" class="img-fluid">
+                                 <div class="shadoweffect">
+                                    <div class="shadow-desc">
+                                        <div class="blog-meta">
+                                            <span class="bg-aqua" style="background:<?php echo $cate['color'];?> !important;"><a href="blog-category-01.html" title=""><?php echo $cate['name'];?></a></span>
+                                            <h4><a href="<?php echo $urll;?>" title=""><?php echo $b_row['name'];?></a></h4>
+                                            <small><a href="<?php echo $urll;?>" title=""><?php echo dateType2($b_row['day']);?></a></small>
+                                            <small><a href="<?php echo $urll;?>" title="">by <?php echo $b_row['byname'];?></a></small>
+                                        </div><!-- end meta -->
+                                    </div><!-- end shadow-desc -->
+                                 </div><!-- end shadow -->
+                            </div><!-- end post-media -->
+                        </div><!-- end right-side -->
+                        <?php
+					}
+					elseif($ro==2)
+					{
+						$img_photo_main = imageP('/'.json_decode($b_row['photo_hl_2'],true));
+						?>
                         <div class="masonry-box post-media">
-                             <img src="../../upload/b1.jpg" alt="" class="img-fluid">
+                             <img src="<?php echo $img_photo_main;?>" alt="" class="img-fluid">
                              <div class="shadoweffect">
                                 <div class="shadow-desc">
                                     <div class="blog-meta">
-                                        <span class="bg-aqua"><a href="blog-category-01.html" title="">Lifestyle</a></span>
-                                        <h4><a href="block-single.html" title="">The golden rules you need to know for a positive life</a></h4>
-                                        <small><a href="block-single.html" title="">24 July, 2017</a></small>
-                                        <small><a href="blog-author.html" title="">by Amanda</a></small>
+                                        <span class="bg-green" style="background:<?php echo $cate['color'];?> !important;"><a href="blog-category-01.html" title=""><?php echo $cate['name'];?></a></span>
+                                        <h4><a href="<?php echo $urll;?>" title=""><?php echo $b_row['name'];?></a></h4>
+                                        <small><a href="<?php echo $urll;?>" title=""><?php echo dateType2($b_row['day']);?></a></small>
+                                        <small><a href="<?php echo $urll;?>" title="">by <?php echo $b_row['byname'];?></a></small>
                                     </div><!-- end meta -->
                                 </div><!-- end shadow-desc -->
                             </div><!-- end shadow -->
                         </div><!-- end post-media -->
-                    </div><!-- end left-side -->
-
-                    <div class="center-side">
-                        <div class="masonry-box post-media">
-                             <img src="../../upload/b2.jpg" alt="" class="img-fluid">
-                             <div class="shadoweffect">
-                                <div class="shadow-desc">
-                                    <div class="blog-meta">
-                                        <span class="bg-green"><a href="blog-category-01.html" title="">Travel</a></span>
-                                        <h4><a href="block-single.html" title="">5 places you should see</a></h4>
-                                        <small><a href="block-single.html" title="">24 July, 2017</a></small>
-                                        <small><a href="blog-author.html" title="">by Amanda</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end shadow-desc -->
-                            </div><!-- end shadow -->
-                        </div><!-- end post-media -->
-
+                        <?php
+					}
+					else
+					{
+						$img_photo_main = imageP('/'.json_decode($b_row['photo_hl_3'],true));
+						?>
                         <div class="masonry-box small-box post-media">
-                             <img src="../../upload/b3.jpg" alt="" class="img-fluid">
+                             <img src="<?php echo $img_photo_main;?>" alt="" class="img-fluid">
                              <div class="shadoweffect">
                                 <div class="shadow-desc">
                                     <div class="blog-meta">
-                                        <span class="bg-green"><a href="blog-category-01.html" title="">Travel</a></span>
-                                        <h4><a href="block-single.html" title="">Separate your place with exotic hotels</a></h4>
+                                        <span class="bg-green" style="background:<?php echo $cate['color'];?> !important;"><a href="blog-category-01.html" title=""><?php echo $cate['name'];?></a></span>
+                                        <h4><a href="<?php echo $urll;?>" title=""><?php echo $b_row['name'];?></a></h4>
                                     </div><!-- end meta -->
                                 </div><!-- end shadow-desc -->
                             </div><!-- end shadow -->
                         </div><!-- end post-media -->
+                        <?php
+					}
+					
+					if($ro==4)
+					{
+						echo '</div><!-- end left-side -->';
+					}
+					
+					$ro ++;
+					
+				}
+				?>
+                    
 
-                        <div class="masonry-box small-box post-media">
+                    
+                        
+
+                        
+
+                        <?php /*?><div class="masonry-box small-box post-media">
                              <img src="../../upload/b3.jpg" alt="" class="img-fluid">
                              <div class="shadoweffect">
                                 <div class="shadow-desc">
@@ -170,157 +256,39 @@ function string_len_2b($text,$amount)
                                     </div><!-- end meta -->
                                 </div><!-- end shadow-desc -->
                             </div><!-- end shadow -->
-                        </div><!-- end post-media -->
-                    </div><!-- end left-side -->
+                        </div><!-- end post-media --><?php */?>
+                    
 
-                    <div class="right-side hidden-md-down">
-                        <div class="masonry-box post-media">
-                             <img src="../../upload/b1.jpg" alt="" class="img-fluid">
-                             <div class="shadoweffect">
-                                <div class="shadow-desc">
-                                    <div class="blog-meta">
-                                        <span class="bg-aqua"><a href="blog-category-01.html" title="">Lifestyle</a></span>
-                                        <h4><a href="block-single.html" title="">The rules you need to know for a happy union</a></h4>
-                                        <small><a href="block-single.html" title="">03 July, 2017</a></small>
-                                        <small><a href="blog-author.html" title="">by Jessica</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end shadow-desc -->
-                             </div><!-- end shadow -->
-                        </div><!-- end post-media -->
-                    </div><!-- end right-side -->
+                    
                 </div><!-- end masonry -->
             </div>
         </section>
+        
+        
+        
 
 <section class="section">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="section-title">
-                            <h3 class="color-aqua"><a href="blog-category-01.html" title="">Lifestyle</a></h3>
-                        </div><!-- end title -->
-
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="blog-box">
-                                    <div class="post-media">
-                                        <a href="block-single.html" title="">
-                                            <img src="../../upload/b4.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span></span>
-                                            </div><!-- end hover -->
-                                        </a>
-                                    </div><!-- end media -->
-                                    <div class="blog-meta big-meta">
-                                        <h4><a href="block-single.html" title="">The golden rules you need to know for a positive life</a></h4>
-                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                        <small><a href="blog-category-01.html" title="">Lifestyle</a></small>
-                                        <small><a href="block-single.html" title="">24 July, 2017</a></small>
-                                        <small><a href="blog-author.html" title="">by Amanda</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-
-                                <hr class="invis">
-
-                                <div class="blog-box">
-                                    <div class="post-media">
-                                        <a href="block-single.html" title="">
-                                            <img src="../../upload/b4.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span></span>
-                                            </div><!-- end hover -->
-                                        </a>
-                                    </div><!-- end media -->
-                                    <div class="blog-meta big-meta">
-                                        <h4><a href="block-single.html" title="">I have a desert visit this summer</a></h4>
-                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                        <small><a href="blog-category-01.html" title="">Lifestyle</a></small>
-                                        <small><a href="block-single.html" title="">22 July, 2017</a></small>
-                                        <small><a href="blog-author.html" title="">by Martines</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-                            </div><!-- end col -->
-                        </div><!-- end row -->
-                    </div><!-- end col -->
-
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="section-title">
-                            <h3 class="color-pink"><a href="blog-category-01.html" title="">Fashion</a></h3>
-                        </div><!-- end title -->
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="blog-box">
-                                    <div class="post-media">
-                                        <a href="block-single.html" title="">
-                                            <img src="../../upload/b5.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span></span>
-                                            </div><!-- end hover -->
-                                        </a>
-                                    </div><!-- end media -->
-                                    <div class="blog-meta">
-                                        <h4><a href="block-single.html" title="">What is your favorite leather jacket color</a></h4>
-                                        <small><a href="blog-category-01.html" title="">Fashion</a></small>
-                                        <small><a href="blog-category-01.html" title="">21 July, 2017</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-
-                                <hr class="invis">
-
-                                <div class="blog-box">
-                                    <div class="post-media">
-                                        <a href="block-single.html" title="">
-                                            <img src="../../upload/b5.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span></span>
-                                            </div><!-- end hover -->
-                                        </a>
-                                    </div><!-- end media -->
-                                    <div class="blog-meta">
-                                        <h4><a href="block-single.html" title="">Is summer, have you bought a cane</a></h4>
-                                        <small><a href="blog-category-01.html" title="">Fashion</a></small>
-                                        <small><a href="blog-category-01.html" title="">11 July, 2017</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-                            </div><!-- end col -->
-
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="blog-box">
-                                    <div class="post-media">
-                                        <a href="block-single.html" title="">
-                                            <img src="../../upload/b5.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span></span>
-                                            </div><!-- end hover -->
-                                        </a>
-                                    </div><!-- end media -->
-                                    <div class="blog-meta">
-                                        <h4><a href="block-single.html" title="">This year's fashionable long beard</a></h4>
-                                        <small><a href="blog-category-01.html" title="">Fashion</a>, <a href="blog-category-01.html" title="">Man</a></small>
-                                        <small><a href="blog-category-01.html" title="">08 July, 2017</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-
-                                <hr class="invis">
-
-                                <div class="blog-box">
-                                    <div class="post-media">
-                                        <a href="block-single.html" title="">
-                                            <img src="../../upload/b5.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span></span>
-                                            </div><!-- end hover -->
-                                        </a>
-                                    </div><!-- end media -->
-                                    <div class="blog-meta">
-                                        <h4><a href="block-single.html" title="">How to be more cool with clothing</a></h4>
-                                        <small><a href="blog-category-01.html" title="">Fashion</a>, <a href="blog-category-01.html" title="">Style</a></small>
-                                        <small><a href="blog-category-01.html" title="">04 July, 2017</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-                            </div><!-- end col -->
-                        </div><!-- end row -->
-                    </div><!-- end col -->
+                	<?php
+					$sql_cate = $dbc->Query("select * from blog_category where status > 0 order by sort asc limit 0,2");
+					$bc=1;
+					while($bc_row = $dbc->Fetch($sql_cate))
+					{
+						
+						if($bc==1)
+						{
+							include "blog_section_1.php";
+						}
+						elseif($bc==2)
+						{
+							include "blog_section_2.php";
+						}
+						$bc++;
+					}
+					?>
+                    
+                    
                 </div><!-- end row -->
 
                 <hr class="invis1">
@@ -337,205 +305,37 @@ function string_len_2b($text,$amount)
 
                 <hr class="invis1">
 
+
+
+
                 <div class="row">
-                    <div class="col-lg-9">
-                        <div class="blog-list clearfix">
-                            <div class="section-title">
-                                <h3 class="color-green"><a href="blog-category-01.html" title="">Travel</a></h3>
-                            </div><!-- end title -->
+                    
+                    <?php
+					$sql_cate = $dbc->Query("select * from blog_category where status > 0 order by sort asc limit 2,10");
+					$bc_1=0;
+					while($bc_row = $dbc->Fetch($sql_cate))
+					{
+						$bc_1++;
+						if(($bc_1%2)==0)
+						{
+							include "blog_section_4.php";
+						}
+						else
+						{
+							include "blog_section_3.php";
+						}
+						
+					}
+					?>
+                    
 
-                            <div class="blog-box row">
-                                <div class="col-md-4">
-                                    <div class="post-media">
-                                        <a href="block-single.html" title="">
-                                            <img src="../../upload/b6.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect"></div>
-                                        </a>
-                                    </div><!-- end media -->
-                                </div><!-- end col -->
 
-                                <div class="blog-meta big-meta col-md-8">
-                                    <h4><a href="block-single.html" title="">5 Beautiful buildings you need to visit without dying</a></h4>
-                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                    <small><a href="blog-category-01.html" title="">Travel</a></small>
-                                    <small><a href="block-single.html" title="">21 July, 2017</a></small>
-                                    <small><a href="blog-author.html" title="">by Boby</a></small>
-                                </div><!-- end meta -->
-                            </div><!-- end blog-box -->
 
-                            <hr class="invis">
 
-                            <div class="blog-box row">
-                                <div class="col-md-4">
-                                    <div class="post-media">
-                                        <a href="block-single.html" title="">
-                                            <img src="../../upload/b6.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect"></div>
-                                        </a>
-                                    </div><!-- end media -->
-                                </div><!-- end col -->
+                    
+                   
 
-                                <div class="blog-meta big-meta col-md-8">
-                                    <h4><a href="block-single.html" title="">Let's make an introduction to the glorious world of history</a></h4>
-                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                    <small><a href="blog-category-01.html" title="">Travel</a></small>
-                                    <small><a href="block-single.html" title="">20 July, 2017</a></small>
-                                    <small><a href="blog-author.html" title="">by Samanta</a></small>
-                                </div><!-- end meta -->
-                            </div><!-- end blog-box -->
-
-                            <hr class="invis">
-
-                            <div class="blog-box row">
-                                <div class="col-md-4">
-                                    <div class="post-media">
-                                        <a href="block-single.html" title="">
-                                            <img src="../../upload/b6.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect"></div>
-                                        </a>
-                                    </div><!-- end media -->
-                                </div><!-- end col -->
-
-                                <div class="blog-meta big-meta col-md-8">
-                                    <h4><a href="block-single.html" title="">Did you see the most beautiful sea in the world?</a></h4>
-                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                    <small><a href="blog-category-01.html" title="">Travel</a></small>
-                                    <small><a href="block-single.html" title="">19 July, 2017</a></small>
-                                    <small><a href="blog-author.html" title="">by Jackie</a></small>
-                                </div><!-- end meta -->
-                            </div><!-- end blog-box -->
-                        </div><!-- end blog-list -->
-
-                        <hr class="invis">
-
-                        <div class="blog-list clearfix">
-                            <div class="section-title">
-                                <h3 class="color-red"><a href="blog-category-01.html" title="">Food</a></h3>
-                            </div><!-- end title -->
-
-                            <div class="blog-box row">
-                                <div class="col-md-4">
-                                    <div class="post-media">
-                                        <a href="block-single.html" title="">
-                                            <img src="../../upload/b6.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect"></div>
-                                        </a>
-                                    </div><!-- end media -->
-                                </div><!-- end col -->
-
-                                <div class="blog-meta big-meta col-md-8">
-                                    <h4><a href="block-single.html" title="">Banana-chip chocolate cake recipe</a></h4>
-                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                    <small><a href="blog-category-01.html" title="">Food</a></small>
-                                    <small><a href="block-single.html" title="">11 July, 2017</a></small>
-                                    <small><a href="blog-author.html" title="">by Matilda</a></small>
-                                </div><!-- end meta -->
-                            </div><!-- end blog-box -->
-
-                            <hr class="invis">
-
-                            <div class="blog-box row">
-                                <div class="col-md-4">
-                                    <div class="post-media">
-                                        <a href="block-single.html" title="">
-                                            <img src="../../upload/b6.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect"></div>
-                                        </a>
-                                    </div><!-- end media -->
-                                </div><!-- end col -->
-
-                                <div class="blog-meta big-meta col-md-8">
-                                    <h4><a href="block-single.html" title="">10 practical ways to choose organic vegetables</a></h4>
-                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                    <small><a href="blog-category-01.html" title="">Food</a></small>
-                                    <small><a href="block-single.html" title="">10 July, 2017</a></small>
-                                    <small><a href="blog-author.html" title="">by Matilda</a></small>
-                                </div><!-- end meta -->
-                            </div><!-- end blog-box -->
-
-                            <hr class="invis">
-
-                            <div class="blog-box row">
-                                <div class="col-md-4">
-                                    <div class="post-media">
-                                        <a href="block-single.html" title="">
-                                            <img src="../../upload/b6.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect"></div>
-                                        </a>
-                                    </div><!-- end media -->
-                                </div><!-- end col -->
-
-                                <div class="blog-meta big-meta col-md-8">
-                                    <h4><a href="block-single.html" title="">We are making homemade ravioli</a></h4>
-                                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                    <small><a href="blog-category-01.html" title="">Food</a></small>
-                                    <small><a href="block-single.html" title="">09 July, 2017</a></small>
-                                    <small><a href="blog-author.html" title="">by Matilda</a></small>
-                                </div><!-- end meta -->
-                            </div><!-- end blog-box -->
-                        </div><!-- end blog-list -->
-                    </div><!-- end col -->
-
-                    <div class="col-lg-3">
-                        <div class="section-title">
-                            <h3 class="color-yellow"><a href="blog-category-01.html" title="">Vlogs</a></h3>
-                        </div><!-- end title -->
-
-                        <div class="blog-box">
-                            <div class="post-media">
-                                <a href="block-single.html" title="">
-                                    <img src="../../upload/b7.jpg" alt="" class="img-fluid">
-                                    <div class="hovereffect">
-                                        <span class="videohover"></span>
-                                    </div><!-- end hover -->
-                                </a>
-                            </div><!-- end media -->
-                            <div class="blog-meta">
-                                <h4><a href="block-single.html" title="">We are guests of ABC Design Studio - Vlog</a></h4>
-                                <small><a href="blog-category-01.html" title="">Videos</a></small>
-                                <small><a href="blog-category-01.html" title="">21 July, 2017</a></small>
-                            </div><!-- end meta -->
-                        </div><!-- end blog-box -->
-
-                        <hr class="invis">
-
-                        <div class="blog-box">
-                            <div class="post-media">
-                                <a href="block-single.html" title="">
-                                    <img src="../../upload/b7.jpg" alt="" class="img-fluid">
-                                    <div class="hovereffect">
-                                        <span class="videohover"></span>
-                                    </div><!-- end hover -->
-                                </a>
-                            </div><!-- end media -->
-                            <div class="blog-meta">
-                                <h4><a href="block-single.html" title="">Nostalgia at work</a></h4>
-                                <small><a href="blog-category-01.html" title="">Videos</a></small>
-                                <small><a href="blog-category-01.html" title="">20 July, 2017</a></small>
-                            </div><!-- end meta -->
-                        </div><!-- end blog-box -->
-
-                        <hr class="invis">
-
-                        <div class="blog-box">
-                            <div class="post-media">
-                                <a href="block-single.html" title="">
-                                    <img src="../../upload/b7.jpg" alt="" class="img-fluid">
-                                    <div class="hovereffect">
-                                        <span class="videohover"></span>
-                                    </div><!-- end hover -->
-                                </a>
-                            </div><!-- end media -->
-                            <div class="blog-meta">
-                                <h4><a href="block-single.html" title="">How to become a good vlogger</a></h4>
-                                <small><a href="blog-category-01.html" title="">Beauty</a></small>
-                                <small><a href="blog-category-01.html" title="">20 July, 2017</a></small>
-                            </div><!-- end meta -->
-                        </div><!-- end blog-box -->
-
-                        <hr class="invis">
-
-                        <div class="section-title">
+                        <?php /*?><div class="section-title">
                             <h3 class="color-grey"><a href="blog-category-01.html" title="">Health</a></h3>
                         </div><!-- end title -->
 
@@ -589,8 +389,9 @@ function string_len_2b($text,$amount)
                                 <small><a href="blog-category-01.html" title="">Beauty</a></small>
                                 <small><a href="blog-category-01.html" title="">20 July, 2017</a></small>
                             </div><!-- end meta -->
-                        </div><!-- end blog-box -->
-                    </div><!-- end col -->
+                        </div><!-- end blog-box --><?php */?>
+                    
+                    
                 </div><!-- end row -->
 
                 <hr class="invis1">

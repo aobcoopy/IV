@@ -15,7 +15,6 @@
 							</th>
                             <th>icon</th>
                             <th>name</th>
-                            <th>group</th>
 	                        <th>user</th>
                             <th>Updated</th>
                             <th>Status</th>
@@ -81,22 +80,7 @@ fn.app.facility.facility.sort = function(id) {
 };
 
 
-fn.app.change_group = function(me,id){
-	$(me).parent().find('.inside_cbb').children().remove();
-	var z = '';
-		z+= '<select multiple  class="form-control" id="selGroup_e" name="selGroup_e"  onChange="fn.app.edit.change_group(this,'+id+');" style="width:200px;">';
-			<?php
-			$sql = $dbc->Query("select * from icon_group where status > 0 and igroup = 1");
-			while($row = $dbc->Fetch($sql))
-			{
-				$sele = ($feature['icon_group']==$row['id'])?'selected':'';
-				//echo '<option value="'.$row['id'].'" '.$sele.'>'.$row['name'].'</option>';
-				?>z+= '<option value="<?php echo $row['id'];?>" <?php echo $sele;?>><?php echo $row['name'];?></option>';<?php
-			}
-			?>
-		z+= '</select>';
-	$(me).parent().find('.inside_cbb').append(z);					
-}
+
 
 
 $(function(){
@@ -105,13 +89,11 @@ $(function(){
 	$("#tblSlide").DataTable({
 		"processing": true,
 		"serverSide": true,
-		"stateSave": true,
 		"ajax": "apps/facility/store/store-facility.php",
 		"aoColumns": [
 			{ "bSortable": false},
 			{"bSort" : false, class:"rows", "sWidth":"60px"},
 			{"bSortable": false},
-			{"bSortable": false },
 			{"bSortable": false },
 			{"bSortable": false , class:"text-center" },
 			{"bSortable": false },
@@ -132,7 +114,11 @@ $(function(){
 			s += fn.engine.datatable.button('btn-default','fa-pencil','fn.app.facility.facility.change('+data[0]+')');
 			s += ' ';
 			//s += fn.engine.datatable.button('btn-warning','fa-lock','fn.app.facility.group.permission('+data[0]+')');
-			$('td', row).eq(7).html(s);
+			$('td', row).eq(6).html(s);
+			
+			
+			
+			
 			
 			
 			var p='';
@@ -142,16 +128,8 @@ $(function(){
 			$('td', row).eq(1).html(p);
 			ii ++;
 			
-			var z='';
-			z+= '<input type="hidden" name="tid" value="'+data[0]+'">';
-			z+= data[3]+'<br>';
-			z+= '<button type="button" onClick="fn.app.change_group(this,'+data[0]+');";><i class="fa fa-chevron-down" aria-hidden="true"></i></button>';
-			z+= '<div class="inside_cbb"></div>';
-			$('td', row).eq(3).html(z);
-			
-			
 			var a = '';
-			if(data[6]==1){
+			if(data[5]==1){
 				a +='<div class="switch">';
 				a +='<input id="cmn-toggle-'+data[0]+'" class="cmn-toggle cmn-toggle-round" checked type="checkbox" onClick="fn.app.edit.change_status('+data[0]+',this)">';
 				a += '<label for="cmn-toggle-'+data[0]+'"></label>';
@@ -162,7 +140,7 @@ $(function(){
 				a += ' <label for="cmn-toggle-'+data[0]+'"></label>';
 				a += '</div>';
 			}
-			$('td', row).eq(6).html(a);
+			$('td', row).eq(5).html(a);
 		}
 	});
 	fn.engine.datatable.add_selectable('tblSlide','chk_group');

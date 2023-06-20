@@ -15,6 +15,7 @@
 	$slug = str_replace(" ","-",$_REQUEST['tx_link_e']);
 		$data = array(
 			'name' => $_REQUEST['txTitle_edit'],
+			'color' => $_REQUEST['tx_color_e'],
 			'#updated' => 'NOW()',
 			'#status' => '0',
 			'slug' => trim(strtolower($slug)),

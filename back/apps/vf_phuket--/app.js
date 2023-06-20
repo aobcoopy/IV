@@ -28,6 +28,101 @@ var vf_phuket = {
 		document.execCommand("copy");*/
 		var encode = $(me).parent().find('.tx_encode').val();
 		window.location = '../villaform-customer-'+encode+'.html';
+	},
+	edit_customer_detail : function(id){
+		$.ajax({
+			url: "apps/vf_phuket/view/dialog.edit.user.data.php",
+			data: {id:id},
+			type: "POST",
+			dataType: "html",
+			success: function(html){
+				$("body").append(html);
+			}	
+		});
+	},
+	save_edit_customer_data : function(){
+		$.ajax({
+			url: "apps/vf_phuket/xhr/action-save-edit-user-data.php",
+			data: $("#form_ed_customer_data").serialize(),
+			type: "POST",
+			dataType: "json",
+			success: function(res){
+				if(res.status==true)
+				{
+					$("#dialog_edit_group").modal('hide');
+					$(".table").DataTable().draw();	
+				}
+				else
+				{
+					fn.engine.alert("Alert",res.msg);
+					return false;
+				}
+			}	
+		});
+	},
+	customer_duplicate : function(id){
+		$.ajax({
+				url: "apps/vf_phuket/xhr/action-duplicate-customer-data.php",
+				data: {id:id},
+				type: "POST",
+				dataType: "json",
+				success: function(res){
+					if(res.status==true)
+					{
+						$(".table").DataTable().draw();	
+						setTimeout(function(){
+							setTimeout(function(){
+								$('tbody tr#'+res.id+' td').css({"background": "#FFD2D2"});
+							},500);	
+							setTimeout(function(){
+								$('tbody tr#'+res.id+' td').css({"background": ""});
+							},2000);
+							
+						},300);
+					}
+					else
+					{
+						fn.engine.alert("Alert",res.msg);
+						return false;
+					}
+				}
+		});
+	},
+	remove_customer : function(id){
+		var Delconf = confirm('Are you sure to REMOVE !');
+		if(Delconf==false)
+		{
+			return false;
+		}
+		else
+		{
+			$.ajax({
+					url: "apps/vf_phuket/xhr/action-remove-customer-data.php",
+					data: {id:id},
+					type: "POST",
+					dataType: "json",
+					success: function(res){
+						if(res.status==true)
+						{
+							$(".table").DataTable().draw();	
+							/*setTimeout(function(){
+								setTimeout(function(){
+									$('tbody tr#'+res.id+' td').css({"background": "#FFD2D2"});
+								},500);	
+								setTimeout(function(){
+									$('tbody tr#'+res.id+' td').css({"background": ""});
+								},2000);
+								
+							},300);*/
+						}
+						else
+						{
+							fn.engine.alert("Alert",res.msg);
+							return false;
+						}
+					}
+			});
+		}
 	}
 };
 

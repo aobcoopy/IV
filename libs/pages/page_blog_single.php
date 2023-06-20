@@ -34,7 +34,7 @@
                                     <ul class="list-inline">
                                         <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
                                         <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                        <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                                        <!--<li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>-->
                                     </ul>
                                 </div><!-- end post-sharing -->
                             </div><!-- end title -->
@@ -98,7 +98,7 @@
                                     <ul class="list-inline">
                                         <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
                                         <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                        <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                                        <!--<li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>-->
                                     </ul>
                                 </div><!-- end post-sharing -->
                             </div><!-- end title -->
@@ -284,7 +284,7 @@
 
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                         <div class="sidebar">
-                            <div class="widget">
+                            <!--<div class="widget">
                                 <h2 class="widget-title">Search</h2>
                                 <form class="form-inline search-form">
                                     <div class="form-group">
@@ -292,7 +292,7 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                                 </form>
-                            </div><!-- end widget -->
+                            </div>--><!-- end widget -->
 
                             <div class="widget">
                                 <h2 class="widget-title">Recent Posts</h2>
@@ -334,7 +334,7 @@
                                 </div><!-- end banner -->
                             </div><!-- end widget -->
 
-                            <div class="widget">
+                            <?php /*?><div class="widget">
                                 <h2 class="widget-title">Instagram Feed</h2>
                                 <div class="instagram-wrapper clearfix">
                                 <?php include "embed_ig_photo.php";?>
@@ -348,9 +348,9 @@
                                     <a href="#"><img src="upload/insta_08.jpeg" alt="" class="img-fluid"></a>
                                     <a href="#"><img src="upload/insta_09.jpeg" alt="" class="img-fluid"></a>
                                 </div><!-- end Instagram wrapper -->
-                            </div><!-- end widget -->
+                            </div><?php */?><!-- end widget -->
 
-                            <div class="widget">
+                            <?php /*?><div class="widget">
                                 <h2 class="widget-title">Popular Categories</h2>
                                 <div class="link-widget">
                                     <ul>
@@ -363,7 +363,7 @@
                                         <li><a href="#">Food & Drink <span>(87)</span></a></li>
                                     </ul>
                                 </div><!-- end link-widget -->
-                            </div><!-- end widget -->
+                            </div><?php */?><!-- end widget -->
 
                         </div><!-- end sidebar -->
                     </div><!-- end col -->

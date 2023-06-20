@@ -55,7 +55,6 @@ input[type=radio], input[type=checkbox] {
                         	<div class="form-group">
                                 <label for="txtName" class="col-sm-2 control-label">Name</label>
                                 <div class="col-sm-10">
-                                	Villa format Ex : Baan Banyan | 4-6 Bedroom Villa - Kamala Beach, Phuket
                                     <input type="text" class="form-control" id="txName" name="txName" >
                                 </div>
                             </div>

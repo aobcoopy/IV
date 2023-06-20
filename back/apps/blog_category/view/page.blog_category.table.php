@@ -17,6 +17,7 @@
                             <th>Link Name</th>
                             <th>Updated</th>
                             <th>Status</th>
+                            <th>Sort</th>
 							<th>Action</th>
 	                    </tr>
 	                </thead>
@@ -42,11 +43,11 @@
 }
 </style>
 <script>
- /* $(function() {
+  $(function() {
 	$("#panel-heading-group").append('<button id="btnSavesort" type="button" onclick="fn.app.blog_category.blog_category.sort()" class="btn btn-info pull-right">Save Sort</button>');
 	$( "#tblSlide" ).children().sortable();
 	$( "#tblSlide " ).disableSelection();
-  });*/
+  });
 
 
 fn.app.blog_category.blog_category.sort = function(id) {
@@ -92,6 +93,7 @@ $(function(){
 			{"bSortable": false},
 			{"bSortable": false},
             {"bSortable": false},
+			{"bSortable": true},
 			{"bSortable": false}
 		],
 		//"order": [[ 0, "desc" ]],
@@ -113,19 +115,22 @@ $(function(){
 			s += fn.engine.datatable.button('btn-default','fa-pencil','fn.app.blog_category.blog_category.change('+data[0]+')');
 			s += ' ';
 			//s += fn.engine.datatable.button('btn-warning','fa-lock','fn.app.blog_category.group.permission('+data[0]+')');
-			$('td', row).eq(5).html(s);
+			$('td', row).eq(6).html(s);
 			
 			
 			
 			
 			
 			
-			/*var p='';
-			p+= '<img src="'+data[1]+'" width="100%">';
+			var p='';
+			//p+= '<img src="'+data[1]+'" width="100%">';
+			p+= '<button class="btn" style="background:'+data[7]+'">';
+			p+= data[1];
+			p+= '</button>';
 			p+= '<input type="hidden" name="tid" value="'+data[0]+'">';
 			p+= '<input type="hidden" name="sor" value="'+ii+'">';
 			$('td', row).eq(1).html(p);
-			ii ++;*/
+			ii ++;
 			
 			var a = '';
 			if(data[4]==1){

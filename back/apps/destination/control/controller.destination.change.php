@@ -14,6 +14,17 @@
 		});
 	};
 	
+	fn.app.destination.destination.setemail = function(id) {
+		$.ajax({
+			url: "apps/destination/view/dialog.destination.setemail.php",
+			data: {id:id},
+			type: "POST",
+			dataType: "html",
+			success: function(html){
+				$("body").append(html);
+			}	
+		});
+	};
 	fn.app.destination.destination.save_change = function(){
 		if(document.getElementById("txTitle_edit").value=='' || document.getElementById("txSlug_edit").value=='' )
 		{
@@ -24,6 +35,28 @@
 		else
 		{
 			$.post('apps/destination/xhr/action-edit-destination.php',$('#form_edit_destination').serialize(),function(response){
+				if(response.success){
+					$("#tblSlide").DataTable().draw();
+					$("#dialog_edit_group").modal('hide');
+					//$("#thumbnail_edit").attr('src','../../../../upload/destination.jpg');
+				}else{
+					//fn.engine.alert("Alert",response.msg);
+				}
+			},'json');
+			return false;
+		}
+		
+	};
+	fn.app.destination.destination.save_change_email = function(){
+		if(document.getElementById("txEmail_edit").value=='' )
+		{
+			alert('Please fill in all required fields');
+			/*$("$txTitle_edit").click();*/
+			return false;
+		}
+		else
+		{
+			$.post('apps/destination/xhr/action-edit-email.php',$('#form_edit_destination').serialize(),function(response){
 				if(response.success){
 					$("#tblSlide").DataTable().draw();
 					$("#dialog_edit_group").modal('hide');

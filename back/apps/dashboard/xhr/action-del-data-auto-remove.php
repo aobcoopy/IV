@@ -42,7 +42,7 @@ while($line = $dbc->Fetch($sql))
 	{
 		$val = json_decode($line['val'],true);
 	}
-	//echo $
+	echo $
 	$year = '';
 	$x=0;
 	$remov = 0;

@@ -40,12 +40,12 @@ fn.app.properties.properties.add = function(){
      }*/
     else
     {
-        /*var results = format_photo($("#txName").val());
+        var results = format_photo($("#txName").val());
         if(results == false){
             alert('Please check data format ex;Baan Banyan | 4-6 Bedroom Villa - Kamala Beach, Phuket');
             $("#txName").focus();
             return false;
-        }else{*/
+        }else{
             $.post('apps/properties/xhr/action-add-properties.php',$('#form_add_properties').serialize(),function(response){
                    if(response.success){
                    $("#tblSlide").DataTable().draw();
@@ -63,7 +63,7 @@ fn.app.properties.properties.add = function(){
                    }
                    },'json');
             return false;
-        /*}*/
+        }
     }
 };
 

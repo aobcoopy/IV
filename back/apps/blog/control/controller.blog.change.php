@@ -29,6 +29,7 @@
 	};
 	
 	fn.app.blog.blog.save_photo = function(form){
+		$(".i_load").show();
 		var formData = new FormData($(form)[0]);
 		$.ajax({
 			url: 'apps/blog/xhr/action-up-multi-photo.php',
@@ -41,6 +42,7 @@
 			beforeSend: function () {
 			},
 			success: function (response) {
+					$(".i_load").hide();
 					window.location.reload();
 				} 
 		});

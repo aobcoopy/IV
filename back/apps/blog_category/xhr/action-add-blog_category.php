@@ -16,6 +16,7 @@
 		$data = array(
 			'#id' => "DEFAULT",
 			'name' => trim($_REQUEST['txTitle']),
+			'color' => $_REQUEST['tx_color'],
 			'#created' => 'NOW()',
 			'#updated' => 'NOW()',
 			'#status' => '0',

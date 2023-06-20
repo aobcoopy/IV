@@ -17,7 +17,8 @@
 		'u.name',
 		'd.updated',
 		'd.status',
-		'd.id'
+		'd.id',
+		'd.email'
 	);
 	$sIndexColumn = "d.id";
 	

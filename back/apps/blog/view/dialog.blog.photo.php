@@ -14,7 +14,7 @@
 	$blog = $dbc->GetRecord("blogs","*","id=".$_REQUEST['id']);
 	$photo = json_decode($blog['photo'],true);
 	
-	$img_photo_main = json_decode($blog['photo_main'],true);
+	$img_photo_main = json_decode($blog['photo_main'],true);//'../../../../'.json_decode($blog['photo_main'],true));
 	$img_photo_hl_1 = json_decode($blog['photo_hl_1'],true);
 	$img_photo_hl_2 = json_decode($blog['photo_hl_2'],true);
 	$img_photo_hl_3 = json_decode($blog['photo_hl_3'],true);
@@ -23,23 +23,23 @@
 	$img_photo_sq = json_decode($blog['photo_sq'],true);
 	//$img_9 = json_decode($blog['img_9'],true);
 
-	$path_photo_main = ($img_photo_main!='')?'../../../../'.json_decode($blog['photo_main']):'';
-	$path_photo_hl_1 = ($img_photo_hl_1!='')?'../../../../'.json_decode($blog['photo_hl_1']):'';
-	$path_photo_hl_2 = ($img_photo_hl_2!='')?'../../../../'.json_decode($blog['photo_hl_2']):'';
-	$path_photo_hl_3 = ($img_photo_hl_3!='')?'../../../../'.json_decode($blog['photo_hl_3']):'';
-	$path_photo_width = ($img_photo_width!='')?'../../../../'.json_decode($blog['photo_width']):'';
-	$path_photo_high = ($img_photo_high!='')?'../../../../'.json_decode($blog['photo_high']):'';
-	$path_photo_sq = ($img_photo_sq!='')?'../../../../'.json_decode($blog['photo_sq']):'';
+	$path_photo_main = ($img_photo_main!='')?imagePath('/'.json_decode($blog['photo_main'],true)):'';//'../../../../'.json_decode($blog['photo_main']):'';
+	$path_photo_hl_1 = ($img_photo_hl_1!='')?imagePath('/'.json_decode($blog['photo_hl_1'],true)):'';
+	$path_photo_hl_2 = ($img_photo_hl_2!='')?imagePath('/'.json_decode($blog['photo_hl_2'],true)):'';
+	$path_photo_hl_3 = ($img_photo_hl_3!='')?imagePath('/'.json_decode($blog['photo_hl_3'],true)):'';
+	$path_photo_width = ($img_photo_width!='')?imagePath('/'.json_decode($blog['photo_width'],true)):'';
+	$path_photo_high = ($img_photo_high!='')?imagePath('/'.json_decode($blog['photo_high'],true)):'';
+	$path_photo_sq = ($img_photo_sq!='')?imagePath('/'.json_decode($blog['photo_sq'],true)):'';
 	//$path_9 = ($img_9!='')?'../../../../'.json_decode($blog['img_9']):'';
 
 	
-	$image_photo_main = ($img_photo_main!='')?'<img src="../../../../'.$img_photo_main.'" class="img_photo_main"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_main" width="100%">';
-	$image_photo_hl_1 = ($img_photo_hl_1!='')?'<img src="../../../../'.$img_photo_hl_1.'" class="img_photo_hl_1"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_hl_1" width="100%">';
-	$image_photo_hl_2 = ($img_photo_hl_2!='')?'<img src="../../../../'.$img_photo_hl_2.'" class="img_photo_hl_2"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_hl_2" width="100%">';
-	$image_photo_hl_3 = ($img_photo_hl_3!='')?'<img src="../../../../'.$img_photo_hl_3.'" class="img_photo_hl_3"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_hl_3" width="100%">';
-	$image_photo_width = ($img_photo_width!='')?'<img src="../../../../'.$img_photo_width.'" class="img_photo_width"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_width" width="100%">';
-	$image_photo_high = ($img_photo_high!='')?'<img src="../../../../'.$img_photo_high.'" class="img_photo_high"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_high" width="100%">';
-	$image_photo_sq = ($img_photo_sq!='')?'<img src="../../../../'.$img_photo_sq.'" class="img_photo_sq"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_sq" width="100%">';
+	$image_photo_main = ($img_photo_main!='')?'<img src="'.imagePath('/'.$img_photo_main).'" class="img_photo_main"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_main" width="100%">';
+	$image_photo_hl_1 = ($img_photo_hl_1!='')?'<img src="'.imagePath('/'.$img_photo_hl_1).'" class="img_photo_hl_1"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_hl_1" width="100%">';
+	$image_photo_hl_2 = ($img_photo_hl_2!='')?'<img src="'.imagePath('/'.$img_photo_hl_2).'" class="img_photo_hl_2"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_hl_2" width="100%">';
+	$image_photo_hl_3 = ($img_photo_hl_3!='')?'<img src="'.imagePath('/'.$img_photo_hl_3).'" class="img_photo_hl_3"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_hl_3" width="100%">';
+	$image_photo_width = ($img_photo_width!='')?'<img src="'.imagePath('/'.$img_photo_width).'" class="img_photo_width"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_width" width="100%">';
+	$image_photo_high = ($img_photo_high!='')?'<img src="'.imagePath('/'.$img_photo_high).'" class="img_photo_high"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_high" width="100%">';
+	$image_photo_sq = ($img_photo_sq!='')?'<img src="'.imagePath('/'.$img_photo_sq).'" class="img_photo_sq"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_photo_sq" width="100%">';
 	//$image_9 = ($img_9!='')?'<img src="../../../../'.$img_9.'" class="img_9"  width="100%">':'<img src="../../../../upload/photo.jpg"  class="img_9" width="100%">';
 	
 ?>
@@ -72,32 +72,12 @@
                     <div role="tabpanel" class="tab-pane active" id="Information_e">
                     	<div class="col-md-12">
                         
-                        	<div class="form-group col-md-4">
-                                <div class="col-sm-12">
-                                    <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_main');">Upload</button>
-                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_main!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_main;?>',this,'img_photo_main','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
-                                    <!--<button type="submit" class="btn btn-primary pull-right">Save</button>-->
-                                    <font color="#ff0000">  (Main Photo) 800 x 460 px</font>
-                                    
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input validate hidden" id="butUploadPhoto_photo_main" name="butUploadPhoto_photo_main" placeholder="img" onchange="fn.app.blog.blog.showImgPopup(this);">
-                                        
-                                        <!--<input type="text" class="paths" id="path_photo" name="path_photo">-->
-                                    </div>
-                                    <div class="form-group row"><br>
-                                        <div class="col-sm-6" id="preview-img">
-                                        <?php echo $image_photo_main; ?>
-                                        <label class="custom-file-label img_photo_main" for="img"><?php echo $img_photo_main; ?></label>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 text-center">
-                                    <!--<img src="../../../../upload/layout1.jpg" width="50%" alt="">-->
-                                </div>
+                        	<div class="col-md-3">
+                        	<h2>Highlight Photo</h2>
+                            <img src="../../../../upload/blog_thump.jpg" width="100%" alt="">
                             </div>
-                        
-                        	<div class="form-group col-md-4">
+                            
+                            <div class="form-group col-md-3">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_hl_1');">Upload</button>
                                     <button type="button" class="btn btn-danger" <?php echo ($path_photo_hl_1!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_hl_1;?>',this,'img_photo_hl_1','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
@@ -122,9 +102,7 @@
                                 </div>
                             </div>
                             
-                            
-                            
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_hl_2');">Upload</button>
                                     <button type="button" class="btn btn-danger" <?php echo ($path_photo_hl_2!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_hl_2;?>',this,'img_photo_hl_2','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
@@ -148,10 +126,8 @@
                                     <!--<img src="../../../../upload/layout1.jpg" width="50%" alt="">-->
                                 </div>
                             </div>
-                            
-                            <div class="col-sm-12"></div>
-                            
-                            <div class="form-group col-md-4">
+                                                        
+                            <div class="form-group col-md-3">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_hl_3');">Upload</button>
                                     <button type="button" class="btn btn-danger" <?php echo ($path_photo_hl_3!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_hl_3;?>',this,'img_photo_hl_3','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
@@ -176,9 +152,15 @@
                                 </div>
                             </div>
                             
+                            <div class="col-sm-12"></div>
+                            
+                            <div class="col-md-3">
+                        	<h2>Width & High Photo</h2>
+                            <img src="../../../../upload/blog_thump2.jpg" width="100%" alt="">
+                            </div>
                             
                             
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_width');">Upload</button>
                                     <button type="button" class="btn btn-danger" <?php echo ($path_photo_width!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_width;?>',this,'img_photo_width','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
@@ -203,7 +185,7 @@
                                 </div>
                             </div>
                             
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_high');">Upload</button>
                                     <button type="button" class="btn btn-danger" <?php echo ($path_photo_high!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_high;?>',this,'img_photo_high','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
@@ -228,9 +210,15 @@
                                 </div>
                             </div>
                             
+                            
                             <div class="col-sm-12"></div>
                             
-                            <div class="form-group col-md-4">
+                            <div class="col-md-3">
+                        	<h2>Square & Main Photo</h2>
+                            <img src="../../../../upload/blog_thump3.jpg" width="100%" alt="">
+                            </div>
+                            
+                            <div class="form-group col-md-3">
                                 <div class="col-sm-12">
                                     <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_sq');">Upload</button>
                                     <button type="button" class="btn btn-danger" <?php echo ($path_photo_sq!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_sq;?>',this,'img_photo_sq','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
@@ -254,14 +242,33 @@
                                     <!--<img src="../../../../upload/layout1.jpg" width="50%" alt="">-->
                                 </div>
                             </div>
-                
-                
-                
-
-						
-                
-
-
+                            
+                        	<div class="form-group col-md-3">
+                                <div class="col-sm-12">
+                                    <button type="button" class="btn btn-primary" onClick="fn.app.blog.blog.choose_photo_popup('butUploadPhoto_photo_main');">Upload</button>
+                                    <button type="button" class="btn btn-danger" <?php echo ($path_photo_main!='')?'':'disabled';?> onClick="fn.app.blog.blog.remove_multi_photo('<?php echo $path_photo_main;?>',this,'img_photo_main','<?php echo $_REQUEST['id'];?>');"><i class="fa fa-remove"></i></button>
+                                    <!--<button type="submit" class="btn btn-primary pull-right">Save</button>-->
+                                    <font color="#ff0000">  (Main Photo) 800 x 460 px</font>
+                                    
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input validate hidden" id="butUploadPhoto_photo_main" name="butUploadPhoto_photo_main" placeholder="img" onchange="fn.app.blog.blog.showImgPopup(this);">
+                                        
+                                        <!--<input type="text" class="paths" id="path_photo" name="path_photo">-->
+                                    </div>
+                                    <div class="form-group row"><br>
+                                        <div class="col-sm-6" id="preview-img">
+                                        <?php echo $image_photo_main; ?>
+                                        <label class="custom-file-label img_photo_main" for="img"><?php echo $img_photo_main; ?></label>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 text-center">
+                                    <!--<img src="../../../../upload/layout1.jpg" width="50%" alt="">-->
+                                </div>
+                            </div>
+                        
+                        	
 
                         </div>
                     </div>
@@ -319,7 +326,7 @@
 		    </div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-primary">Save</button>
+				<button type="submit" class="btn btn-primary"> <div class="i_load" style="display:none;"><img src="../../../../upload/loading.gif" width="30"  > </div>Save</button>
 			</div>
 	  	</div><!-- /.modal-content -->
 		</form>

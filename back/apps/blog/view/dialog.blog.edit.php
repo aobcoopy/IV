@@ -53,7 +53,7 @@
                                 <div class="col-sm-10">
                                 	<select name="cbb_cate_e" id="cbb_cate_e" class="form-control">
                                     <?php 
-									$sql_cate = $dbc->Query("select * from blog_category where status > 0 order by name asc");
+									$sql_cate = $dbc->Query("select * from blog_category where status > 0 order by sort asc");
 									while($cate = $dbc->Fetch($sql_cate))
 									{
 										$act = ($cate['id']==$blog['category'])?'selected':'';
