@@ -140,7 +140,12 @@ $(function(){
 			}
 			else
 			{
-				p+= 'Old Photo <br><img src="'+data[11]+'" width="100"> <br><br><img src="../../../upload/photo.jpg" width="150">';
+				var today = '<?php echo date('Y-m-d');?>';
+				if(data[12]<today)
+				{
+					p+= 'Old Photo <br><img src="'+data[11]+'" width="100"> <br><br>';
+				}
+				p+= '<img src="../../../upload/photo.jpg" width="150">';
 				p+= '<input type="hidden" name="tid" value="'+data[0]+'">';
 				p+= '<input type="hidden" name="sor" value="'+ii+'">';
 			}

@@ -11,20 +11,30 @@
 	$dbc->Connect();
 	$os = new minerva($dbc);
 	
-	$photo = array();
+	/*$photo = array();
 	if(isset($_REQUEST['txt_photo']))
 	{
 		foreach($_REQUEST['txt_photo'] as $addr)
 		{
 			array_push($photo,$addr);
 		}
+	}*/
+	if($_SESSION['auth']['user_id']==NULL)
+	{
+		echo json_encode(array(
+				'success'=>false,
+				'msg' => "Session expire! Sing in again"
+			));
 	}
+	else
+	{
+	
 	
 		$data = array(
 			'#id' => "DEFAULT",
 			'name' => $_REQUEST['txName'],
 			'brief' => base64_encode($_REQUEST['txBrief']),
-			'detail' => base64_encode($_REQUEST['txDetail']),
+			'detail' => base64_encode($_REQUEST['txDetail_bl']),
 			//'photo' => json_encode($photo),
 			'#created' => 'NOW()',
 			'#updated' => 'NOW()',
@@ -54,6 +64,7 @@
 				'msg' => "Insert Error"
 			));
 		}
+	}
 	
 	$dbc->Close();
 	unset($_SESSION['b_name']);

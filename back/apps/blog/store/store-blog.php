@@ -23,7 +23,8 @@
 		'id',
 		'name',
 		'brief',
-		'photo'
+		'photo',
+		'created'
 	);
 	$sIndexColumn = "id";
 	

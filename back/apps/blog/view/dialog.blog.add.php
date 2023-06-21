@@ -32,7 +32,7 @@
 
 <div class="modal fade" id="dialog_add_blog" data-backdrop="static">
   	<div class="modal-dialog modal-lg" >
-		<form id="form_add_blog" class="form-horizontal" role="form" onsubmit="fn.app.blog.blog.add();return false;">
+		<form id="form_add_blog" class="form-horizontal" role="form" onsubmit="fn.app.blog.blog.addNew();return false;">
     	<div class="modal-content">
       		<div class="modal-header">
         		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -92,7 +92,7 @@
                             <div class="form-group">
                                 <label for="txtName" class="col-sm-2 control-label">Detail</label>
                                 <div class="col-sm-10 ">
-                                    <textarea type="textarea" class="form-control editor" id="txDetail" name="txDetail" ></textarea>
+                                    <textarea type="textarea" class="form-control editor" id="txDetail_bl" name="txDetail_bl" ></textarea>
                                 </div>
                             </div>
                             <!--<div class="form-group">

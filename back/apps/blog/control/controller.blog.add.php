@@ -20,7 +20,7 @@
 	});
 	
 	
-	fn.app.blog.blog.add = function(){
+	fn.app.blog.blog.addNew = function(){
 		if(document.getElementById("txName").value=='')
 		{
 			alert('Please fill ypur data1');
@@ -39,12 +39,12 @@
 			$("#txBrief").focus();
 			return false;
 		}
-		else if(document.getElementById("txDetail").value=='')
+		else if($('#txDetail_bl').val()=='')
 		{
-			console.log($("#txDetail").val());
+			//console.log($("#txDetail").val());
 			alert('Please fill ypur data4');
 			
-			$("#txDetail").focus();
+			$("#txDetail_bl").focus();
 			return false;
 		}
 		else if(document.getElementById("txSign").value=='')
