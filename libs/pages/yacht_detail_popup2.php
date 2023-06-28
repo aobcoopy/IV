@@ -44,10 +44,10 @@
         <div class="col-sm-1 t_t222 ">
             <div class="row  t_t11">
             
-            	<div class="col-xs-3 col-sm-12 center-block t_t21"><img onClick="share('email');" class="share_icon center-block" src="../../upload/email111.png" width="30"></div>
-                <div class="col-xs-3 col-sm-12 center-block t_t31"><img onClick="share('line');" class="share_icon center-block" src="../../upload/line111.png" width="30"></div>
-                <div class="col-xs-3 col-sm-12 center-block t_t41"><img onClick="share('whatsapp');"  class="share_icon center-block" src="../../upload/whatsapp1111.png" width="30"></div>
-                <div class="col-xs-3 col-sm-12 center-block t_t31"><a href="#" class="dl_hires" target="_blank"><img class="share_icon center-block " src="../../upload/cloud-computing111.png" width="30"></a></div>
+            	<div class="col-xs-3 col-sm-12 center-block t_t21"><img onClick="share('email');" class="share_icon center-block" src="../../upload/email1.png" width="30"></div>
+                <div class="col-xs-3 col-sm-12 center-block t_t31"><img onClick="share('line');" class="share_icon center-block" src="../../upload/line1.png" width="30"></div>
+                <div class="col-xs-3 col-sm-12 center-block t_t41"><img onClick="share('whatsapp');"  class="share_icon center-block" src="../../upload/whatsapp11.png" width="30"></div>
+                <div class="col-xs-3 col-sm-12 center-block t_t31"><a href="#" class="dl_hires" target="_blank"><img class="share_icon center-block " src="../../upload/cloud-computing1.png" width="30"></a></div>
             </div>
             <!--<a href="https://api.whatsapp.com/send?phone=15551234567"></a>-->
           

@@ -158,11 +158,10 @@ if($show_koh_samui == '')
 					}
 					?>
                      <div class="col-md-12 nopad top41 f18">
-                        <!-----15-06-66  Koh Samui is a beautiful tropical island in the southern Gulf of Thailand. Relaxed, laid back and small, everything is easy and convenient. The type of villa holiday you go to for a week’s break to refresh & recharge in luxury. -->
-                        Refresh and recharge by selecting one of our stunning Koh Samui villas for rent. A luxury villa in Koh Samui provides the opportunity for you to experience this beautiful tropical island at its best from a base that is steeped in style and designed specifically to help you unwind. From your private chef to the housekeeping team to your villa manager, a team of professionals is always on hand to ensure that your beach or pool villa in Koh Samui is everything you’ve dreamed of and more. 
-
-        
-                    </div>
+                    Koh Samui is a beautiful tropical island in the southern Gulf of Thailand. Relaxed, laid back and small, everything is easy and convenient.
+    The type of villa holiday you go to for a week’s break to refresh & recharge in luxury. 
+    
+                </div>
                  <?php
 				}
 				elseif($_REQUEST['cate']==6)
@@ -216,14 +215,14 @@ Or maybe you haven’t decided where to celebrate yet and require advice on how 
 				if( $_REQUEST['cate']!=8 && $_REQUEST['cate']!=5)
 				{
 				?>
-                <?php /*?><div class="col-md-12 nopad top4-1"><?php */?>
+                <div class="col-md-12 nopad top4-1">
                 <?php /*?><h4 class=" mb f30 top"><strong><a class="tg cdf" >Koh Samui villa rentals</a></strong></h4><?php */?>
-                    <?php /*?><div class="col-md-12 nopad top21 f18">
+                    <div class="col-md-12 nopad top21 f18">
                         There is a <a href="/search-rent/thailand-koh-samui/all-beach/all-price/all-bedrooms/all-collections/all-sort.html" class="blu">wide range of luxury villas for rent in Koh Samui</a> and a wide range of pricing too. Even if a villa is large with eight bedrooms they will let you use less bedrooms and pay less per night. But you still get the use of the entire private villa and all its amenities.<br>
     Prices vary between seasons and are highest over the peak season of Christmas and New year.
     
                     </div>
-                </div><?php */?>
+                </div>
                 <?php
 				}
 				?>
@@ -306,30 +305,15 @@ There are all villa sizes to accommodate a small family up to an extended group.
 						{
 						?>
                         	<div class="col-md-12 nopad top41">
-                            	<h4 class=" mb f30 top"><strong>What a luxury villa in Samui includes</strong></h4>
+                            	<h4 class=" mb f30 top"><strong><?php /*?><a class="tg cdf" ><?php */?>What is included in your villa<?php /*?></a><?php */?></strong></h4> <?php /*?>What is included in your Koh Samui Luxury villas<?php */?>
                                 <div class="col-md-12 nopad top21 f18">
-                                   When the words “villas” and “Koh Samui” are spoken, it conjures extravagant images of private infinity pools, lush tropical gardens, unspoilt beaches and more, and this is exactly what you should expect when you rent a villa in Koh Samui with Inspiring Villas. Each property is handpicked to deliver some of the most exceptional experiences that Thailand has to offer in a stylish and elegant setting. 
-<br><br>
-Each villa on our list comes with a team of staff and a few key elements that are designed to create a once-in-a-lifetime experience. Your villa in Samui will come with its own private pool and fitness area with a games and cinema room so that even on rainy days, you still have the opportunity to make the most of your time on the island. 
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-12 nopad top21">
-                            	<h4 class=" mb f30 top"><strong>Find the ultimate Koh Samui villas for rent with Inspiring Villas today</strong></h4>
-                                <div class="col-md-12 nopad top21 f18">
-                                   With the help of our dedicated concierge team, Inspiring Villas can find the perfect Samui villa rental for you. With your group’s profile, we will match the space and location to the ideal villa. Our Samui villa rental team knows the ins and outs of every property on our list, so rather than using your valuable time to search for the right beach villa in Koh Samui, we will take care of the research for you. All you need to do is show up.
-                                </div>
-                            </div>
-                            <?php /*?><div class="col-md-12 nopad top41">
-                            	<h4 class=" mb f30 top"><strong>---What is included in your villa</strong></h4> 
-                                <div class="col-md-12 nopad top21 f18">
-                                   --When you rent a private villa it’s your personal accommodation for that period of time. All the villas are staffed with a villa manager, housekeeping, and nearly all include a full time chef. All have facilities such as cinema, games and fitness rooms.<br>
+                                   When you rent a private villa it’s your personal accommodation for that period of time. All the villas are staffed with a villa manager, housekeeping, and nearly all include a full time chef. All have facilities such as cinema, games and fitness rooms.<br>
 And their private pools of course.<br><br>
 
 All you need to do is pay for your groceries should you wish the chef to cook meals for you. But dont worry, you wont need to go shopping, that will happen whilst you are lying beside the pool. Daily breakfast is often included.
                 
                                 </div>
-                            </div><?php */?>
+                            </div>
 						<?php
 						}
 					}
@@ -459,7 +443,7 @@ All you need to do is pay for your groceries should you wish the chef to cook me
                         <div class="col-md-12 nopad top21 f18">
                        	1.Beachfront Villas in Koh Samui offer the sand between your toes and the feeling you need go nowhere else. Kayaks on the beach, sunset swims, beach restaurants just a walk away. There are exquisite <a href="/search-rent/thailand-koh-samui/all-beach/all-price/all-bedrooms/beachfront-villas/all-sort.html" class="blu">beach villas in koh samui</a> and even some with private beaches.<br><br>
 
-2.In the hills above are many beautiful private villas. Villas that offer privacy and panoramic views of the Gulf of Thailand. There are many <a href="/search-rent/thailand-koh-samui/all-beach/all-price/all-bedrooms/all-collections/all-sort.html" class="blu">seaview villas in Koh Samui</a> as most beaches on the island have hilltops behind them.
+2.In the hills above are many beautiful private villas. Villas that offer privacy and panoramic views of the Gulf of Thailand. There are many <a href="/search-rent/thailand-koh-samui/all-beach/all-price/all-bedrooms/seaview-villas/all-sort.html" class="blu">seaview villas in Koh Samui</a> as most beaches on the island have hilltops behind them.
                         </div>
                     </div><?php */?>
                 <?php 
@@ -476,7 +460,7 @@ All you need to do is pay for your groceries should you wish the chef to cook me
                         
                        <?php /*?> <a href="/search-rent/thailand-koh-samui/all-beach/all-price/all-bedrooms/beachfront-villas/all-sort.html" class="blu">Beachfront Villas in Koh Samui</a> offer the sand between your toes and the feeling you need go nowhere else. Kayaks on the beach, sunset swims, beach restaurants just a walk away. There are exquisite Koh Samui villas on the beach and even some with private beaches.<?php */?><br><br>
 
-2.In the hills above are many beautiful private villas. Villas that offer privacy and panoramic views of the Gulf of Thailand. There are many <a href="/search-rent/thailand-koh-samui/all-beach/all-price/all-bedrooms/all-collections/all-sort.html" class="blu">seaview villas in Koh Samui</a> as most beaches on the island have hilltops behind them.
+2.In the hills above are many beautiful private villas. Villas that offer privacy and panoramic views of the Gulf of Thailand. There are many <a href="/search-rent/thailand-koh-samui/all-beach/all-price/all-bedrooms/seaview-villas/all-sort.html" class="blu">seaview villas in Koh Samui</a> as most beaches on the island have hilltops behind them.
                         </div>
                     </div>
                     

@@ -356,13 +356,14 @@ if($page=='homess')
     </div>
   </div>
 </div><?php */
-if($page=='propertydetail')
+$arlink = ['propertydetail'];//,'blog','blog_detail'
+if(in_array($page,$arlink))//$page=='propertydetail')
 {
 	//include "page_favorite.php";
 }
 else
 {
-	//include "page_messenger_chat.php";
+	include "page_messenger_chat.php";
 }
 //include "page_chat.php";
 
@@ -456,7 +457,7 @@ $actual_link = $_SERVER['REQUEST_URI'];//(isset($_SERVER['HTTPS']) && $_SERVER['
 ?>
 <?php $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]".$_SERVER['REQUEST_URI'];?>
 
-<a target="_blank" href="https://api.whatsapp.com/send?phone=66846771551&text=I want more information about => <?php echo $actual_link;?>"><button class="box_whatsapp" type="button"><img class="share_icon center-block" src="../../upload/whatsapp1111.png" width="30"></button></a>
+<a target="_blank" href="https://api.whatsapp.com/send?phone=66846771551&text=I want more information about => <?php echo $actual_link;?>"><button class="box_whatsapp" type="button"><img class="share_icon center-block" src="../../upload/whatsapp11.png" width="30"></button></a>
 
 <script>
 function agree_pdpa()

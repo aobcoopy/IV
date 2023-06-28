@@ -26,7 +26,7 @@
     
                 <div class="mg-contact-form-input col-sm-6 col-xs-6 nopad" ><!-- -->
                    <!-- <label for="full-name">Check Out</label>-->
-                    <input type="date" class="form-control ip input-min-width-95p" id="checkout_mo" name="checkout_mo" placeholder="Check Out*" onChange="check_price_mobile();" onClick="calendar_opt();" value="<?php echo date("Y-m-d",$dayNext);?>">
+                    <input type="date" class="form-control ip input-min-width-95p" id="checkout_mo" name="checkout_mo" placeholder="Check Out*" onClick="calendar_opt(),check_price_mobile();" value="<?php echo date("Y-m-d",$dayNext);?>">
                     <!--<input type="date" class="form-control ip" id="checkout_mo" name="checkout_mo" placeholder="Check Out*">-->
                     <button type="button" class="buti cout" onClick="calendar_opt()"><i class="fa fa-calendar" aria-hidden="true"></i></button>
                 </div>
@@ -41,7 +41,7 @@
                 
                 <div class="mg-contact-form-input col-xs-12 col-sm-12 nopad ipsc" >
                     <!--<label for="full-name">Full Name</label>-->
-                    <select class="form-control ips" id="no_bed_mo" name="no_bed_mo"  placeholder="No. Bedroom*" onChange="check_price_mobile();" >
+                    <select class="form-control ips" id="no_bed_mo" name="no_bed_mo"  placeholder="No. Bedroom*" onChange="check_price_mobile();">
                         <option value="0">No. Bedroom*</option>
                         <?php 
 						foreach($ar_bedroom as $nobed)
@@ -324,7 +324,7 @@
 </div>
 </div><!--over mobi-->
 
-<button type="button" onClick="prop_contact_mobi()" class="btn btn-dark-main pull-right baa bba top10 btn_send_en_mob" >SENDTestMobile</button>
+<button type="button" onClick="prop_contact_mobi()" class="btn btn-dark-main pull-right baa bba top10 btn_send_en_mob" >SEND</button>
 
 <div class="butenq mobi">
 	<button class="btn_enq" onClick="show_question();">Ask Question</button>
@@ -346,30 +346,6 @@
 		overflow-y: auto;
         padding-bottom: 20px !important;
 	}
-}
-.enq
-{
-	top: 45% !important;
-}
-.show__more
-{
-	display:none;
-	position:absolute;
-	left:50%;
-	bottom:0;
-	background:none;
-	border:none;
-	font-size:20px;
-	cursor:pointer;
-	transform: translateX(-50%);
-}
-.p_box
-{
-	border-top:1px solid #eee;
-}
-.idet_mo
-{
-	font-size:14px;
 }
 /*.enq {
     position: fixed;
@@ -396,8 +372,6 @@
 	padding:10px;
 }*/
 </style>
-<input type="hidden" class="idx_2" value="0">
-<input type="hidden" class="idx_dis_2" value="0">
 <script language="JavaScript">
 function check_price_mobile()
 {
@@ -416,263 +390,72 @@ function check_price_mobile()
 						var services = (res.data['services']!='-')?res.data['services']:0;
 						var vat = (res.data['vat']!='-')?res.data['vat']:0;
 						var deposite = (res.data['deposite']!='-')?res.data['deposite']:0;
-						var exchange = (res.data['exchange']!='-')?res.data['exchange']:'USD';
-						var exchange_sym = (exchange=='USD')?'$':'฿';
-						var total_price_all_night = parseInt(res.data['trueval'])*res.data['total_night'];
+						var tax_1 = (res.data['tax_1']!='-')?res.data['tax_1']/100:0;
+						var tax_2 = (res.data['tax_2']!='-')?res.data['tax_2']/100:0;
+						var tax_3 = (res.data['tax_3']!='-')?res.data['tax_3']/100:0;
+						var tax_4 = (res.data['tax_4']!='-')?res.data['tax_4']/100:0;
+						var tax_5 = (res.data['tax_5']!='-')?res.data['tax_5']/100:0;
+						var exchange = (res.data['exchange']!='-')?res.data['exchange']:0;
 						
-						var discount_1 = (res.data['discount_1']!='-')?(total_price_all_night*res.data['discount_1']):0;
-						var discount_2 = (res.data['discount_2']!='-')?(total_price_all_night*res.data['discount_2']):0;
-						var discount_3 = (res.data['discount_3']!='-')?(total_price_all_night*res.data['discount_3']):0;
-						var discount_4 = (res.data['discount_4']!='-')?(total_price_all_night*res.data['discount_4']):0;
-						var discount_5 = (res.data['discount_5']!='-')?(total_price_all_night*res.data['discount_5']):0;
-						var discount_6 = (res.data['discount_6']!='-')?(total_price_all_night*res.data['discount_6']):0;
-						var discount_7 = (res.data['discount_7']!='-')?(total_price_all_night*res.data['discount_7']):0;
-						var discount_8 = (res.data['discount_8']!='-')?(total_price_all_night*res.data['discount_8']):0;
-						var discount_9 = (res.data['discount_9']!='-')?(total_price_all_night*res.data['discount_9']):0;
+						var vt_1 = (tax_1!=0)?parseFloat(price*tax_1):0;
+						var vt_2 = (tax_1!=0)?parseFloat(price*tax_2):0;
+						var vt_3 = (tax_1!=0)?parseFloat(price*tax_3):0;
+						var vt_4 = (tax_1!=0)?parseFloat(price*tax_4):0;
+						var vt_5 = (tax_1!=0)?parseFloat(price*tax_5):0;
 						
-						var discount_net = parseFloat(discount_1+discount_2+discount_3+discount_4+discount_5+discount_6+discount_7+discount_8+discount_9);
-						var price_after_discount = parseFloat(price)-discount_net;
-						
-						var tax_1 = (res.data['tax_1']!='-')?res.data['tax_1']*price_after_discount:0;
-						var tax_2 = (res.data['tax_2']!='-')?res.data['tax_2']*price_after_discount:0;
-						var tax_3 = (res.data['tax_3']!='-')?res.data['tax_3']*price_after_discount:0;
-						var tax_4 = (res.data['tax_4']!='-')?res.data['tax_4']*price_after_discount:0;
-						var tax_5 = (res.data['tax_5']!='-')?res.data['tax_5']*price_after_discount:0;
-						
-						var tax_net = parseFloat(tax_1+tax_2+tax_3+tax_4+tax_5);
-						
-						var total = price_after_discount+tax_net;
+						var total = parseFloat(price)+parseFloat(vt_1+vt_2+vt_3+vt_4+vt_5);
 						var total_price = numeral(total).format('0,0.00');
 						
 						var dep = numeral(res.data['deposite']).format('0,0');
 						
 						var dat = '';
 						dat += '<div class="s_price">';
-							//(res.data['services']!='-')?dat += '<span class="idet">Services/Tax '+res.data['services']+' %</span><br>':0;
-							//(res.data['vat']!='-')?dat += '<span class="idet">VAT/Tax '+res.data['vat']+' %</span><br>':0;
-							//(res.data['deposite']!='-')?dat += '<span class="idet">Security Deposit '+dep+' '+exchange+'.</span><br>':0;
-							dat += '<div class="row">';
-								/*dat += '<div class="col-md-7 sh_more">';
-									dat += '<span class="idet">Price/night</span>';
-								dat += '</div>';
-								dat += '<div class="col-md-5 text-right sh_more">';
-									(res.data['trueval']!='-')?dat += '<span class="idet">'+exchange_sym+numeral(res.data['trueval']).format('0,0')+'</span>':0;
-								dat += '</div>';*/
-								
-								dat += '<div class="col-xs-7 sh_more">';
-									(res.data['total_night']!='-')?dat += '<span class="idet">'+exchange_sym+numeral(res.data['trueval']).format('0,0')+' x '+res.data['total_night']+' nights</span><br>':0;
-								dat += '</div>';
-								dat += '<div class="col-xs-5 text-right sh_more">';
-									(total_price_all_night!=0)?dat += '<span class="idet">'+exchange_sym+numeral(total_price_all_night).format('0,0')+'</span><br>':0;
-								dat += '</div>';
-								
-								if(discount_net!=0)
-								{
-									dat += '<div class="col-xs-7 sh_more">';
-										dat += '<span class="idet">Discount</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-5 text-right sh_more">';
-										dat += '<span class="idet">-'+exchange_sym+discount_net+'</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-12">';
-										dat += '<button type="button" class="show__more_dis" onClick="show_dis_detail(this);"><i class="fa fa-angle-down" aria-hidden="true"></i></button>';
-									dat += '</div>';
-								}
-								
-								if(discount_1!=0)
-								{
-									dat += '<div class="col-xs-7 sh_dis">';
-										dat += '<span class="idet">Early bird '+res.data['discount_1_1']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_1+'</span>';
-									dat += '</div>';
-								}
-								if(discount_2!=0)
-								{
-									dat += '<div class="col-xs-7 sh_dis">';
-										dat += '<span class="idet">Last minute '+res.data['discount_2_2']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_2+'</span>';
-									dat += '</div>';
-								}
-								if(discount_3!=0)
-								{
-									dat += '<div class="col-xs-7 sh_dis">';
-										dat += '<span class="idet">Early bird '+res.data['discount_3_3']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_3+'</span>';
-									dat += '</div>';
-								}
-								if(discount_4!=0)
-								{
-									dat += '<div class="col-xs-7 sh_dis">';
-										dat += '<span class="idet">Last minute '+res.data['discount_4_4']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_4+'</span>';
-									dat += '</div>';
-								}
-								if(discount_5!=0)
-								{
-									dat += '<div class="col-xs-7 sh_dis">';
-										dat += '<span class="idet">Long Stay '+res.data['discount_5_5']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_5+'</span>';
-									dat += '</div>';
-								}
-								if(discount_6!=0)
-								{
-									dat += '<div class="col-xs-7 sh_dis">';
-										dat += '<span class="idet">Long Stay '+res.data['discount_6_6']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_6+'</span>';
-									dat += '</div>';
-								}
-								if(discount_7!=0)
-								{
-									dat += '<div class="col-xs-7 sh_dis">';
-										dat += '<span class="idet">Early bird '+res.data['discount_7_7']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_7+'</span>';
-									dat += '</div>';
-								}
-								if(discount_8!=0)
-								{
-									dat += '<div class="col-xs-7 sh_dis">';
-										dat += '<span class="idet">Early bird '+res.data['discount_8_8']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_8+'</span>';
-									dat += '</div>';
-								}
-								if(discount_9!=0)
-								{
-									dat += '<div class="col-xs-7 sh_dis">';
-										dat += '<span class="idet">Early bird '+res.data['discount_9_9']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_9+'</span>';
-									dat += '</div>';
-								}
-								
-								if(res.data['deposite']!='-')
-								{
-									dat += '<div class="col-xs-7 sh_more">';
-										dat += '<span class="idet">Security Deposit</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-5 text-right sh_more">';
-										dat += '<span class="idet">'+exchange_sym+dep+'</span>';
-									dat += '</div>';
-								}
-								
-								if(res.data['tax_1']!='-')
-								{
-									dat += '<div class="col-xs-8 sh_more">';
-										dat += '<span class="idet">'+res.data['tax_1_txt']+'% service charge & vat</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-4 text-right sh_more">';
-										dat += '<span class="idet">'+exchange_sym+numeral(tax_1).format('0,0.00')+'</span>';
-									dat += '</div>';
-								}
-								
-								if(res.data['tax_2']!='-')
-								{
-									dat += '<div class="col-xs-8 sh_more">';
-										dat += '<span class="idet">'+res.data['tax_2_txt']+'% service charge & Taxes.</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-4 text-right sh_more">';
-										dat += '<span class="idet">'+exchange_sym+numeral(tax_2).format('0,0.00')+'</span>';
-									dat += '</div>';
-								}
-								
-								if(res.data['tax_3']!='-')
-								{
-									dat += '<div class="col-xs-8 sh_more">';
-										dat += '<span class="idet">'+res.data['tax_3_txt']+'% service charge</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-4 text-right sh_more">';
-										dat += '<span class="idet">'+exchange_sym+numeral(tax_3).format('0,0.00')+'</span>';
-									dat += '</div>';
-								}
-								
-								if(res.data['tax_4']!='-')
-								{
-									dat += '<div class="col-xs-8 sh_more">';
-										dat += '<span class="idet">'+res.data['tax_4_txt']+'% tax</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-4 text-right sh_more">';
-										dat += '<span class="idet">'+exchange_sym+numeral(tax_4).format('0,0.00')+'</span>';
-									dat += '</div>';
-								}
-								
-								if(res.data['tax_5']!='-')
-								{
-									dat += '<div class="col-xs-8 sh_more">';
-										dat += '<span class="idet">'+res.data['tax_5_txt']+'% vat</span>';
-									dat += '</div>';
-									dat += '<div class="col-xs-4 text-right sh_more">';
-										dat += '<span class="idet">'+exchange_sym+numeral(tax_5).format('0,0.00')+'</span>';
-									dat += '</div>';
-								}
-								
-								dat += '<div class="col-xs-12 "><div class="col-xs-12 p_box"></div></div>';
-								
-								dat += '<div class="col-xs-7 ">';
-									dat += '<strong>Estimated Price</strong>';
-								dat += '</div>';
-								dat += '<div class="col-xs-5 text-right">';
-									dat += '<strong>'+exchange_sym+total_price+'</strong>';
-								dat += '</div>';
-								dat += '<div class="col-xs-12">';
-									dat += '<button type="button" class="show__more" onClick="show_price_detail(this);"><i class="fa fa-angle-down" aria-hidden="true"></i></button>';
-								dat += '</div>';
-							dat += '</div>';
-							
-							/*(res.data['tax_1']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_1_txt']+'% service charge & VAT.</span><br>':0;
-							(res.data['tax_2']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_2_txt']+'% service charge & Taxes.</span><br>':0;
-							(res.data['tax_3']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_3_txt']+'% service charge.</span><br>':0;
-							(res.data['tax_4']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_4_txt']+'% tax.</span><br>':0;
-							(res.data['tax_5']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_5_txt']+'% vat.</span>':0;*/
-							
+						dat += '<i class="fa fa-tag" aria-hidden="true"></i> Price : '+total_price+' '+exchange+'<br>';//.toFixed(2)
+						
+						//(res.data['services']!='-')?dat += '<span class="idet">Services/Tax '+res.data['services']+' %</span><br>':0;
+						//(res.data['vat']!='-')?dat += '<span class="idet">VAT/Tax '+res.data['vat']+' %</span><br>':0;
+						(res.data['deposite']!='-')?dat += '<span class="idet">Deposite '+dep+' USD.</span><br>':0;
+						(res.data['tax_1']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_1']+' % service charge & VAT.</span><br>':0;
+						(res.data['tax_2']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_2']+' % service charge & Taxes.</span><br>':0;
+						(res.data['tax_3']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_3']+' % service charge.</span><br>':0;
+						(res.data['tax_4']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_4']+' % tax.</span><br>':0;
+						(res.data['tax_5']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_5']+' % vat.</span>':0;
+						
+						/*if(services!=0)
+						{
+							dat += '<span class="idet">Services/Tax '+services+' %</span>';
+						}
+						if(vat!=0)
+						{
+							dat += '<span class="idet">VAT/Tax '+vat+' %</span>';
+						}
+						if(deposite!=0)
+						{
+							dat += '<span class="idet">Deposite '+deposite+' USD.</span>';
+						}
+						if(tax_1!=0)
+						{
+							dat += '<span class="idet">Rate is subject to '+tax_1+' % service charge & VAT.</span>';
+						}
+						if(tax_2!=0)
+						{
+							dat += '<span class="idet">Rate is subject to '+tax_2+' % service charge & Taxes.</span>';
+						}
+						if(tax_3!=0)
+						{
+							dat += '<span class="idet">Rate is subject to '+tax_3+' % service charge.</span>';
+						}
+						if(tax_4!=0)
+						{
+							dat += '<span class="idet">Rate is subject to '+tax_4+' % tax.</span>';
+						}
+						if(tax_5!=0)
+						{
+							dat += '<span class="idet">Rate is subject to '+tax_5+' %vat.</span>';
+						}*/
+						
 						dat += '</div>';
-						
 						$(".show_price_mob").html(dat);
-						
-						$(".sh_dis").slideUp(300);
-						$(".show__more_dis").children(".fa").css({"transform": "rotateX(0deg)"},300);
-						$(".idx").val(0);
-						$(".idx_dis").val(0);
-						
-						
-						setTimeout(function(){
-							$(".sh_more").slideUp(500);
-							$(".show__more").fadeIn(500);
-							$(".show__more_dis").fadeOut(500);
-							$(".show__more_dis").fadeOut(300);
-							$(".sh_dis").slideUp(300);
-							$(".show__more_dis").children(".fa").css({"transform": "rotateX(0deg)"},300);
-							$(".idx").val(0);
-							$(".idx_dis").val(0);
-						},3000);
-						
-						
-						/*
-						setTimeout(function(){
-							$(".sh_more").slideUp(500);
-							$(".show__more").fadeIn(500);
-							$(".show__more_dis").fadeOut(500);
-							$(".show__more_dis").fadeOut(300);
-							$(".sh_dis").slideUp(300);
-							$(".show__more_dis").children(".fa").css({"transform": "rotateX(0deg)"},300);
-							$(".idx_2").val(0);
-							$(".idx_dis_2").val(0);
-						},3000);*/
 					}
 					else
 					{
@@ -716,10 +499,6 @@ $(document).ready(function(e) {
 	 $(".cloos").click(function(e) {
         $(".bgu2,.end_boxes").fadeOut(300);
     });
-	/*$("#checkout_mo").click(function(e) {
-        $("#no_bed_mo").val(0);
-		check_price_mobile();
-    });*/
 });
 
 function popup()
@@ -729,25 +508,12 @@ function popup()
 	//$('#checkout_mo').focus();
 	setTimeout(function(){
 		//$('#checkin_mo').focus();
-		$(".q_name").animate({
-			fontSize:"13px",
-			marginBottom:"-15px"
-		},300);
-		$(".inq1 ").animate({
-			paddingTop:"0px"
-		},300);
 	},1000);
 }
 
 function clo()
 {
 	$(".enq,.bgw,.baa").fadeOut(300);
-	setTimeout(function(){
-		$(".q_name").animate({fontSize:"18px",marginBottom:""},300);
-		$(".inq1 ").animate({
-			paddingTop:"15px"
-		},300);
-	},1000);
 }
 
 function prop_contact_mobi()
@@ -808,7 +574,7 @@ function prop_contact_mobi()
 		{  
             showLoader('ajaxLoader2');
 			$.ajax({ 
-				url:"<?php echo $url_link;?>libs/actions/action-property-contact-mo-test-2.php",//action-property-contact-mo.php",
+				url:"<?php echo $url_link;?>libs/actions/action-property-contact-mo.php",
 				type:"POST",
 				dataType:"json"	,
 				data:$("#form_contact_mobi").serialize(),

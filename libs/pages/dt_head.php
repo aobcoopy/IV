@@ -78,7 +78,7 @@ input[type=date].form-control,input[type=time].form-control,input[type=datetime-
 <?php /*?><script src="<?php echo $url_link;?>libs/js/jquery-3.1.1.min.js"></script><?php */?>
 
 <!-- Google Code for Inquirer Conversion Page -->
-<!--<script type="text/javascript">
+<script type="text/javascript">
 /* <![CDATA[ */
 var google_conversion_id = 853694063;
 var google_conversion_language = "en";
@@ -109,14 +109,14 @@ if (typeof(conv_handler) == 'function') {
     $(".lazy").lazyload();
 });*/
 
-</script>-->
+</script>
 <?php /*?><script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script><?php */?>
-<!--<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion_async.js"></script>-->
-<!--<noscript>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion_async.js"></script>
+<noscript>
 <div style="display:inline;">
 <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/853694063/?label=_Y36CM6sp3UQ76yJlwM&guid=ON&script=0"/>
 </div>
-</noscript>-->
+</noscript>
 <!-- Google Code for Inquirer Conversion Page -->
 
 <?php

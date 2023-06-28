@@ -147,7 +147,7 @@ $(document).ready(function(e) {
     <div class="container">
         <div class="row">
         	<div class="col-12 n_bread">
-			<?php display_breadcrumbs($room['destination'], $room['subdestination'], 'all-bedrooms', 'all-collections', 'all-prices', 'price|asc', ''); ?>
+			<?php //display_breadcrumbs($room['destination'], $room['subdestination'], 'all-bedrooms', 'all-collections', 'all-prices', 'price|asc', ''); ?>
             </div>
     		
             <!--col-md-7-->

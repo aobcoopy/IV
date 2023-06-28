@@ -11,7 +11,7 @@
 			$sql_blog = $dbc->Query("select * from blogs where status > 0 and (heightlight = 0 or heightlight IS NULL) and category = '".$bc_row['id']."' order by sort asc");
 			while($row_blog = $dbc->Fetch($sql_blog))
 			{
-				$photo = imageP('/'.json_decode($row_blog['photo_width'],true));
+				$photo = imagePath('/'.json_decode($row_blog['photo_width'],true));
 				$urll = "/blog/" . strtolower(str_replace(" ", "-", $row_blog['name']) ) . ".html";
 				?>
                 <div class="blog-box">

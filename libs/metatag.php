@@ -114,6 +114,38 @@ elseif($ppa=='privacy')
 	$title_tag = "Inspiring Villas Privacy";
 	$meta_description = "Luxury Private Pool Villa Rentals with full service staff and chef, in Phuket & Koh Samui,Thailand. Book Your Villa Holiday Today with Inspiring Villas";
 }
+elseif($ppa=='yacht')
+{
+	if(isset($_REQUEST['id']))
+	{
+		$yacht = $dbc->GetRecord("yacht","*","id =".$_REQUEST['id']);
+		
+		$photo = json_decode($yacht['photo'],true);
+		echo '<link href="https://www.inspiringvillas.com/'.$photo.'" rel="me"/>';
+		//echo $ca_prop['ht_link'];
+		$ny_name = str_replace(" ","_",$yacht['name']);
+		$url = 'yacht-'.$yacht['id'].'-'.$ny_name.".html";
+		$photo_web = 'https://www.inspiringvillas.com/'.$photo;
+		$photo_PageMap = 'https://www.inspiringvillas.com/'.$photo;
+		
+		$title_tag = $yacht['name'];
+		$meta_description = $yacht['detail'];
+	}
+	else
+	{
+		$yacht = $dbc->GetRecord("yacth_cover","*","id = 1 ");
+		$photo = json_decode($yacht['photo'],true);
+		echo '<link href="https://www.inspiringvillas.com/'.$photo.'" rel="me"/>';
+		//echo $ca_prop['ht_link'];
+		$ny_name = str_replace(" ","_",$yacht['name']);
+		$url = "yacht";
+		$photo_web = 'https://www.inspiringvillas.com/'.$photo;
+		$photo_PageMap = 'https://www.inspiringvillas.com/'.$photo;
+		
+		$title_tag = "LUXURY PRIVATE YACHT THAILAND";
+		$meta_description = "LUXURY PRIVATE YACHT THAILAND";
+	}
+}
 elseif($ppa=='propertydetail')
 {
 	if(isset($_REQUEST['id']))

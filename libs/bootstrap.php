@@ -43,6 +43,9 @@
     <meta property="og:title" content="<?php echo $title_tag." - InspiringVillas.com";?>"/>
     <meta property="og:image" content="<?php echo $photo_web;?>">
     <meta property="og:description" content="<?php echo $meta_description;?>"/>
+    <meta property="og:url" content="<?php echo "https://www.inspiringvillas.com".$_SERVER['REQUEST_URI'];?>"/>
+    <meta property="og:type" content="-"/>
+    <meta property="fb:app_id" content="367335174001704"/>
     
     <!--Google data structure-->
     <meta itemprop="url" content="<?php echo $url_link.$url;?>">
@@ -79,9 +82,10 @@
 <?php //$page=isset($_REQUEST['page'])?$_REQUEST['page']:'home';
 
 if($page=='step1' || $page=='step2'){}
-elseif($page=='booking'  )
+elseif($page=='booking' ||  $page=='villaform-admin' || $page =='villaform-customer' || $page =='view-villaform-admin' || $page =='product-lists')
 {
 }
+elseif($page=='email_detail'){}
 else{include "pages/header.php";}
 
 switch($page)
@@ -130,6 +134,7 @@ switch($page)
     case"yacht_preview":include "pages/page_yacht_preview.php";break;
 	case"yacht_thanks":include "pages/thank_you_yacht.php";break;
 	case"yacht_recently":include "pages/page_yacht_recently.php";break;
+	
 	case"block_single":include "pages/page_blog_single.php";break;
 }
 
@@ -159,10 +164,11 @@ switch($page)
 		}
     }
     
+    
     //if($page!='propertydetail'){include "pages/popup.php";}
     
 ?> 
-<script defer src="<?php echo $url_link;?>libs/js/lazyload.min.js"></script>
+
 <script defer src="<?php echo $url_link;?>libs/js/bootstrap.min.js"></script>
 <script defer src="<?php echo $url_link;?>libs/js/selectFx.js"></script>
 <?php
@@ -173,7 +179,7 @@ if($page=='home'  || $page=='propertydetail')
 ?>
 <script defer src="<?php echo $url_link;?>libs/js/script.js?v=03"></script> 
 <?php
-if($page=='propertydetail' || $page=='villa_private' )
+if($page=='propertydetail' || $page=='villa_private' || $page=='villa_review')
 {?>
     <script defer src="<?php echo $url_link;?>libs/js/jssor.slider.mini.js"></script>
     <script defer src="<?php echo $url_link;?>libs/js/star-rating.js"></script>
@@ -196,6 +202,7 @@ if( $page=='forrent')
 <?php
 }
 ?>
+<script defer src="<?php echo $url_link;?>libs/js/lazyload.min.js"></script>
 
 <script>
 

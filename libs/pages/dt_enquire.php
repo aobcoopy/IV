@@ -8,30 +8,6 @@ $(document).ready(function(e) {
 		$(".cenb").css({"height":eb+"px"});
 		//alert(eb+'---'+$(".cenb").height());
 	},2000);
-	setTimeout(function(){
-		$(".top_mores").slideUp(500);
-		$(".top_en_box ").animate({height:"40px"});
-		$(".show_buton_more").fadeIn(500);
-	},5000);
-	
-	var id=0;
-	$(".show_buton_more").click(function(e) {
-		if(id==0)
-		{
-			$(".top_mores").slideDown(500);
-			$(".top_en_box ").animate({height:"80px"});
-			$(this).children(".fa").css({"transform": "rotateX(180deg)"},500);
-			id=1;
-		}
-		else
-		{
-			$(".top_mores").slideUp(500);
-			$(".top_en_box ").animate({height:"40px"});
-			$(this).children(".fa").css({"transform": "rotateX(0deg)"},500);
-			id=0;
-		}
-    });
-	
 	
 });
 </script>
@@ -110,63 +86,15 @@ select#countryCode_en_d {
 
 .s_price
 {
-	/*background: #d7e9ff;
+	background: #d7e9ff;
     padding: 5px 5px 2px 10px;
     border: 2px solid #112845;
     width: 100% !important;
-    color: #112845;*/
-
-    padding: 5px 5px 2px 10px;
-    border: 0px solid #eeeeee;
-    width: 100% !important;
-	font-size:15px;
+    color: #112845;
 }
 .idet
 {
-	/*font-size:12px;*/
-}
-.show_buton_more
-{
-	position:absolute;
-	right:0;
-	top:0;
-	background:none;
-	border:none;
-	font-size:20px;
-	cursor:pointer;
-	display:none;
-}
-.show__more
-{
-	display:none;
-	position:absolute;
-	left:50%;
-	bottom:0;
-	background:none;
-	border:none;
-	font-size:20px;
-	cursor:pointer;
-	transform: translateX(-50%);
-}
-.show__more_dis
-{
-	display:block;
-	position:absolute;
-	left:50%;
-	bottom:0;
-	background:none;
-	border:none;
-	font-size:20px;
-	cursor:pointer;
-	transform: translateX(-50%);
-}
-.p_box
-{
-	border-top:1px solid #eee;
-}
-.sh_dis
-{
-	display:none;
+	font-size:12px;
 }
 </style>
 <?php 
@@ -193,8 +121,8 @@ $ss = json_decode($room['photo'],true);?>
         <div id="enbox"  class="enbox_xy">
         	
             <div class="top_en_box">
-            	<div class="col-md-12 nopad"><div class="t_top_enbox">Contact our villa expert</div><button type="button" class="show_buton_more"><i class="fa fa-angle-down" aria-hidden="true"></i></button></div>
-                <div class="col-md-12 nopad top_mores">
+            	<div class="col-md-12 nopad"><div class="t_top_enbox">Contact our villa expert</div></div>
+                <div class="col-md-12 nopad">
                 	<div class="col-md-6 nopad"><button class="bt_top_enbox"><a href="/contact#viewform" style="color:#000;"><i class="fa fa-envelope"></i>&nbsp;&nbsp; Email Us</a></button></div>
                     <div class="col-md-6 nopad"><button class="bt_top_enbox" onClick="open_phone();"><i class="fa fa-phone"></i>&nbsp;&nbsp; Call Us</button></div>
                 </div>
@@ -235,6 +163,17 @@ $ss = json_decode($room['photo'],true);?>
 								echo '<option class="cbb_1" value="'.$nobed.'">'.$nobed.'</option>';
 							}
 							?>
+                            <!--<option class="cbb_1" value="1">1</option>
+                            <option class="cbb_2" value="2">2</option>
+                            <option class="cbb_3" value="3">3</option>
+                            <option class="cbb_4" value="4">4</option>
+                            <option class="cbb_5" value="5">5</option>
+                            <option class="cbb_6" value="6">6</option>
+                            <option class="cbb_7" value="7">7</option>
+                            <option class="cbb_8" value="8">8</option>
+                            <option class="cbb_9" value="9">9</option>
+                            <option class="cbb_10" value="10">10</option>
+                            <option class="cbb_10+" value="10+">10+</option>-->
                         </select>
                         </div>
                     </div>
@@ -473,20 +412,43 @@ $ss = json_decode($room['photo'],true);?>
                         	<!--<label for="subject">Phone</label>-->
                         	<input type="text" class="form-control ip f14" id="txsubject" name="txsubject" placeholder="Phone-WhatsApp-it’s quicker!">
                         </div>
+                        <!--<label for="subject">Phone</label>-->
+                        <?php /*?><input type="text" class="form-control ip" id="txsubject" name="txsubject" placeholder="Phone - WhatsApp - it’s quicker!"><?php */?>
                     </div>
                     <div class="mg-contact-form-input">
+                        <!--<label for="subject">Message</label>-->
                         <textarea class="form-control ip" id="txmessage" name="txmessage" rows="2.5" placeholder="Message "></textarea>
                     </div>
-                    
-                    <div id="ajaxLoader1" style="display: none;"><img src="<?php echo $url_link;?>libs/images/AjaxLoader.gif" style="width: 32px; height: 32px; display: block; margin: 0 auto;"></div>
-                    <button type="button" onClick="prop_contact();" class="btn btn-dark-main baa " style="font-family:pr;" >SENDTEST</button>
                     <div class="show_price"></div>
+                    <?php 
+					/*foreach($data as $d_price)
+					{
+						echo $d_price['date1'].' - '.$d_price['date2'].'<br>';
+						for($i=1;$i<=28;$i++)
+						{
+							if($d_price['val'.$i]!='')
+							{
+								echo $i.'--'.$d_price['val'.$i].'<br>';
+							}
+						}
+					}*/
+					?>
+                    <!-- <a onClick="goog_report_conversion('<?php echo $link;?>')"  >     ,goog_report_conversion('<?php echo $link;?>')-->
+                    <div id="ajaxLoader1" style="display: none;"><img src="<?php echo $url_link;?>libs/images/AjaxLoader.gif" style="width: 32px; height: 32px; display: block; margin: 0 auto;"></div>
+                    <button type="button" onClick="prop_contact();" class="btn btn-dark-main baa " style="font-family:pr;" >SEND</button>
+                    
+                    
+                    
+                    
+                    <!--</a>-->
+                   <!-- <input type="button" onClick="prop_contact()" class="btn btn-dark-main " style="font-family:pr;" value="Send">-->
                 </form>
 
                 <span class="textalert"></span>
                 <div class="footbox"></div>
                 
                 <div class="adsv top10">
+                	<?php /*?><div class="text_pri_enbox text-center f16res"><strong>Price Range  $<?php echo $room['pmin'];?> - $<?php echo $room['pmax'];?> <span class="hidden-xs hidden-sm">/ season</strong></div><?php */?>
                     <div class="col-md-12 nopad">
                         <ul class="check_enq">
                             <li><img data-src="<?php echo $url_link;?>upload/fa-check.png" class="lazy"> No Booking fees</li>
@@ -536,12 +498,111 @@ $ss = json_decode($room['photo'],true);?>
             </center>-->
         </div>
         <br>
+        <?php /*?><div class="butto">
+            SHARE : 
+                <a><button class="btn btn-main btt" onClick="visitto('tb');" data-toggle="tooltip"  data-placement="bottom" title="Price">$</button></a>
+                <a><button class="btn btn-main fb btt" data-toggle="tooltip"  data-placement="bottom" title="Share" onClick="onShare('<?php echo $room['id'];?>','<?php echo $room['name'];?>','<?php echo base64_decode($room['short_det'],true);?>','<?php echo $slide[0];?>');"><i class="fa fa-facebook" aria-hidden="true"></i></button></a>
+                 <?php 
+                $file = json_decode($room['file'],true);
+                if($file !='')
+                {
+                    $link = $file;
+                    echo '<a href="'.$link.'"><button class="btn btn-main pdf btt" data-toggle="tooltip" data-placement="bottom" title="Download PDF"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></button></a>';
+                }
+                else
+                {
+                    $link = '';
+                }
+                ?>
+                
+                <a><button class="btn btn-main visit btt" onClick="popemail()" data-toggle="tooltip" data-placement="bottom" title="Send Email"><i class="fa fa-envelope-o" aria-hidden="true"></i></button></a>
+                <?php 
+                if($room['link'] !='')
+                {
+                    ?>
+                    <a href="<?php echo $room['link'];?>" target="_blank"><button class="btn btn-main email btt" onClick="visitto('tb');" data-toggle="tooltip" data-placement="bottom" title="Tripadvisor"><i class="fa fa-user-plus" aria-hidden="true"></i><img src="../../upload/trip.png" width="25" alt=""></button></a>
+                    <?php
+                }
+                ?>
+        </div><?php */?>
+        
+        
         <br>
         <div class="whychoose sp" style="margin-top: 10px;">
            <!-- <img src="<?php echo $url_link;?>files/Why Choose Us Box.png" width="100%">-->
         </div>
         <div class="bottomwhy"></div>
     </div>
+
+
+<?php /*?><div class="row">
+<div class="col-md-12 f16">
+<h2 class="mg-sec-left-title"><?php echo $room['name'];?></h2>
+<?php echo base64_decode($room['brief'],true);?><br>
+<strong>Price Range : </strong><?php echo ($room['price_range']!='')?$room['price_range']:'-';?>
+</div>
+<br><br>
+</div><?php */?>
+
+<!--<br>-->
+<!--<h2 class="mg-sec-left-title">Room Facilities</h2>-->
+<?php /*?><div class="row">
+
+<?php 
+$room_fac = $dbc->Query("select * from property_icon where property = '".$id."' ");
+$count_fac = $dbc->GetCount("property_icon"," property = '".$id."'");
+//echo $count_fac;
+$total_fac = intval($count_fac/2);
+//echo $total_fac;
+$c=0;
+while($r_fac = $dbc->Fetch($room_fac))
+{
+    $c++;
+    if($c<=6)
+    {
+        //$icon = $dbc->GetRecord("icons","*","id=".$r_fac['icon']);
+        $sqlicon = $dbc->Query("select * from icons where id=".$r_fac['icon']);
+        $icon = $dbc->Fetch($sqlicon);
+        //echo json_decode($icon['icon'],true);
+        //echo round($total_fac);
+        echo '<div class="col-xs-12 col-md-6">';
+            echo '<ul>';
+                echo '<li><img src="'.json_decode($icon['icon'],true).'" class="micon"> '.$icon['name'].'  </li>';
+            echo '</ul>';
+        echo '</div>';
+    }
+}
+?>
+</div><?php */?>
+
+<?php /*?> <div class="butto">
+
+<a><button class="btn btn-main btt" onClick="visitto('tb');" data-toggle="tooltip"  data-placement="bottom" title="Price">$</button></a>
+<a><button class="btn btn-main fb btt" data-toggle="tooltip"  data-placement="bottom" title="Share" onClick="onShare('<?php echo $room['id'];?>','<?php echo $room['name'];?>','<?php echo base64_decode($room['short_det'],true);?>','<?php echo $slide[0];?>');"><i class="fa fa-facebook" aria-hidden="true"></i></button></a>
+<?php 
+$file = json_decode($room['file'],true);
+if($file !='')
+{
+$link = $file;
+echo '<a href="'.$link.'"><button class="btn btn-main pdf btt" data-toggle="tooltip" data-placement="bottom" title="Download PDF"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></button></a>';
+}
+else
+{
+$link = '';
+}
+?>
+
+<a><button class="btn btn-main visit btt" onClick="popemail()" data-toggle="tooltip" data-placement="bottom" title="Send Email"><i class="fa fa-envelope-o" aria-hidden="true"></i></button></a>
+<?php 
+if($room['link'] !='')
+{
+?>
+<a href="<?php echo $room['link'];?>" target="_blank"><button class="btn btn-main email btt" onClick="visitto('tb');" data-toggle="tooltip" data-placement="bottom" title="Tripadvisor"><!--<i class="fa fa-user-plus" aria-hidden="true"></i>--><img src="../../upload/trip.png" width="25" alt=""></button></a>
+<?php
+}
+?>
+
+</div><?php */?>
 
 </div>
 
@@ -598,7 +659,42 @@ function string_len_2($text,$amount)
                 <div class="col-md-4 nopad"><button class="bt_getlink" onClick="copy_link();">Copy</button></div>
             </div>
 
+<?php /*?><a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Share via Whatsapp</a>
+https://api.whatsapp.com/send?phone=66846771551"
+<a href="https://wa.me/whatsappphonenumber/?text=urlencodedtext">0000</a>
+<a href="whatsapp://send?text=<<HERE GOES THE URL ENCODED TEXT YOU WANT TO SHARE>>" data-action="share/whatsapp/share">Share via Whatsapp</a><?php */?>
+
     </div>
+    
+    
+    
+    <?php /*?><div class="butto">
+            SHARE : 
+                <a><button class="btn btn-main btt" onClick="visitto('tb');" data-toggle="tooltip"  data-placement="bottom" title="Price">$</button></a>
+                <a><button class="btn btn-main fb btt" data-toggle="tooltip"  data-placement="bottom" title="Share" onClick="onShare('<?php echo $room['ht_link'];?>','<?php echo $room['name'];?>','<?php echo base64_decode($room['short_det'],true);?>','<?php echo $slide[0]['img'];?>');"><i class="fa fa-facebook" aria-hidden="true"></i></button></a>
+                 <?php 
+                $file = json_decode($room['file'],true);
+                if($file !='')
+                {
+                    $link = $file;
+                    echo '<a href="'.$link.'"><button class="btn btn-main pdf btt" data-toggle="tooltip" data-placement="bottom" title="Download PDF"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></button></a>';
+                }
+                else
+                {
+                    $link = '';
+                }
+                ?>
+                
+                <a><button class="btn btn-main visit btt" onClick="popemail()" data-toggle="tooltip" data-placement="bottom" title="Send Email"><i class="fa fa-envelope-o" aria-hidden="true"></i></button></a>
+                <?php 
+                if($room['link'] !='')
+                {
+                    ?>
+                    <a href="<?php echo $room['link'];?>" target="_blank"><button class="btn btn-main email btt" onClick="visitto('tb');" data-toggle="tooltip" data-placement="bottom" title="Tripadvisor"><!--<i class="fa fa-user-plus" aria-hidden="true"></i>--><img src="../../upload/trip.png" width="25" alt=""></button></a>
+                    <?php
+                }
+                ?>
+        </div><?php */?>
 </div>
 
 
@@ -674,14 +770,11 @@ function string_len_2($text,$amount)
 </div>
 
 
-<input type="hidden" class="idx" value="0">
-<input type="hidden" class="idx_dis" value="0">
+
 
 
 
 <script src="<?php echo $url_link;?>libs/js/numeral.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-<!--<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>-->
 <script language="JavaScript">
 function get_price()
 {
@@ -706,44 +799,7 @@ function get_price()
 		});
 	},500);
 }
-function show_price_detail(me)
-{
-	var idx=$(".idx").val();
-	if(idx==0)
-	{
-		$(".sh_more").slideDown(300);
-		$(me).children(".fa").css({"transform": "rotateX(180deg)"},300);
-		$(".idx").val(1);
-		$(".show__more_dis").fadeIn(300);
-	}
-	else
-	{
-		$(".sh_more").slideUp(300);
-		$(me).children(".fa").css({"transform": "rotateX(0deg)"},300);
-		$(".idx").val(0);
-		
-		$(".sh_dis").slideUp(300);
-		$(".show__more_dis").children(".fa").css({"transform": "rotateX(0deg)"},300);
-		$(".show__more_dis").fadeOut(300);
-		$(".idx_dis").val(0);
-	}
-}
-function show_dis_detail(me)
-{
-	var idx_dis=$(".idx_dis").val();
-	if(idx_dis==0)
-	{
-		$(".sh_dis").slideDown(300);
-		$(me).children(".fa").css({"transform": "rotateX(180deg)"},300);
-		$(".idx_dis").val(1);
-	}
-	else
-	{
-		$(".sh_dis").slideUp(300);
-		$(me).children(".fa").css({"transform": "rotateX(0deg)"},300);
-		$(".idx_dis").val(0);
-	}
-}
+
 function check_price()
 {
 	setTimeout(function(){
@@ -761,248 +817,72 @@ function check_price()
 						var services = (res.data['services']!='-')?res.data['services']:0;
 						var vat = (res.data['vat']!='-')?res.data['vat']:0;
 						var deposite = (res.data['deposite']!='-')?res.data['deposite']:0;
-						var exchange = (res.data['exchange']!='-')?res.data['exchange']:'USD';
-						var exchange_sym = (exchange=='USD')?'$':'฿';
-						var total_price_all_night = parseInt(res.data['trueval'])*res.data['total_night'];
+						var tax_1 = (res.data['tax_1']!='-')?res.data['tax_1']/100:0;
+						var tax_2 = (res.data['tax_2']!='-')?res.data['tax_2']/100:0;
+						var tax_3 = (res.data['tax_3']!='-')?res.data['tax_3']/100:0;
+						var tax_4 = (res.data['tax_4']!='-')?res.data['tax_4']/100:0;
+						var tax_5 = (res.data['tax_5']!='-')?res.data['tax_5']/100:0;
+						var exchange = (res.data['exchange']!='-')?res.data['exchange']:0;
 						
-						var discount_1 = (res.data['discount_1']!='-')?(total_price_all_night*res.data['discount_1']):0;
-						var discount_2 = (res.data['discount_2']!='-')?(total_price_all_night*res.data['discount_2']):0;
-						var discount_3 = (res.data['discount_3']!='-')?(total_price_all_night*res.data['discount_3']):0;
-						var discount_4 = (res.data['discount_4']!='-')?(total_price_all_night*res.data['discount_4']):0;
-						var discount_5 = (res.data['discount_5']!='-')?(total_price_all_night*res.data['discount_5']):0;
-						var discount_6 = (res.data['discount_6']!='-')?(total_price_all_night*res.data['discount_6']):0;
-						var discount_7 = (res.data['discount_7']!='-')?(total_price_all_night*res.data['discount_7']):0;
-						var discount_8 = (res.data['discount_8']!='-')?(total_price_all_night*res.data['discount_8']):0;
-						var discount_9 = (res.data['discount_9']!='-')?(total_price_all_night*res.data['discount_9']):0;
+						var vt_1 = (tax_1!=0)?parseFloat(price*tax_1):0;
+						var vt_2 = (tax_1!=0)?parseFloat(price*tax_2):0;
+						var vt_3 = (tax_1!=0)?parseFloat(price*tax_3):0;
+						var vt_4 = (tax_1!=0)?parseFloat(price*tax_4):0;
+						var vt_5 = (tax_1!=0)?parseFloat(price*tax_5):0;
 						
-						var discount_net = parseFloat(discount_1+discount_2+discount_3+discount_4+discount_5+discount_6+discount_7+discount_8+discount_9);
-						var price_after_discount = parseFloat(price)-discount_net;
-						
-						var tax_1 = (res.data['tax_1']!='-')?res.data['tax_1']*price_after_discount:0;
-						var tax_2 = (res.data['tax_2']!='-')?res.data['tax_2']*price_after_discount:0;
-						var tax_3 = (res.data['tax_3']!='-')?res.data['tax_3']*price_after_discount:0;
-						var tax_4 = (res.data['tax_4']!='-')?res.data['tax_4']*price_after_discount:0;
-						var tax_5 = (res.data['tax_5']!='-')?res.data['tax_5']*price_after_discount:0;
-						
-						var tax_net = parseFloat(tax_1+tax_2+tax_3+tax_4+tax_5);
-						
-						var total = price_after_discount+tax_net;
+						var total = parseFloat(price)+parseFloat(vt_1+vt_2+vt_3+vt_4+vt_5);
 						var total_price = numeral(total).format('0,0.00');
 						
 						var dep = numeral(res.data['deposite']).format('0,0');
 						
 						var dat = '';
 						dat += '<div class="s_price">';
-							//(res.data['services']!='-')?dat += '<span class="idet">Services/Tax '+res.data['services']+' %</span><br>':0;
-							//(res.data['vat']!='-')?dat += '<span class="idet">VAT/Tax '+res.data['vat']+' %</span><br>':0;
-							//(res.data['deposite']!='-')?dat += '<span class="idet">Security Deposit '+dep+' '+exchange+'.</span><br>':0;
-							dat += '<div class="row">';
-								/*dat += '<div class="col-md-7 sh_more">';
-									dat += '<span class="idet">Price/night</span>';
-								dat += '</div>';
-								dat += '<div class="col-md-5 text-right sh_more">';
-									(res.data['trueval']!='-')?dat += '<span class="idet">'+exchange_sym+numeral(res.data['trueval']).format('0,0')+'</span>':0;
-								dat += '</div>';*/
-								
-								dat += '<div class="col-md-7 sh_more">';
-									(res.data['total_night']!='-')?dat += '<span class="idet">'+exchange_sym+numeral(res.data['trueval']).format('0,0')+' x '+res.data['total_night']+' nights</span><br>':0;
-								dat += '</div>';
-								dat += '<div class="col-md-5 text-right sh_more">';
-									(total_price_all_night!=0)?dat += '<span class="idet">'+exchange_sym+numeral(total_price_all_night).format('0,0')+'</span><br>':0;
-								dat += '</div>';
-								
-								if(discount_net!=0)
-								{
-									dat += '<div class="col-md-7 sh_more">';
-										dat += '<span class="idet">Discount</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-5 text-right sh_more">';
-										dat += '<span class="idet">-'+exchange_sym+discount_net+'</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-12">';
-										dat += '<button type="button" class="show__more_dis" onClick="show_dis_detail(this);"><i class="fa fa-angle-down" aria-hidden="true"></i></button>';
-									dat += '</div>';
-								}
-								
-								if(discount_1!=0)
-								{
-									dat += '<div class="col-md-7 sh_dis">';
-										dat += '<span class="idet">Early bird '+res.data['discount_1_1']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_1+'</span>';
-									dat += '</div>';
-								}
-								if(discount_2!=0)
-								{
-									dat += '<div class="col-md-7 sh_dis">';
-										dat += '<span class="idet">Last minute '+res.data['discount_2_2']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_2+'</span>';
-									dat += '</div>';
-								}
-								if(discount_3!=0)
-								{
-									dat += '<div class="col-md-7 sh_dis">';
-										dat += '<span class="idet">Early bird '+res.data['discount_3_3']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_3+'</span>';
-									dat += '</div>';
-								}
-								if(discount_4!=0)
-								{
-									dat += '<div class="col-md-7 sh_dis">';
-										dat += '<span class="idet">Last minute '+res.data['discount_4_4']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_4+'</span>';
-									dat += '</div>';
-								}
-								if(discount_5!=0)
-								{
-									dat += '<div class="col-md-7 sh_dis">';
-										dat += '<span class="idet">Long Stay '+res.data['discount_5_5']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_5+'</span>';
-									dat += '</div>';
-								}
-								if(discount_6!=0)
-								{
-									dat += '<div class="col-md-7 sh_dis">';
-										dat += '<span class="idet">Long Stay '+res.data['discount_6_6']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_6+'</span>';
-									dat += '</div>';
-								}
-								if(discount_7!=0)
-								{
-									dat += '<div class="col-md-7 sh_dis">';
-										dat += '<span class="idet">Early bird '+res.data['discount_7_7']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_7+'</span>';
-									dat += '</div>';
-								}
-								if(discount_8!=0)
-								{
-									dat += '<div class="col-md-7 sh_dis">';
-										dat += '<span class="idet">Early bird '+res.data['discount_8_8']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_8+'</span>';
-									dat += '</div>';
-								}
-								if(discount_9!=0)
-								{
-									dat += '<div class="col-md-7 sh_dis">';
-										dat += '<span class="idet">Early bird '+res.data['discount_9_9']+'%</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-5 text-right sh_dis">';
-										dat += '<span class="idet">-'+exchange_sym+discount_9+'</span>';
-									dat += '</div>';
-								}
-								
-								if(res.data['deposite']!='-')
-								{
-									dat += '<div class="col-md-7 sh_more">';
-										dat += '<span class="idet">Security Deposit</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-5 text-right sh_more">';
-										dat += '<span class="idet">'+exchange_sym+dep+'</span>';
-									dat += '</div>';
-								}
-								
-								if(res.data['tax_1']!='-')
-								{
-									dat += '<div class="col-md-8 sh_more">';
-										dat += '<span class="idet">'+res.data['tax_1_txt']+'% service charge & vat</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-4 text-right sh_more">';
-										dat += '<span class="idet">'+exchange_sym+numeral(tax_1).format('0,0.00')+'</span>';
-									dat += '</div>';
-								}
-								
-								if(res.data['tax_2']!='-')
-								{
-									dat += '<div class="col-md-8 sh_more">';
-										dat += '<span class="idet">'+res.data['tax_2_txt']+'% service charge & Taxes.</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-4 text-right sh_more">';
-										dat += '<span class="idet">'+exchange_sym+numeral(tax_2).format('0,0.00')+'</span>';
-									dat += '</div>';
-								}
-								
-								if(res.data['tax_3']!='-')
-								{
-									dat += '<div class="col-md-8 sh_more">';
-										dat += '<span class="idet">'+res.data['tax_3_txt']+'% service charge</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-4 text-right sh_more">';
-										dat += '<span class="idet">'+exchange_sym+numeral(tax_3).format('0,0.00')+'</span>';
-									dat += '</div>';
-								}
-								
-								if(res.data['tax_4']!='-')
-								{
-									dat += '<div class="col-md-8 sh_more">';
-										dat += '<span class="idet">'+res.data['tax_4_txt']+'% tax</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-4 text-right sh_more">';
-										dat += '<span class="idet">'+exchange_sym+numeral(tax_4).format('0,0.00')+'</span>';
-									dat += '</div>';
-								}
-								
-								if(res.data['tax_5']!='-')
-								{
-									dat += '<div class="col-md-8 sh_more">';
-										dat += '<span class="idet">'+res.data['tax_5_txt']+'% vat</span>';
-									dat += '</div>';
-									dat += '<div class="col-md-4 text-right sh_more">';
-										dat += '<span class="idet">'+exchange_sym+numeral(tax_5).format('0,0.00')+'</span>';
-									dat += '</div>';
-								}
-								
-								dat += '<div class="col-md-12 "><div class="col-md-12 p_box"></div></div>';
-								
-								dat += '<div class="col-md-7 ">';
-									dat += '<strong>Estimated Price</strong>';
-								dat += '</div>';
-								dat += '<div class="col-md-5 text-right">';
-									dat += '<strong>'+exchange_sym+total_price+'</strong>';
-								dat += '</div>';
-								dat += '<div class="col-md-12">';
-									dat += '<button type="button" class="show__more" onClick="show_price_detail(this);"><i class="fa fa-angle-down" aria-hidden="true"></i></button>';
-								dat += '</div>';
-							dat += '</div>';
-							
-							/*(res.data['tax_1']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_1_txt']+'% service charge & VAT.</span><br>':0;
-							(res.data['tax_2']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_2_txt']+'% service charge & Taxes.</span><br>':0;
-							(res.data['tax_3']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_3_txt']+'% service charge.</span><br>':0;
-							(res.data['tax_4']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_4_txt']+'% tax.</span><br>':0;
-							(res.data['tax_5']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_5_txt']+'% vat.</span>':0;*/
-							
+						dat += '<i class="fa fa-tag" aria-hidden="true"></i> Price : '+total_price+' '+exchange+'<br>';//.toFixed(2)
+						
+						//(res.data['services']!='-')?dat += '<span class="idet">Services/Tax '+res.data['services']+' %</span><br>':0;
+						//(res.data['vat']!='-')?dat += '<span class="idet">VAT/Tax '+res.data['vat']+' %</span><br>':0;
+						(res.data['deposite']!='-')?dat += '<span class="idet">Deposite '+dep+' USD.</span><br>':0;
+						(res.data['tax_1']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_1']+' % service charge & VAT.</span><br>':0;
+						(res.data['tax_2']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_2']+' % service charge & Taxes.</span><br>':0;
+						(res.data['tax_3']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_3']+' % service charge.</span><br>':0;
+						(res.data['tax_4']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_4']+' % tax.</span><br>':0;
+						(res.data['tax_5']!='-')?dat += '<span class="idet">Rate is subject to '+res.data['tax_5']+' % vat.</span>':0;
+						
+						/*if(services!=0)
+						{
+							dat += '<span class="idet">Services/Tax '+services+' %</span>';
+						}
+						if(vat!=0)
+						{
+							dat += '<span class="idet">VAT/Tax '+vat+' %</span>';
+						}
+						if(deposite!=0)
+						{
+							dat += '<span class="idet">Deposite '+deposite+' USD.</span>';
+						}
+						if(tax_1!=0)
+						{
+							dat += '<span class="idet">Rate is subject to '+tax_1+' % service charge & VAT.</span>';
+						}
+						if(tax_2!=0)
+						{
+							dat += '<span class="idet">Rate is subject to '+tax_2+' % service charge & Taxes.</span>';
+						}
+						if(tax_3!=0)
+						{
+							dat += '<span class="idet">Rate is subject to '+tax_3+' % service charge.</span>';
+						}
+						if(tax_4!=0)
+						{
+							dat += '<span class="idet">Rate is subject to '+tax_4+' % tax.</span>';
+						}
+						if(tax_5!=0)
+						{
+							dat += '<span class="idet">Rate is subject to '+tax_5+' %vat.</span>';
+						}*/
+						
 						dat += '</div>';
 						$(".show_price").html(dat);
-						
-						
-						$(".sh_dis").slideUp(300);
-						$(".show__more_dis").children(".fa").css({"transform": "rotateX(0deg)"},300);
-						$(".idx").val(0);
-						$(".idx_dis").val(0);
-						setTimeout(function(){
-							$(".sh_more").slideUp(500);
-							$(".show__more").fadeIn(500);
-							$(".show__more_dis").fadeOut(500);
-							$(".show__more_dis").fadeOut(300);
-							$(".sh_dis").slideUp(300);
-							$(".show__more_dis").children(".fa").css({"transform": "rotateX(0deg)"},300);
-							$(".idx").val(0);
-							$(".idx_dis").val(0);
-						},3000);
 					}
 					else
 					{
@@ -1165,7 +1045,7 @@ function prop_contact()
 		{
             showLoader('ajaxLoader1');
 			$.ajax({
-				url:"<?php echo $url_link;?>libs/actions/action-property-contact-test-2.php",//action-property-contact.php",
+				url:"<?php echo $url_link;?>libs/actions/action-property-contact.php",
 				type:"POST",
 				dataType:"json"	,
 				data:$("#form_contact_website").serialize(),

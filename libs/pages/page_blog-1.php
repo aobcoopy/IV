@@ -18,28 +18,6 @@ function string_len_2b($text,$amount)
 		return $text;
 	}
 }
-function dateType2($data)
-{
-	$y = substr($data,0,4);
-	$m = substr($data,5,2);
-	$d = substr($data,8,2);
-	switch($m)
-	{
-		case'01':  $month = 'Jan';break;
-		case'02':  $month = 'Feb';break;
-		case'03':  $month = 'Mar';break;
-		case'04':  $month = 'Apr';break;
-		case'05':  $month = 'May';break;
-		case'06':  $month = 'Jun';break;
-		case'07':  $month = 'Jul';break;
-		case'08':  $month = 'Aug';break;
-		case'09':  $month = 'Sep';break;
-		case'10':  $month = 'Oct';break;
-		case'11':  $month = 'Nov';break;
-		case'12':  $month = 'Dec';break;
-	}
-	return  $d.' '.$month .', '.$y;
-}
 ?>
 <style>
 @media screen and (max-width:663px)
@@ -115,328 +93,12 @@ function dateType2($data)
     margin-top: 75px !important;
 }
 }
-.btn-contact {
-    background: #fff !important;
-}
 </style>
 <link href="libs/css/blog_style_v2.css" rel="stylesheet" type="text/css">
 <div class="motop"></div>
 <?php include "libs/pages/search.php";?>
 
-
-<link href="libs/css/blog/blog_style_1.css" rel="stylesheet">
-<!-- Responsive styles for this template -->
-<link href="libs/css/blog/responsive.css" rel="stylesheet">
-<!-- Colors for this template -->
-<link href="libs/css/blog/colors.css" rel="stylesheet">
-
-<br class="web"><br class="web">
-<!-- NEW Blog -->
-
-<div class="col-md-12"><br>
-            	<center><h1 class=" contitle blw hidden-xs ">Inspiring Experiences</h1></center>
-                        <h2 class="f16 text-center btop1" style="    font-family: pt !important;">Blog & Life Style</h2><br>
-
-            </div>
- <br class="web"><br class="web">   <br class="web"><br class="web">        
-<section class="section first-section">
-            <div class="container-fluid">
-                <div class="masonry-blog clearfix">
-                <?php 
-				$sql_hl = $dbc->Query("select * from blogs where status > 0 and heightlight > 0 order by sort asc");
-				$ro = 1;
-				while($b_row = $dbc->Fetch($sql_hl))
-				{
-					$cate = $dbc->GetRecord("blog_category","*","id='".$b_row['category']."' and status > 0");
-					$urll = "/blog/" . strtolower(str_replace(" ", "-", $b_row['name']) ) . ".html";
-					if($ro==2)
-					{
-						echo '<div class="center-side">';
-					}
-					
-					if($ro==1)
-					{
-						$img_photo_main = imagePath('/'.json_decode($b_row['photo_hl_1'],true));
-						?>
-						<div class="left-side">
-                            <div class="masonry-box post-media">
-                                 <img src="<?php echo $img_photo_main;?>" alt="" class="img-fluid"><!--../../upload/b1.jpg-->
-                                 <div class="shadoweffect">
-                                    <div class="shadow-desc">
-                                        <div class="blog-meta">
-                                            <span class="bg-aqua" style="background:<?php echo $cate['color'];?> !important;"><a href="blog-category-01.html" title=""><?php echo $cate['name'];?></a></span>
-                                            <h4><a href="<?php echo $urll;?>" title=""><?php echo $b_row['name'];?></a></h4>
-                                            <small><a href="<?php echo $urll;?>" title=""><?php echo dateType2($b_row['day']);?></a></small><!--24 July, 2017-->
-                                            <small><a href="<?php echo $urll;?>" title="">by <?php echo $b_row['byname'];?></a></small>
-                                        </div><!-- end meta -->
-                                    </div><!-- end shadow-desc -->
-                                </div><!-- end shadow -->
-                            </div><!-- end post-media -->
-                        </div><!-- end left-side -->
-                        <?php
-					}
-					elseif($ro==5)
-					{
-						$img_photo_main = imagePath('/'.json_decode($b_row['photo_hl_1'],true));
-						?>
-                        <div class="right-side hidden-md-down">
-                            <div class="masonry-box post-media">
-                                 <img src="<?php echo $img_photo_main;?>" alt="" class="img-fluid">
-                                 <div class="shadoweffect">
-                                    <div class="shadow-desc">
-                                        <div class="blog-meta">
-                                            <span class="bg-aqua" style="background:<?php echo $cate['color'];?> !important;"><a href="blog-category-01.html" title=""><?php echo $cate['name'];?></a></span>
-                                            <h4><a href="<?php echo $urll;?>" title=""><?php echo $b_row['name'];?></a></h4>
-                                            <small><a href="<?php echo $urll;?>" title=""><?php echo dateType2($b_row['day']);?></a></small>
-                                            <small><a href="<?php echo $urll;?>" title="">by <?php echo $b_row['byname'];?></a></small>
-                                        </div><!-- end meta -->
-                                    </div><!-- end shadow-desc -->
-                                 </div><!-- end shadow -->
-                            </div><!-- end post-media -->
-                        </div><!-- end right-side -->
-                        <?php
-					}
-					elseif($ro==2)
-					{
-						$img_photo_main = imagePath('/'.json_decode($b_row['photo_hl_2'],true));
-						?>
-                        <div class="masonry-box post-media">
-                             <img src="<?php echo $img_photo_main;?>" alt="" class="img-fluid">
-                             <div class="shadoweffect">
-                                <div class="shadow-desc">
-                                    <div class="blog-meta">
-                                        <span class="bg-green" style="background:<?php echo $cate['color'];?> !important;"><a href="blog-category-01.html" title=""><?php echo $cate['name'];?></a></span>
-                                        <h4><a href="<?php echo $urll;?>" title=""><?php echo $b_row['name'];?></a></h4>
-                                        <small><a href="<?php echo $urll;?>" title=""><?php echo dateType2($b_row['day']);?></a></small>
-                                        <small><a href="<?php echo $urll;?>" title="">by <?php echo $b_row['byname'];?></a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end shadow-desc -->
-                            </div><!-- end shadow -->
-                        </div><!-- end post-media -->
-                        <?php
-					}
-					else
-					{
-						$img_photo_main = imagePath('/'.json_decode($b_row['photo_hl_3'],true));
-						?>
-                        <div class="masonry-box small-box post-media">
-                             <img src="<?php echo $img_photo_main;?>" alt="" class="img-fluid">
-                             <div class="shadoweffect">
-                                <div class="shadow-desc">
-                                    <div class="blog-meta">
-                                        <span class="bg-green" style="background:<?php echo $cate['color'];?> !important;"><a href="blog-category-01.html" title=""><?php echo $cate['name'];?></a></span>
-                                        <h4><a href="<?php echo $urll;?>" title=""><?php echo $b_row['name'];?></a></h4>
-                                    </div><!-- end meta -->
-                                </div><!-- end shadow-desc -->
-                            </div><!-- end shadow -->
-                        </div><!-- end post-media -->
-                        <?php
-					}
-					
-					if($ro==4)
-					{
-						echo '</div><!-- end left-side -->';
-					}
-					
-					$ro ++;
-					
-				}
-				?>
-                    
-
-                        <?php /*?><div class="masonry-box small-box post-media">
-                             <img src="../../upload/b3.jpg" alt="" class="img-fluid">
-                             <div class="shadoweffect">
-                                <div class="shadow-desc">
-                                    <div class="blog-meta">
-                                        <span class="bg-green"><a href="blog-category-01.html" title="">Travel</a></span>
-                                        <h4><a href="block-single.html" title="">What you need to know for child health</a></h4>
-                                    </div><!-- end meta -->
-                                </div><!-- end shadow-desc -->
-                            </div><!-- end shadow -->
-                        </div><!-- end post-media --><?php */?>
-                    
-
-                    
-                </div><!-- end masonry -->
-            </div>
-        </section>
-        
-        
-        
-
-<section class="section">
-            <div class="container">
-                <div class="row">
-                	<?php
-					$sql_cate = $dbc->Query("select * from blog_category where status > 0 order by sort asc limit 0,2");
-					$bc=1;
-					while($bc_row = $dbc->Fetch($sql_cate))
-					{
-						$total_post = $dbc->GetRecord("blogs","*","category = '".$bc_row['id']."' and status > 0 and (heightlight = 0 or heightlight IS NULL)");
-						//echo $total_post;
-						if($total_post>0)
-						{
-							if($bc==1)
-							{
-								include "blog_section_1.php";
-							}
-							elseif($bc==2)
-							{
-								include "blog_section_2.php";
-							}
-							$bc++;
-						}
-					}
-					?>
-                    
-                    
-                </div><!-- end row -->
-
-               <!-- <hr class="invis1">-->
-
-               <?php /*?> <div class="row">
-                    <div class="col-lg-12">
-                        <div class="banner-spot clearfix">
-                            <div class="banner-img">
-                                <img src="../../upload/b8.jpg" alt="" class="img-fluid">
-                            </div><!-- end banner-img -->
-                        </div><!-- end banner -->
-                    </div><!-- end col -->
-                </div><!-- end row --><?php */?>
-
-                <!--<hr class="invis1">-->
-
-
-
-
-                <div class="row">
-                    
-                    <?php
-					$sql_cate = $dbc->Query("select * from blog_category where status > 0 order by sort asc limit 2,10");
-					$bc_1=0;
-					while($bc_row = $dbc->Fetch($sql_cate))
-					{
-						$total_post = $dbc->GetRecord("blogs","*","category = '".$bc_row['id']."' and status > 0 and (heightlight = 0 or heightlight IS NULL)");
-						//echo $total_post;
-						if($total_post>0)
-						{
-							$bc_1++;
-							if(($bc_1%2)==0)
-							{
-								include "blog_section_4.php";
-							}
-							else
-							{
-								include "blog_section_3.php";
-							}
-						}
-						
-					}
-					?>
-                    
-
-
-
-
-                    
-                   
-
-                        <?php /*?><div class="section-title">
-                            <h3 class="color-grey"><a href="blog-category-01.html" title="">Health</a></h3>
-                        </div><!-- end title -->
-
-                        <div class="blog-box">
-                            <div class="post-media">
-                                <a href="block-single.html" title="">
-                                    <img src="../../upload/b7.jpg" alt="" class="img-fluid">
-                                    <div class="hovereffect">
-                                        <span></span>
-                                    </div><!-- end hover -->
-                                </a>
-                            </div><!-- end media -->
-                            <div class="blog-meta">
-                                <h4><a href="block-single.html" title="">Opened the doors of the Istanbul spa center</a></h4>
-                                <small><a href="blog-category-01.html" title="">Spa</a></small>
-                                <small><a href="blog-category-01.html" title="">21 July, 2017</a></small>
-                            </div><!-- end meta -->
-                        </div><!-- end blog-box -->
-
-                        <hr class="invis">
-
-                        <div class="blog-box">
-                            <div class="post-media">
-                                <a href="block-single.html" title="">
-                                    <img src="../../upload/b7.jpg" alt="" class="img-fluid">
-                                    <div class="hovereffect">
-                                        <span></span>
-                                    </div><!-- end hover -->
-                                </a>
-                            </div><!-- end media -->
-                            <div class="blog-meta">
-                                <h4><a href="block-single.html" title="">2017 trends in health tourism</a></h4>
-                                <small><a href="blog-category-01.html" title="">Health</a></small>
-                                <small><a href="blog-category-01.html" title="">20 July, 2017</a></small>
-                            </div><!-- end meta -->
-                        </div><!-- end blog-box -->
-
-                        <hr class="invis">
-
-                        <div class="blog-box">
-                            <div class="post-media">
-                                <a href="block-single.html" title="">
-                                    <img src="../../upload/b7.jpg" alt="" class="img-fluid">
-                                    <div class="hovereffect">
-                                        <span></span>
-                                    </div><!-- end hover -->
-                                </a>
-                            </div><!-- end media -->
-                            <div class="blog-meta">
-                                <h4><a href="block-single.html" title="">Experience the effects of miraculous stones</a></h4>
-                                <small><a href="blog-category-01.html" title="">Beauty</a></small>
-                                <small><a href="blog-category-01.html" title="">20 July, 2017</a></small>
-                            </div><!-- end meta -->
-                        </div><!-- end blog-box --><?php */?>
-                    
-                    
-                </div><!-- end row -->
-
-                <!--<hr class="invis1">-->
-                
-               <?php /*?> <div class="row">
-                    <div class="col-lg-12">
-                        <div class="banner-spot clearfix">
-                            <div class="banner-img">
-                                <img src="../../upload/b8.jpg" alt="" class="img-fluid">
-                            </div><!-- end banner-img -->
-                        </div><!-- end banner -->
-                    </div><!-- end col -->
-                </div><!-- end row --><?php */?>
-
-
-                <?php /*?><div class="row">
-                    <div class="col-lg-10 offset-lg-1">
-                        <div class="banner-spot clearfix">
-                            <div class="banner-img">
-                                <img src="upload/banner_02.jpg" alt="" class="img-fluid">
-                            </div><!-- end banner-img -->
-                        </div><!-- end banner -->
-                    </div><!-- end col -->
-                </div><!-- end row --><?php */?>
-                
-                
-            </div><!-- end container -->
-        </section>        
-        
-<!-- NEW Blog -->        
- 
-<!--<script defer src="libs/js/blog/js/jquery.min.js"></script>
-<script defer src="libs/js/blog/js/tether.min.js"></script>
-<script defer src="libs/js/blog/js/bootstrap.min.js"></script>
-<script defer src="libs/js/blog/js/custom.js"></script>-->
-    
-           
-<?php /*?><div class="mg-blog-list">
+<div class="mg-blog-list">
     <div class="container">
         <div class="row">
                 
@@ -682,7 +344,7 @@ function dateType2($data)
 								/*if($x%3==0)
 								{
 									
-								}*-/
+								}*/
 								if($total_lifestyle>1)
 								{
 									$arrow = 1;
@@ -712,7 +374,7 @@ function dateType2($data)
             
         </div>
     </div>
-</div><?php */?>
+</div>
 
 <div class="follw">FOLLOW US <a href="https://www.instagram.com/inspiringvillas/" target="_blank" style="color:unset;">@INSPIRINGVILLAS</a></div>
 <div class="covfootb">
@@ -812,8 +474,8 @@ $(document).ready(function(e) {
 });
 </script>           
 
-<!--<script defer src="http://static.ak.fbcdn.net/connect.php/js/FB.Loader" type="text/javascript"></script>
-<script defer src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script> -->
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Loader" type="text/javascript"></script>
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script> 
 <script>
 function onShare(idp,title,desc,image)
 {
@@ -862,7 +524,7 @@ var mlink  = "<?php echo $Urllink;?>";
 
 
 <!--google-->
-<!--<script>
+<script>
 function gPlus(url){
     window.open(
         'https://plus.google.com/share?url='+url,
@@ -871,6 +533,6 @@ function gPlus(url){
     ).focus();
     return false;
 }
-</script>-->
+</script>
 
 <!--google-->

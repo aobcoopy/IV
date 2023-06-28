@@ -75,6 +75,10 @@ elseif(strstr($url_path,"/?page=villa-promotions"))
 {
 	echo '<meta name="robots" content="noindex">';
 }
+elseif(strstr($url_path,"/?page=email_detail"))
+{
+	echo '<meta name="robots" content="noindex">';
+}
 
 
 

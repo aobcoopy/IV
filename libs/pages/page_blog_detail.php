@@ -4,7 +4,7 @@ $sqlblogs = $dbc->Query("select * from blogs where id='".$_REQUEST['id']."'");
 $blogs = $dbc->Fetch($sqlblogs);
 $cate = $dbc->GetRecord("blog_category","*","id='".$blogs['category']."'");
 $photo_share = json_decode($blogs['photo_main'],true);
-$photo = imageP('/'.json_decode($blogs['photo_main'],true));
+$photo = imagePath('/'.json_decode($blogs['photo_main'],true));
 $urll = "/blog/" . strtolower(str_replace(" ", "-", $blogs['name']) ) . ".html";
 //$user = $dbc->GetRecord("users","*","id=".$blogs['users']);
 /*$sqluser = $dbc->Query("select * from users where id=".$blogs['users']);
@@ -110,7 +110,7 @@ function dateType2($data)
                                 </div><!-- end post-sharing -->
                             </div><!-- end title -->
 
-                            <div class="row">
+                            <?php /*?><div class="row">
                                 <div class="col-lg-12">
                                     <div class="banner-spot clearfix">
                                         <div class="banner-img">
@@ -118,7 +118,7 @@ function dateType2($data)
                                         </div><!-- end banner-img -->
                                     </div><!-- end banner -->
                                 </div><!-- end col -->
-                            </div><!-- end row -->
+                            </div><!-- end row --><?php */?>
 
                             <hr class="invis1">
 
@@ -186,11 +186,11 @@ function dateType2($data)
                                 <h4 class="small-title">You may also like</h4>
                                 <div class="row">
                                 	<?php
-									$sql_rec = $dbc->Query("select * from blogs where status > 0 order by sort asc limit 0,2");
+									$sql_rec = $dbc->Query("select * from blogs where status > 0 order by sort asc limit 2");
 									while($line = $dbc->Fetch($sql_rec))
 									{
 										$rid1 = $line['id'];
-										$photo = imageP('/'.json_decode($line['photo_main'],true));
+										$photo = imagePath('/'.json_decode($line['photo_main'],true));
 										$urll = "/blog/" . strtolower(str_replace(" ", "-", $line['name']) ) . ".html";
 										$cate = $dbc->GetRecord("blog_category","*","id='".$line['category']."'");
 										?>
@@ -313,11 +313,11 @@ function dateType2($data)
                                 <div class="blog-list-widget">
                                     <div class="list-group">
                                     	<?php
-									$sql_rec = $dbc->Query("select * from blogs where status > 0 order by sort asc limit 2,4");
+									$sql_rec = $dbc->Query("select * from blogs where status > 0 order by sort asc limit 4");
 									while($line = $dbc->Fetch($sql_rec))
 									{
 										$rid1 = $line['id'];
-										$photo = imageP('/'.json_decode($line['photo_main'],true));
+										$photo = imagePath('/'.json_decode($line['photo_main'],true));
 										$urll = "/blog/" . strtolower(str_replace(" ", "-", $line['name']) ) . ".html";
 										$cate = $dbc->GetRecord("blog_category","*","id='".$line['category']."'");
 										?>
@@ -335,14 +335,14 @@ function dateType2($data)
                                 </div><!-- end blog-list -->
                             </div><!-- end widget -->
 
-                            <div class="widget">
+                            <?php /*?><div class="widget">
                                 <h2 class="widget-title">Advertising</h2>
                                 <div class="banner-spot clearfix">
                                     <div class="banner-img">
                                         <img src="../../upload/1200.jpg" alt="" class="img-fluid">
                                     </div><!-- end banner-img -->
                                 </div><!-- end banner -->
-                            </div><!-- end widget -->
+                            </div><!-- end widget --><?php */?>
 
                             <?php /*?><div class="widget">
                                 <h2 class="widget-title">Instagram Feed</h2>
@@ -381,13 +381,13 @@ function dateType2($data)
             </div><!-- end container -->
         </section>
         
-<script src="libs/js/blog/js/jquery.min.js"></script>
-<script src="libs/js/blog/js/tether.min.js"></script>
-<script src="libs/js/blog/js/bootstrap.min.js"></script>
-<script src="libs/js/blog/js/custom.js"></script>
+<script defer src="libs/js/blog/js/jquery.min.js"></script>
+<script defer src="libs/js/blog/js/tether.min.js"></script>
+<script defer src="libs/js/blog/js/bootstrap.min.js"></script>
+<script defer src="libs/js/blog/js/custom.js"></script>
 
-<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Loader" type="text/javascript"></script>
-<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script> 
+<!--<script defer src="http://static.ak.fbcdn.net/connect.php/js/FB.Loader" type="text/javascript"></script>
+<script defer src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script> -->
 <script>
 function onShare(idp,title,desc,image)
 {
@@ -429,3 +429,8 @@ function onShare(idp,title,desc,image)
 
 var mlink  = "<?php echo $Urllink;?>";
 </script>
+<style>
+.btn-contact {
+    background: #fff !important;
+}
+</style>

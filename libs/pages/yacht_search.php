@@ -82,7 +82,7 @@
                     <div class="col-md-2 col-sm-12 col-xs-12 nopad992 nopad_768">
                         <button type="button" id="bt_search_1" onClick="searching_yacht()" class="btn btn-main btn-block-1 text_up fonn top7">Search yacht</button>
                         <div class="exch" onClick="exchange(this);"><img src="../../upload/money-exchange1.png" width="20" alt=""></div>
-                        <a href="recently-yacht" class="recn_y"><img src="../../upload/recent.png" width="30" alt=""></a>
+                        <a href="my-recently-yacht" class="recn_y"><img src="../../upload/recent.png" width="30" alt=""></a>
                     </div>
                 </div>
             </div>

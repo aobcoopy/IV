@@ -4,15 +4,16 @@
     </div><!-- end title -->
     <div class="row">
    
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        
         <?php 
 		$z=0;
 		$sql_blog = $dbc->Query("select * from blogs where status > 0 and (heightlight = 0 or heightlight IS NULL) and category = '".$bc_row['id']."' order by sort asc");
 		while($row_blog = $dbc->Fetch($sql_blog))
 		{
-			$photo = imageP('/'.json_decode($row_blog['photo_high'],true));
+			$photo = imagePath('/'.json_decode($row_blog['photo_high'],true));
 			$urll = "/blog/" . strtolower(str_replace(" ", "-", $row_blog['name']) ) . ".html";
 			?>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 			<div class="blog-box">
                 <div class="post-media">
                     <a href="<?php echo $urll;?>" title="">
@@ -30,11 +31,12 @@
             </div><!-- end blog-box -->
 
             <hr class="invis">
+            </div><!-- end col -->
 			<?php
 			if(($z%2)==0)
 			{
-				echo '</div><!-- end col -->';
-				echo '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">';
+				//echo '</div><!-- end col -->';
+				//echo '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">';
 				$z=0;
 			}
 			$z++;
@@ -42,7 +44,7 @@
 		?>
             
 
-        </div><!-- end col -->
+        
 
         
         

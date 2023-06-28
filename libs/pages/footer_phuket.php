@@ -49,7 +49,7 @@ if($show_phuket == '')
                                 <tr>
                                     <td>
                                     <h3 class="f14 th3">
-                                        <a class="blu" href="/search-rent/thailand-phuket/nai-harn.html?pri=all-price&room=all-bedrooms&cate=all-collections&sort=all-sort">Nai Harn <?php //echo $f_villas;?></a>
+                                        <a class="blu" href="/search-rent/thailand-phuket/nai-harn/all-price/all-bedrooms/all-collections/all-sort.html">Nai Harn <?php //echo $f_villas;?></a>
                                     </h3>
                                     </td>
                                     <td>$590</td>
@@ -109,7 +109,7 @@ if($show_phuket == '')
                                 <tr>
                                     <td>
                                     <h3 class="f14 th3">
-                                        <a class="blu" href="/search-rent/thailand-phuket/nai-harn.html?pri=all-price&room=all-bedrooms&cate=all-collections&sort=all-sort">Nai Harn <?php //echo $f_villas;?></a>
+                                        <a class="blu" href="/search-rent/thailand-phuket/nai-harn/all-price/all-bedrooms/all-collections/all-sort.html">Nai Harn <?php //echo $f_villas;?></a>
                                     </h3>
                                     </td>
                                     <td>$590</td>
@@ -143,24 +143,11 @@ if($show_phuket == '')
 			  }
 			  else
 			  {
-				  ?>
-                  <h2 class=" mb f30"><strong><?php /* ?><a class="tg cdf" ><?php */?>Discover Luxury Villas in Phuket<?php /*?></a><?php */?></strong></h2>
+				  ?><h2 class=" mb f30"><strong><?php /* ?><a class="tg cdf" ><?php */?>Discover Luxury Villas in Phuket<?php /*?></a><?php */?></strong></h2>
 				  <p class="col-md-12 nopad top41 f18 pnone">
-                  	Phuket villa rental offers an incredible holiday experience. With the privacy of having your own space, you can truly relax and enjoy your time in one of Thailand's most popular holiday destinations. All Phuket villa rentals come with the added convenience of a team of staff which includes a villa manager who will act as your concierge for the duration of your stay, a private chef to make you the most sumptuous meals and a housekeeping staff that will keep your luxury villa in Phuket spotless the entire time.
-<br><br>
-Each Phuket villa rental you will find with Inspiring Villas has been handpicked for its incredible facilities and design. You will commonly find a dedicated games room or cinema in our luxury Phuket villas, along with added bonuses like fitness centres, steam rooms and infinity pools with the most incredible views. 
-                    <!--Phuket Luxury Villas make a great holiday option. Offering you your own private villa holiday space, private pool, staff, chef and all modern facilities like your own fitness, cinema and games rooms, as well as spa, steam and sauna rooms.-->
+                    Phuket Luxury Villas make a great holiday option. Offering you your own private villa holiday space, private pool, staff, chef and all modern facilities like your own fitness, cinema and games rooms, as well as spa, steam and sauna rooms.
                 </p>
                 
-                <div class="col-md-12 nopad top41">
-                <h2 class=" mb f30 "><strong>Rent the best villas in Phuket</strong></h2>
-				  <p class="col-md-12 nopad top41 f18 pnone">
-                  	No matter what sized group you are travelling with or what kind of vacation you are looking for, our expert team can help match you with the ideal rental villas in Phuket. With property sizes ranging from two to more than ten bedrooms, we can easily accommodate groups of every size in our Phuket luxury villas in the right location to provide all you desire for your next Thailand holiday. 
-<br><br>
-If a Phuket pool villa has been on your bucket list for a while, there is no better way to ensure that you rent the perfect property than by working with the expert team at Inspiring Villas. With little time or effort required from you, you will be sipping a cocktail in front of an infinity pool overlooking the sparkling Andaman Sea in no time at all. Contact us today to discover how you can rent a villa in Phuket that will be nothing short of extraordinary.   
-
-                </p>
-                </div>
 				  <?php
 			  }
 			  ?>
@@ -203,7 +190,7 @@ If a Phuket pool villa has been on your bucket list for a while, there is no bet
                     <tr>
                         <td>
                         <h3 class="f14 th3">
-                            <a class="blu" href="/search-rent/thailand-phuket/nai-harn.html?pri=all-price&room=all-bedrooms&cate=all-collections&sort=all-sort">Nai Harn <?php echo $f_villas;?></a>
+                            <a class="blu" href="/search-rent/thailand-phuket/nai-harn/all-price/all-bedrooms/all-collections/all-sort.html">Nai Harn <?php echo $f_villas;?></a>
                         </h3>
                         </td>
                         <td>$1,950</td>
@@ -790,7 +777,7 @@ and ease of access via the international airport.<br><br><br>
                                 <tr>
                                     <td>
                                     <h3 class="f14 th3">
-                                        <a class="blu" href="/search-rent/thailand-phuket/nai-harn.html?pri=all-price&room=all-bedrooms&cate=all-collections&sort=all-sort">Nai Harn <?php //echo $f_villas;?></a>
+                                        <a class="blu" href="/search-rent/thailand-phuket/nai-harn/all-price/all-bedrooms/all-collections/all-sort.html">Nai Harn <?php //echo $f_villas;?></a>
                                     </h3>
                                     </td>
                                     <td>$590</td>
@@ -850,7 +837,7 @@ and ease of access via the international airport.<br><br><br>
                                 <tr>
                                     <td>
                                     <h3 class="f14 th3">
-                                        <a class="blu" href="/search-rent/thailand-phuket/nai-harn.html?pri=all-price&room=all-bedrooms&cate=all-collections&sort=all-sort">Nai Harn <?php //echo $f_villas;?></a>
+                                        <a class="blu" href="/search-rent/thailand-phuket/nai-harn/all-price/all-bedrooms/all-collections/all-sort.html">Nai Harn <?php //echo $f_villas;?></a>
                                     </h3>
                                     </td>
                                     <td>$590</td>
@@ -1061,7 +1048,7 @@ This will save you lots of time and research as we will only present the villas 
                     <tr>
                         <td>
                         <h3 class="f14 th3">
-                            <a class="blu" href="/search-rent/thailand-phuket/nai-harn.html?pri=all-price&room=all-bedrooms&cate=all-collections&sort=all-sort">Nai Harn <?php echo $f_villas;?></a>
+                            <a class="blu" href="/search-rent/thailand-phuket/nai-harn/all-price/all-bedrooms/all-collections/all-sort.html">Nai Harn <?php echo $f_villas;?></a>
                         </h3>
                         </td>
                         <td>$590</td>
@@ -1124,7 +1111,7 @@ This will save you lots of time and research as we will only present the villas 
                     <tr>
                         <td>
                         <h3 class="f14 th3">
-                            <a class="blu" href="/search-rent/thailand-phuket/nai-harn.html?pri=all-price&room=all-bedrooms&cate=all-collections&sort=all-sort">Nai Harn <?php echo $f_villas;?></a>
+                            <a class="blu" href="/search-rent/thailand-phuket/nai-harn/all-price/all-bedrooms/all-collections/all-sort.html">Nai Harn <?php echo $f_villas;?></a>
                         </h3>
                         </td>
                         <td>$1,950</td>
@@ -1185,7 +1172,7 @@ This will save you lots of time and research as we will only present the villas 
         
         
         <div   class="col-md-12 nopad top21">
-        <h4 class=" mb f22 top"><?php /* ?><a class="tg cdf" ><?php */?>4. <a class="blu" href="/search-rent/thailand-phuket/nai-harn.html?pri=all-price&room=all-bedrooms&cate=all-collections&sort=all-sort"><span >Nai Harn Villas</span></a><?php /*?></a><?php */?></h4>
+        <h4 class=" mb f22 top"><?php /* ?><a class="tg cdf" ><?php */?>4. <a class="blu" href="/search-rent/thailand-phuket/nai-harn/all-price/all-bedrooms/all-collections/all-sort.html"><span >Nai Harn Villas</span></a><?php /*?></a><?php */?></h4>
             <div  class="col-md-12 nopad top21 f18">
                 Ao Sane beach is directly beside Nai harn. Imagine that you could rent the only villa nestled in a bay’s hill, with a few steps leading down to the beach. The beach is known to be one of the safest and best beaches for swimming and snorkelling on the island.<br>
 Possibly one of the most private villas in Phuket, explore 9 bedroom Villa Thousand Hills which sleeps up to 22.
@@ -1220,7 +1207,7 @@ Possibly one of the most private villas in Phuket, explore 9 bedroom Villa Thous
         </div>
                 
         <div   class="col-md-12 nopad top21">
-        <h4 class=" mb f22 top"><strong><a class="tg cdf" >2. <a class="blu" href="/search-rent/thailand-phuket/nai-harn.html?pri=all-price&room=all-bedrooms&cate=all-collections&sort=all-sort"><span >Nai Harn Villas</span></a></a></strong></h4>
+        <h4 class=" mb f22 top"><strong><a class="tg cdf" >2. <a class="blu" href="/search-rent/thailand-phuket/nai-harn/all-price/all-bedrooms/all-collections/all-sort.html"><span >Nai Harn Villas</span></a></a></strong></h4>
             <div  class="col-md-12 nopad top21 f18">
                 Ao Sane beach is directly beside Nai harn. Imagine that you could rent the only villa nestled in a bay’s hill, with a few steps leading down to the beach. The beach is known to be one of the safest and best beaches for swimming and snorkelling on the island.<br>
 Possibly one of the most private beachfront villas in Phuket, explore 9 bedroom Villa Thousand Hills which sleeps up to 22.

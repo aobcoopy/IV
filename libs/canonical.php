@@ -49,7 +49,7 @@ switch($page)
 	case"blogdetail":
 		$url = "blog/" . CanonicalNameBuilderForBlogs($_REQUEST['id'], $dbc);
 		$ca_bolg = $dbc->GetRecord("blogs","*","id = '".$_REQUEST['id']."' ");
-		$photo_main = json_decode($ca_bolg['photo'],true);
+		$photo_main = '/'.json_decode($ca_bolg['photo_main'],true);
 		$photo_id = $photo_main[0];
 	break;
 	case"faq":

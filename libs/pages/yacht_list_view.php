@@ -7,7 +7,6 @@ else
 {
 	$img_tag = $name[0].'- '.$photo[0]['name'];
 }
-
 $name = $row['name'];
 $photo = json_decode($row['photo']);
 if($photo!='')
@@ -18,9 +17,6 @@ else
 {
 	$photo ='../../../../upload/photo.jpg';
 }
-
-$photo = 'https://staging.inspiringvillas.com/upload/yacht/yacht-Lagoon_42_by_Boat_in_the_Bay-3aFIY5crPLdTh6MDNkqx.jpeg';
-
 $location = $dbc->GetRecord("yacth_destination","*","id = '".$row['destination']."' and status > 0 and fleet_type IS NULL");
 $full_location = $location['name'];
 $fleet = $dbc->GetRecord("yacth_destination","*","id = '".$row['fleet']."' and status > 0 and fleet_type IS NOT NULL");
@@ -88,7 +84,7 @@ echo '<div class="mg-avl-room '.$padd_1.'1 '.$paddbutt.'1 " style="margin-bottom
 					echo '<div class="col-xs-6 col-sm-5 col-md-3 top15 nopad t_t22">'; 
 						echo '<ul>';
 								echo '<li>';
-									echo '<image data-src="/upload/coconut-tree-on-island-1.png"  class="micon lazy" />';
+									echo '<image data-src="/upload/coconut-tree-on-island.png"  class="micon lazy" />';
 									echo '<div class="ic_name f15t" >&nbsp;&nbsp;'.$sailing_route['name'].' </div>';
 								echo '</li>';
 								echo '<li>';

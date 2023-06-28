@@ -1,6 +1,6 @@
 <?php 
 
-   // display_breadcrumbs($room['destination'], $room['subdestination'], 'all-bedrooms', 'all-collections', 'all-prices', 'price|asc', '');
+    display_breadcrumbs($room['destination'], $room['subdestination'], 'all-bedrooms', 'all-collections', 'all-prices', 'price|asc', '');
     //include 'libs/pages/dt_breadcrumb.php';
 
     $brieff = base64_decode($room['brief'],true);
