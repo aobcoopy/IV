@@ -43,9 +43,6 @@
     <meta property="og:title" content="<?php echo $title_tag." - InspiringVillas.com";?>"/>
     <meta property="og:image" content="<?php echo $photo_web;?>">
     <meta property="og:description" content="<?php echo $meta_description;?>"/>
-    <meta property="og:url" content="<?php echo "https://www.inspiringvillas.com".$_SERVER['REQUEST_URI'];?>"/>
-    <meta property="og:type" content="-"/>
-    <meta property="fb:app_id" content="367335174001704"/>
     
     <!--Google data structure-->
     <meta itemprop="url" content="<?php echo $url_link.$url;?>">
@@ -55,37 +52,41 @@
 
     <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
     <link rel="apple-touch-icon" href="icon.jpg">
-    <link href="<?php echo $url_link;?>libs/css/bootstrap.min.css" rel="stylesheet"> 
-<?php /*?><link href="<?php echo $url_link;?>libs/css/font-awesome.min.css" rel="stylesheet"> 
-    <link href="<?php echo $url_link;?>libs/css/cs-select.css" rel="stylesheet"><?php */?> 
-<?php
-    if($page=='propertydetail' || $page=='villa_private')
-    {?>
-    <link href="<?php echo $url_link;?>libs/css/bootstrap-datepicker3.min.css" rel="stylesheet"> 
-    <link rel="preload" href="<?php echo $url_link;?>libs/css/datepicker.css" rel="stylesheet">
-<?php
-    }
-    
-    if( $page=='forrent')
-    {?>
-    <link href="<?php echo $url_link;?>libs/css/bootstrap-datepicker3.min.css" rel="stylesheet"> 
-<?php /*?><link rel="preload" href="<?php echo $url_link;?>libs/css/datepicker.css" rel="stylesheet"><?php */?>
-<?php
-    }
-    ?>
-    <link href="<?php echo $url_link;?>libs/css/style.css?v=00046" rel="stylesheet"> 
-    <link href="<?php echo $url_link;?>libs/css/a_style.css?v=00000" rel="stylesheet"> 
-    <script src="<?php echo $url_link;?>libs/js/jquery-3.5.1.min.js"></script>
-	<!--<script src="<?php echo $url_link;?>libs/js/jquery-3.1.1.min.js"></script>-->
+    <?php 
+	if($page !='inspiringgroup')
+	{?>
+        <link href="<?php echo $url_link;?>libs/css/bootstrap.min.css" rel="stylesheet"> 
+       
+    <?php /*?><link href="<?php echo $url_link;?>libs/css/font-awesome.min.css" rel="stylesheet"> 
+        <link href="<?php echo $url_link;?>libs/css/cs-select.css" rel="stylesheet"><?php */?> 
+    <?php
+        if($page=='propertydetail' || $page=='villa_private')
+        {?>
+        <link href="<?php echo $url_link;?>libs/css/bootstrap-datepicker3.min.css" rel="stylesheet"> 
+        <link rel="preload" href="<?php echo $url_link;?>libs/css/datepicker.css" rel="stylesheet">
+    <?php
+        }
+        
+        if( $page=='forrent')
+        {?>
+        <link href="<?php echo $url_link;?>libs/css/bootstrap-datepicker3.min.css" rel="stylesheet"> 
+    <?php /*?><link rel="preload" href="<?php echo $url_link;?>libs/css/datepicker.css" rel="stylesheet"><?php */?>
+    <?php
+        }
+        ?>
+        <link href="<?php echo $url_link;?>libs/css/style.css?v=00046" rel="stylesheet"> 
+        <link href="<?php echo $url_link;?>libs/css/a_style.css?v=00000" rel="stylesheet"> 
+        <script src="<?php echo $url_link;?>libs/js/jquery-3.5.1.min.js"></script>
+        <!--<script src="<?php echo $url_link;?>libs/js/jquery-3.1.1.min.js"></script>--> 
+<?php }?>
 </head>
 <body>
 <?php //$page=isset($_REQUEST['page'])?$_REQUEST['page']:'home';
 
-if($page=='step1' || $page=='step2'){}
-elseif($page=='booking' ||  $page=='villaform-admin' || $page =='villaform-customer' || $page =='view-villaform-admin' || $page =='product-lists')
+if($page=='step1' || $page=='step2' || $page=='inspiringgroup'){}
+elseif($page=='booking'  )
 {
 }
-elseif($page=='email_detail'){}
 else{include "pages/header.php";}
 
 switch($page)
@@ -134,8 +135,9 @@ switch($page)
     case"yacht_preview":include "pages/page_yacht_preview.php";break;
 	case"yacht_thanks":include "pages/thank_you_yacht.php";break;
 	case"yacht_recently":include "pages/page_yacht_recently.php";break;
-	
 	case"block_single":include "pages/page_blog_single.php";break;
+	
+	case"inspiringgroup":include "inspiringgroup/index.php";break;
 }
 
     if($page!='thanks' && $page!='yacht_thanks')
@@ -145,7 +147,7 @@ switch($page)
         elseif($page=='testpage' || $page=='testpage2' || $page=='testpage3')
         {
         }
-        elseif($page=='booking' )
+        elseif($page=='booking' || $page =='inspiringgroup')
         {
         }
         elseif($page =='thank-you-question')
@@ -164,11 +166,13 @@ switch($page)
 		}
     }
     
-    
     //if($page!='propertydetail'){include "pages/popup.php";}
     
 ?> 
-
+<?php 
+if($page !='inspiringgroup')
+{?>
+<script defer src="<?php echo $url_link;?>libs/js/lazyload.min.js"></script>
 <script defer src="<?php echo $url_link;?>libs/js/bootstrap.min.js"></script>
 <script defer src="<?php echo $url_link;?>libs/js/selectFx.js"></script>
 <?php
@@ -179,7 +183,7 @@ if($page=='home'  || $page=='propertydetail')
 ?>
 <script defer src="<?php echo $url_link;?>libs/js/script.js?v=03"></script> 
 <?php
-if($page=='propertydetail' || $page=='villa_private' || $page=='villa_review')
+if($page=='propertydetail' || $page=='villa_private' )
 {?>
     <script defer src="<?php echo $url_link;?>libs/js/jssor.slider.mini.js"></script>
     <script defer src="<?php echo $url_link;?>libs/js/star-rating.js"></script>
@@ -202,8 +206,9 @@ if( $page=='forrent')
 <?php
 }
 ?>
-<script defer src="<?php echo $url_link;?>libs/js/lazyload.min.js"></script>
-
+<?php
+}
+?>
 <script>
 
 <?php /*?>$(document).ready(function(e) {

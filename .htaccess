@@ -97,6 +97,7 @@ RewriteRule ^(recently)(.*)$ /index.php?page=recently
 RewriteRule ^(favorite)(.*)$ /index.php?page=favorite
 RewriteRule ^(villa-promotions)(.*)$ /index.php?page=villa-promotions
 RewriteRule ^(yacht)(.*)$ /index.php?page=yacht
+RewriteRule ^(inspiringgroup)(.*)$ /index.php?page=inspiringgroup
 
 
 #RewriteRule ^(thanks)(.*)$ /index.php?page=thanks
