@@ -113,244 +113,243 @@ function check_data_date($date)
 <div class="table-responsives">
     <div id="rental_rate" class="col-md-12 mg-room-fecilities rental_rate" style="margin-top: 8px;"> <h4 class="mg-sec-left-title l15"><?php echo $vi_name[0];?> Rental  Rate</h4></div>
 
-<div class="cov_room_but">
+	
 <?php
-$ii=0;
-$va = 0;
-//print_r($opt);
-rsort($opt);
-foreach($opt as $op)
-{
-	if($ii==0)
+	
+	if($pri['no_price']==1)
 	{
-		 $va = $op;
-		 echo '<button class="tabbut acct fo15" onClick="show_price('.$op.',this)">'.$op.' Bedroom</button>';//<option value="'.$op.'" class="first">'.$op.' Bedroom</option>
+		echo '* This villa has no fixed seasonal price range, however we can assist you on pricing on each enquiryby request *<br><br>';
+		?>
+	<!--<table id="tb" class="tb table table-bordered table-striped fo15" width="100%" border="1">
+    <tbody>
+        <tr>
+            <th>This villa has no fixed seasonal price range, however we can assist you on pricing on each enquiryby request</th>
+        </tr>
+    </tbody>
+	</table>-->
+		<?php
+		//echo '<a class="alert alert-warning" role="alert"> This villa has no fixed seasonal price range, however we can assist you on pricing on each enquiryby request </a>';
 	}
 	else
 	{
-		if($op==27)
+		?>
+		<div class="cov_room_but">
+		<?php
+		$ii=0;
+		$va = 0;
+		//print_r($opt);
+		rsort($opt);
+		foreach($opt as $op)
 		{
-			$op_name='Weekend';
-		}
-		elseif($op==28)
-		{
-			$op_name='Weekday';
-		}
-		else
-		{
-			$op_name = $op.' Bedrooms';
-		}
-		 echo '<button class="tabbut fo15" onClick="show_price('.$op.',this)">'.$op_name.'</button>';//<option value="'.$op.'">'.$op.' Bedroom</option>
-	}
-   $ii++;
-}
-
-$excrate_1 = $pri['exchange'];//'thb';
-if($excrate_1=='thb')
-{
-	$exc_oritext = 'thb';
-	$exc_rate = 'usd';
-	$text_rev_rate = 'thb';
-}
-elseif($excrate_1=='usd')
-{
-	$exc_oritext = 'usd';
-	$exc_rate = 'thb';
-	$text_rev_rate = 'usd';
-}
-else
-{
-	$exc_oritext = 'usd';
-	$exc_rate = 'thb';
-	$text_rev_rate = 'usd';
-}
-?>
-</div>
-<button class="exchange hidd but_thb" onClick="exc_cha('thb',this,'<?php echo $exc_oritext;?>')">THB</button>
-<button class="exchange hidd but_usd" onClick="exc_cha('usd',this,'<?php echo $exc_oritext;?>')">USD</button>
-<button class="exchange hidd but_rest" style="text-transform:uppercase;" onClick="exc_cha_nor('nor',this,'<?php echo $exc_oritext;?>')"><?php echo $text_rev_rate;?></button>
-<?php //echo 'ราคาที่เลือก '.$exc_oritext.' ----ราคาที่มีปุ่มให้แปลง '.$exc_rate;?>
-<style>
-.exc,.hidd{display:none;}
-.exchange
-{
-	float:right;
-	border:none;
-	background:#f05b46;
-	color:#fff;
-	padding:8px 10px 4px 10px;
-	outline:none;
-	z-index: 10;
-    position: relative;
-}
-.cov_room_but
-{
-	background:none;
-	width:90%;
-	margin-bottom:-35px;
-	position:relative;
-	z-index:1
-}
-.tabbut {
-    width:111px;
-}
-</style>
-
-<table id="tb" class="tb table table-bordered table-striped fo15" width="100%" border="1">
-    <thead>
-        <tr>
-            <th>Period Dates</th>
-            <th class="text-center weeb" align="center">Min Night Stay</th>
-            <?php
-			for($z=1;$z<=28;$z++)
+			if($ii==0)
 			{
-				echo '<th class="t'.$z.' tbp text-center" align="center"> Price Per Night (<span class="txt_rate">'.$exc_oritext.'</span>)</th>';
-			}
-			?>
-        </tr>
-    </thead>
-    <tbody>
-    <?php 
-    if($has_pri_rec_status==1)//($dbc->HasRecord("pricing","property=".$_REQUEST['id']))
-    {
-		//$sqlproperties = $dbc->Query("select * from pricing where property=".$_REQUEST['id']);
-        $properties = $pri;//$dbc->Fetch($sqlproperties);
-		
-		if($properties['updated']>='2020-11-30')
-		{
-			$data = json_decode(base64_decode($properties['val']),true);
-		}
-		else
-		{
-			$data = json_decode($properties['val'],true);
-		}
-        //$data = json_decode($properties['val'],true);
-		
-		$us_p = $dbc->GetRecord("variable","*","name='us'");
-		$thb_p = $dbc->GetRecord("variable","*","name='thb'");
-		
-		$this_day = date("Y-m-d");
-        foreach($data as $valu)
-        {
-			if($valu['chk_text_val']==1)
-			{
-				//echo check_data_date($valu['date1']);
-				if(check_data_date($valu['date1'])>=$this_day)
-				{
-					echo '<tr>';
-						echo '<td  class="fo15">';
-							echo $valu['date1'];
-						echo '</td>';
-						echo '<td class="text-center weeb fo15">'.$valu['night'].'</td>';
-						for($i=1;$i<=28;$i++)
-						{
-							if(strchr($valu['val'.$i],"++"))
-							{
-								$exs = explode("+",$valu['val'.$i]);
-								$n_price = '<span class="nor exc">'.number_format($valu['val'.$i],2).'</span>';
-								
-								$usd_rate = $valu['val'.$i]*$us_p['value'];
-								$us_price = '<span class="thb exc">'.number_format($usd_rate,2).'</span>';
-								
-								$thb_rate = $valu['val'.$i]/$thb_p['value'];
-								$th_price = '<span class="usd exc">'.number_format($thb_rate,2).'</span>';
-								
-								echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?$n_price.$us_price.$th_price:' 0 ';echo ' </td>';
-								//echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?number_format($valu['val'.$i]).'++':' 0 ';echo ' </td>';
-							}
-							elseif(strchr($valu['val'.$i],"+"))
-							{
-								$exs = explode("+",$valu['val'.$i]);
-								$n_price = '<span class="nor exc">'.number_format($valu['val'.$i],2).'</span>';
-								
-								$usd_rate = $valu['val'.$i]*$us_p['value'];
-								$us_price = '<span class="thb exc">'.number_format($usd_rate,2).'</span>';
-								
-								$thb_rate = $valu['val'.$i]/$thb_p['value'];
-								$th_price = '<span class="usd exc">'.number_format($thb_rate,2).'</span>';
-								
-								echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?$n_price.$us_price.$th_price:' 0 ';echo ' </td>';
-								//echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?number_format($valu['val'.$i]).'+':' 0 ';echo ' </td>';
-							}
-							else
-							{
-								$exs = explode("+",$valu['val'.$i]);
-								$n_price = '<span class="nor exc">'.number_format($valu['val'.$i],2).'</span>';
-								
-								$usd_rate = $valu['val'.$i]*$us_p['value'];
-								$us_price = '<span class="thb exc">'.number_format($usd_rate,2).'</span>';
-								
-								$thb_rate = $valu['val'.$i]/$thb_p['value'];
-								$th_price = '<span class="usd exc">'.number_format($thb_rate,2).'</span>';
-								
-								echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?$n_price.$us_price.$th_price:' 0 ';echo ' </td>';
-							}
-						}
-					echo '</tr>';
-				}
+				 $va = $op;
+				 echo '<button class="tabbut acct fo15" onClick="show_price('.$op.',this)">'.$op.' Bedroom</button>';//<option value="'.$op.'" class="first">'.$op.' Bedroom</option>
 			}
 			else
 			{
-				if($valu['date2']>=$this_day)
+				if($op==27)
 				{
-					echo '<tr>';
-						echo '<td  class="fo15">';
-							echo months($valu['date1']).' - '.months($valu['date2']);
-						echo '</td>';
-						echo '<td class="text-center weeb fo15">'.$valu['night'].'</td>';
-						for($i=1;$i<=28;$i++)
+					$op_name='Weekend';
+				}
+				elseif($op==28)
+				{
+					$op_name='Weekday';
+				}
+				else
+				{
+					$op_name = $op.' Bedrooms';
+				}
+				 echo '<button class="tabbut fo15" onClick="show_price('.$op.',this)">'.$op_name.'</button>';//<option value="'.$op.'">'.$op.' Bedroom</option>
+			}
+		   $ii++;
+		}
+
+		$excrate_1 = $pri['exchange'];//'thb';
+		if($excrate_1=='thb')
+		{
+			$exc_oritext = 'thb';
+			$exc_rate = 'usd';
+			$text_rev_rate = 'thb';
+		}
+		elseif($excrate_1=='usd')
+		{
+			$exc_oritext = 'usd';
+			$exc_rate = 'thb';
+			$text_rev_rate = 'usd';
+		}
+		else
+		{
+			$exc_oritext = 'usd';
+			$exc_rate = 'thb';
+			$text_rev_rate = 'usd';
+		}
+		?>
+		</div>
+		<button class="exchange hidd but_thb" onClick="exc_cha('thb',this,'<?php echo $exc_oritext;?>')">THB</button>
+		<button class="exchange hidd but_usd" onClick="exc_cha('usd',this,'<?php echo $exc_oritext;?>')">USD</button>
+		<button class="exchange hidd but_rest" style="text-transform:uppercase;" onClick="exc_cha_nor('nor',this,'<?php echo $exc_oritext;?>')"><?php echo $text_rev_rate;?></button>
+		<?php //echo 'ราคาที่เลือก '.$exc_oritext.' ----ราคาที่มีปุ่มให้แปลง '.$exc_rate;?>
+
+	
+
+		<table id="tb" class="tb table table-bordered table-striped fo15" width="100%" border="1">
+			<thead>
+				<tr>
+					<th>Period Dates</th>
+					<th class="text-center weeb" align="center">Min Night Stay</th>
+					<?php
+					for($z=1;$z<=28;$z++)
+					{
+						echo '<th class="t'.$z.' tbp text-center" align="center"> Price Per Night (<span class="txt_rate">'.$exc_oritext.'</span>)</th>';
+					}
+					?>
+				</tr>
+			</thead>
+			<tbody>
+			<?php 
+			if($has_pri_rec_status==1)//($dbc->HasRecord("pricing","property=".$_REQUEST['id']))
+			{
+				//$sqlproperties = $dbc->Query("select * from pricing where property=".$_REQUEST['id']);
+				$properties = $pri;//$dbc->Fetch($sqlproperties);
+
+				if($properties['updated']>='2020-11-30')
+				{
+					$data = json_decode(base64_decode($properties['val']),true);
+				}
+				else
+				{
+					$data = json_decode($properties['val'],true);
+				}
+				//$data = json_decode($properties['val'],true);
+
+				$us_p = $dbc->GetRecord("variable","*","name='us'");
+				$thb_p = $dbc->GetRecord("variable","*","name='thb'");
+
+				$this_day = date("Y-m-d");
+				foreach($data as $valu)
+				{
+					if($valu['chk_text_val']==1)
+					{
+						//echo check_data_date($valu['date1']);
+						if(check_data_date($valu['date1'])>=$this_day)
 						{
-							if(strchr($valu['val'.$i],"++"))
-							{
-								$exs = explode("+",$valu['val'.$i]);
-								$n_price = '<span class="nor exc">'.number_format($valu['val'.$i],2).'</span>';
-								
-								$usd_rate = $valu['val'.$i]*$us_p['value'];
-								$us_price = '<span class="thb exc">'.number_format($usd_rate,2).'</span>';
-								
-								$thb_rate = $valu['val'.$i]/$thb_p['value'];
-								$th_price = '<span class="usd exc">'.number_format($thb_rate,2).'</span>';
-								
-								echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?$n_price.$us_price.$th_price:' 0 ';echo ' </td>';
-								//echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?number_format($valu['val'.$i]).'++':' 0 ';echo ' </td>';
-							}
-							elseif(strchr($valu['val'.$i],"+"))
-							{
-								$exs = explode("+",$valu['val'.$i]);
-								$n_price = '<span class="nor exc">'.number_format($valu['val'.$i],2).'</span>';
-								
-								$usd_rate = $valu['val'.$i]*$us_p['value'];
-								$us_price = '<span class="thb exc">'.number_format($usd_rate,2).'</span>';
-								
-								$thb_rate = $valu['val'.$i]/$thb_p['value'];
-								$th_price = '<span class="usd exc">'.number_format($thb_rate,2).'</span>';
-								
-								echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?$n_price.$us_price.$th_price:' 0 ';echo ' </td>';
-								//echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?number_format($valu['val'.$i]).'+':' 0 ';echo ' </td>';
-							}
-							else
-							{
-								$exs = explode("+",$valu['val'.$i]);
-								$n_price = '<span class="nor exc">'.number_format($valu['val'.$i],2).'</span>';
-								
-								$usd_rate = $valu['val'.$i]*$us_p['value'];
-								$us_price = '<span class="thb exc">'.number_format($usd_rate,2).'</span>';
-								
-								$thb_rate = $valu['val'.$i]/$thb_p['value'];
-								$th_price = '<span class="usd exc">'.number_format($thb_rate,2).'</span>';
-								
-								echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?$n_price.$us_price.$th_price:' 0 ';echo ' </td>';
-							}
+							echo '<tr>';
+								echo '<td  class="fo15">';
+									echo $valu['date1'];
+								echo '</td>';
+								echo '<td class="text-center weeb fo15">'.$valu['night'].'</td>';
+								for($i=1;$i<=28;$i++)
+								{
+									if(strchr($valu['val'.$i],"++"))
+									{
+										$exs = explode("+",$valu['val'.$i]);
+										$n_price = '<span class="nor exc">'.number_format($valu['val'.$i],2).'</span>';
+
+										$usd_rate = $valu['val'.$i]*$us_p['value'];
+										$us_price = '<span class="thb exc">'.number_format($usd_rate,2).'</span>';
+
+										$thb_rate = $valu['val'.$i]/$thb_p['value'];
+										$th_price = '<span class="usd exc">'.number_format($thb_rate,2).'</span>';
+
+										echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?$n_price.$us_price.$th_price:' 0 ';echo ' </td>';
+										//echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?number_format($valu['val'.$i]).'++':' 0 ';echo ' </td>';
+									}
+									elseif(strchr($valu['val'.$i],"+"))
+									{
+										$exs = explode("+",$valu['val'.$i]);
+										$n_price = '<span class="nor exc">'.number_format($valu['val'.$i],2).'</span>';
+
+										$usd_rate = $valu['val'.$i]*$us_p['value'];
+										$us_price = '<span class="thb exc">'.number_format($usd_rate,2).'</span>';
+
+										$thb_rate = $valu['val'.$i]/$thb_p['value'];
+										$th_price = '<span class="usd exc">'.number_format($thb_rate,2).'</span>';
+
+										echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?$n_price.$us_price.$th_price:' 0 ';echo ' </td>';
+										//echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?number_format($valu['val'.$i]).'+':' 0 ';echo ' </td>';
+									}
+									else
+									{
+										$exs = explode("+",$valu['val'.$i]);
+										$n_price = '<span class="nor exc">'.number_format($valu['val'.$i],2).'</span>';
+
+										$usd_rate = $valu['val'.$i]*$us_p['value'];
+										$us_price = '<span class="thb exc">'.number_format($usd_rate,2).'</span>';
+
+										$thb_rate = $valu['val'.$i]/$thb_p['value'];
+										$th_price = '<span class="usd exc">'.number_format($thb_rate,2).'</span>';
+
+										echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?$n_price.$us_price.$th_price:' 0 ';echo ' </td>';
+									}
+								}
+							echo '</tr>';
 						}
-					echo '</tr>';
+					}
+					else
+					{
+						if($valu['date2']>=$this_day)
+						{
+							echo '<tr>';
+								echo '<td  class="fo15">';
+									echo months($valu['date1']).' - '.months($valu['date2']);
+								echo '</td>';
+								echo '<td class="text-center weeb fo15">'.$valu['night'].'</td>';
+								for($i=1;$i<=28;$i++)
+								{
+									if(strchr($valu['val'.$i],"++"))
+									{
+										$exs = explode("+",$valu['val'.$i]);
+										$n_price = '<span class="nor exc">'.number_format($valu['val'.$i],2).'</span>';
+
+										$usd_rate = $valu['val'.$i]*$us_p['value'];
+										$us_price = '<span class="thb exc">'.number_format($usd_rate,2).'</span>';
+
+										$thb_rate = $valu['val'.$i]/$thb_p['value'];
+										$th_price = '<span class="usd exc">'.number_format($thb_rate,2).'</span>';
+
+										echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?$n_price.$us_price.$th_price:' 0 ';echo ' </td>';
+										//echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?number_format($valu['val'.$i]).'++':' 0 ';echo ' </td>';
+									}
+									elseif(strchr($valu['val'.$i],"+"))
+									{
+										$exs = explode("+",$valu['val'.$i]);
+										$n_price = '<span class="nor exc">'.number_format($valu['val'.$i],2).'</span>';
+
+										$usd_rate = $valu['val'.$i]*$us_p['value'];
+										$us_price = '<span class="thb exc">'.number_format($usd_rate,2).'</span>';
+
+										$thb_rate = $valu['val'.$i]/$thb_p['value'];
+										$th_price = '<span class="usd exc">'.number_format($thb_rate,2).'</span>';
+
+										echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?$n_price.$us_price.$th_price:' 0 ';echo ' </td>';
+										//echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?number_format($valu['val'.$i]).'+':' 0 ';echo ' </td>';
+									}
+									else
+									{
+										$exs = explode("+",$valu['val'.$i]);
+										$n_price = '<span class="nor exc">'.number_format($valu['val'.$i],2).'</span>';
+
+										$usd_rate = $valu['val'.$i]*$us_p['value'];
+										$us_price = '<span class="thb exc">'.number_format($usd_rate,2).'</span>';
+
+										$thb_rate = $valu['val'.$i]/$thb_p['value'];
+										$th_price = '<span class="usd exc">'.number_format($thb_rate,2).'</span>';
+
+										echo '<td class="t'.$i.' tbp text-center fo15">';echo ($valu['val'.$i]!='')?$n_price.$us_price.$th_price:' 0 ';echo ' </td>';
+									}
+								}
+							echo '</tr>';
+						}
+					}
 				}
 			}
-        }
-    }
-    
-    ?>
-    </tbody>
-</table>
+
+			?>
+			</tbody>
+		</table>
+		
+
 
 <?php
 $service = json_decode($pri['service'],true);
@@ -1066,6 +1065,9 @@ if(($dis['early_5']!='' && $dis['early_date_5']!='') && ($dis['dis_exp_9']=='' |
  //-- discount
  
  ?>
+	<?php
+	} // ----no price
+?>	
 </div>
 <script>
 
@@ -1145,7 +1147,6 @@ function show_price(vals,me)
 	$(".tbp").hide();
 	$(".t"+vals).show();
 }
-
 </script>
 <style>
 .txprorm
@@ -1154,6 +1155,31 @@ function show_price(vals,me)
 	padding:5px;
 	border-radius:5px;
 	font-size:13px;
+}
+</style>
+<style>
+.exc,.hidd{display:none;}
+.exchange
+{
+	float:right;
+	border:none;
+	background:#f05b46;
+	color:#fff;
+	padding:8px 10px 4px 10px;
+	outline:none;
+	z-index: 10;
+    position: relative;
+}
+.cov_room_but
+{
+	background:none;
+	width:90%;
+	margin-bottom:-35px;
+	position:relative;
+	z-index:1
+}
+.tabbut {
+    width:111px;
 }
 </style>
                 

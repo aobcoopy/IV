@@ -208,7 +208,9 @@
 		'pr_from_16' => $_REQUEST['datas']['pr_from_16'],
 		'pr_to_16' => $_REQUEST['datas']['pr_to_16'],
 
-		'pr_to' => $_REQUEST['datas']['pr_to']
+		'pr_to' => $_REQUEST['datas']['pr_to'],
+		'#no_price' => $_REQUEST['datas']['no_price']
+		
 	);
 	
 	$idpri = $dbc->GetRecord("pricing","id","property=".$_REQUEST['datas']['txtID']);

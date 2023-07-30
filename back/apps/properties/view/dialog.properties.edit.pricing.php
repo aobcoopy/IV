@@ -50,7 +50,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="home"><br>
-                        	<div class="col-md-6">
+                        	<div class="col-md-4">
     							
                                  <h3>Auto Remove <!--<span class="label label-default">New</span>--></h3>
                                 <div class="checkbox">
@@ -60,18 +60,43 @@
                                     </label>
                                 </div>
                             </div>
-                        	<div class="col-md-6 text-left">
-                            <h3>Price Rate <!--<span class="label label-default">New</span>--></h3>
-                            <label class="radio-inline">
-                                <input type="radio" name="ra_exchange" id="ra_exchange1" value="usd" <?php echo ($price['exchange']=='usd' || $price['exchange']=='')?'checked':'';?> style="margin-top: 0px;"> &nbsp;&nbsp;USD
-                            </label>
-                            &nbsp;&nbsp;
-                            <label class="radio-inline">
-                                <input type="radio" name="ra_exchange" id="ra_exchange2" value="thb"  <?php echo ($price['exchange']=='thb')?'checked':'';?> style="margin-top: 0px;"> &nbsp;&nbsp;THB
-                            </label>
-                            <br><br><br>
+                        	<div class="col-md-4 text-left">
+								<h3>Price Rate <!--<span class="label label-default">New</span>--></h3>
+								<label class="radio-inline">
+									<input type="radio" name="ra_exchange" id="ra_exchange1" value="usd" <?php echo ($price['exchange']=='usd' || $price['exchange']=='')?'checked':'';?> style="margin-top: 0px;"> &nbsp;&nbsp;USD
+								</label>
+								&nbsp;&nbsp;
+								<label class="radio-inline">
+									<input type="radio" name="ra_exchange" id="ra_exchange2" value="thb"  <?php echo ($price['exchange']=='thb')?'checked':'';?> style="margin-top: 0px;"> &nbsp;&nbsp;THB
+								</label>
+								<br><br><br>
                             </div>
-                            
+                            <div class="col-md-4">
+								<h3>No Price</h3>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="tx_no_price" name="tx_no_price" onChange="check_price(this);" value="<?php echo ($price['no_price']==0)?0:1;?>" <?php echo ($price['no_price']==1)?'checked':'';?>> &nbsp;&nbsp; This villa has no fixed seasonal price range, however we can assist you on pricing on each enquiryby request
+                                        
+                                    </label>
+                                </div>
+							</div>
+							<script>
+								function check_price(me)
+								{
+									if($(me).is(':checked'))
+									{
+										//alert(11111);
+										$(me).val(1);
+									}
+									else
+									{
+										//alert(22222);
+										$(me).val(0);
+									}
+								}
+							
+							</script>
+							
                             <div class="col-md-6">
                             	<div class="panel panel-danger">
                                     <div class="panel-heading"><strong>Remark</strong></div>

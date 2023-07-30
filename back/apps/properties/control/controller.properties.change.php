@@ -917,6 +917,7 @@
 			pr_discount_16 : $("#pr_discount_16").val(),
 			pr_from_16 : $("#pr_from_16").val(),
 			pr_to_16 : $("#pr_to_16").val(),
+			no_price : $("#tx_no_price").val(),
 						
 			va : [],
 			stay : [],
