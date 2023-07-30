@@ -323,7 +323,8 @@ function dateType2($data)
 										?>
                                         <a href="<?php echo $urll;?>" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between">
-                                                <img src="<?php echo $photo;?>" alt="" class="img-fluid float-left">
+                                                <img src="<?php echo $photo;?>" alt="<?php echo $line['name'];?>" width="100%" style="max-width: 100% !important;width: 100% !important;" class="img-fluid float-left"<br>
+<br>
                                                 <h5 class="mb-1"><?php echo $line['name'];?></h5>
                                                 <small><?php echo dateType2($line['day']);?></small>
                                             </div>
