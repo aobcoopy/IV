@@ -3,14 +3,14 @@
 	<div class="row">
     	<div class="col-12 text-center">
 			<ul class="menufooter">
-            	<li><a href=""><span class="en">Luxury Villas</span> <span class="chi">高端别墅</span></a></li>
-                <li><a href=""><span class="en">Experiences</span> <span class="chi">经验</span></a></li>
-                <li><a href=""><span class="en">Yachts</span> <span class="chi">游艇</span></a></li>
-                <li><a href=""><span class="en">About</span> <span class="chi">关于我们</span></a></li>
+            	<li><a href="https://www.inspiringvillas.com"><span class="en">Luxury Villas</span> <span class="chi">高端别墅</span></a></li>
+                <li><a href="http://inspiring-experiences.com/"><span class="en">Experiences</span> <span class="chi">经验</span></a></li>
+                <li><a href="http://inspiringyachting.com/"><span class="en">Yachts</span> <span class="chi">游艇</span></a></li>
+                <li><a href="/aboutus"><span class="en">About</span> <span class="chi">关于我们</span></a></li>
                 <li><a href=""><span class="en">Ethical Tourism</span> <span class="chi">民俗观光</span></a></li>
-                <li><a href=""><span class="en">Blogs</span> <span class="chi">博客</span></a></li>
-                <li><a href=""><span class="en">Contact</span> <span class="chi">联系</span></a></li>
-                <li><a href=""><span class="en">Privacy Policy</span> <span class="chi">隐私政策</span></a></li>
+                <li><a href="/blog"><span class="en">Blogs</span> <span class="chi">博客</span></a></li>
+                <li><a href="/contact"><span class="en">Contact</span> <span class="chi">联系</span></a></li>
+                <li><a href="/privacy"><span class="en">Privacy Policy</span> <span class="chi">隐私政策</span></a></li>
             </ul>
             
             <ul class="menufooter_social">

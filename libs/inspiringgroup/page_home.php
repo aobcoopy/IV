@@ -6,8 +6,8 @@
                 	<div class="boxinside">
                         <div class="h1"><span class="en">Inspiring Group</span> <span class="chi">怡思柏瑞 集团</span></div>
                         <div class="h2"><span class="en">experience</span> <span class="chi">经验</span></div>
-                        <div class="det"><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span> <span class="chi">经验</span></div>
-                        <a href="/"><button type="button" class="book"><span class="en">Book now</span> <span class="chi">现在预定</span></button></a>
+                        <div class="det"><span class="en">Holiday will never be the same with us </span> <span class="chi">假期与我们将永远不一样</span></div>
+                        <a href="https://www.inspiringvillas.com"><button type="button" class="book"><span class="en">Contact Us</span> <span class="chi">联系我们</span></button></a>
                     </div>
                     
                 </div>
@@ -35,7 +35,7 @@
 </span> 
                     <span class="chi">我们是一支高度积极进取的专业团队，我们了解住宿在别墅度假体验中所发挥的重要作用。我们团队的每一位成员都有机会入住我们在泰国的豪华别墅，体验我们客人将在别墅中接受到的每一项服务。这为各种别墅适合哪些需求人群提供了第一手信息和独特的见解。换句话说，将最好的体验传递给您，也使我们的员工都备受鼓舞。</span>
                 </div>
-                <a href="/"><button type="button" class="book"><span class="en">Book now</span> <span class="chi">现在预定</span></button></a>
+                <a href="https://www.inspiringvillas.com"><button type="button" class="book"><span class="en">Contact Us</span> <span class="chi">联系我们</span></button></a>
             </div>
             <div class="col-4 d-none d-md-block">
             	<img src="/libs/inspiringgroup/upload/leaf 2.png"  class="r_leaf rotate-90-cw " alt="">
@@ -342,7 +342,7 @@ $(document).ready(function(){
         	<div class="h2 f50"><span class="en">Book your Unique Luxury Holiday Experience </span> <span class="chi">预订您独一无二的旅行体验</span></div>
         	<div class="det"><span class="en">Escape to the tropical beauty  of Southeast Asia </span> <span class="chi">逃离到东南亚的美丽热带</span></div>
         </div>
-        <div class="col text-end"><button type="button" class="book"><span class="en">Book now</span> <span class="chi">现在预定</span></button></div>
+        <div class="col text-end"><button type="button" class="book"><span class="en">Contact Us</span> <span class="chi">联系我们</span></button></div>
     </div>
     </div>
 </div>

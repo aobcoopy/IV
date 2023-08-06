@@ -5,7 +5,7 @@
 <title>Untitled Document</title>
 	<link href="/libs/inspiringgroup/css/bootstrap.min.css" rel="stylesheet"> 
 	<link href="/libs/inspiringgroup/css/font-awesome.min.css" rel="stylesheet"> 
-    <link href="/libs/inspiringgroup/css/style.css?v=00001" rel="stylesheet"> 
+    <link href="/libs/inspiringgroup/css/l_style.css?v=00001" rel="stylesheet"> 
     <script src="/libs/inspiringgroup/js/jquery-3.1.1.min.js"></script>
     <script src="/libs/inspiringgroup/js/jquery-1.12.4.js"></script>
   	<script src="/libs/inspiringgroup/js/jquery-ui.js"></script>
