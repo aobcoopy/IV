@@ -1,6 +1,7 @@
 <span itemprop="brand" itemscope itemtype="http://schema.org/Brand" style="position: absolute;z-index: -1;"><span itemprop="name" class="tw tbrand" >Inspiring Villas</span>
 <img itemprop="logo"  src="<?php echo $url_link;?>libs/images/logo.png" class="hidden" height="10" alt="Inspiring Villas logo">
 </span>
+<?php include "00-new_style.php";?>
 <?php 
 
 //unset($_SESSION['recent'],$_SESSION['recent_all']);
@@ -82,7 +83,8 @@ if($pa=="propertydetail" || $pa=="forrent" || $page=='villa_private')
                         <?php /*?><li class="<?php echo($pa=='forrent')?'active':'';?>"><a href="/search-rent/thailand/all-beach/all-price/all-bedrooms/all-collections/all-sort.html">For Rent</a></li>
                         <li class="<?php echo($pa=='blog')?'active':'';?>"><a href="/blog">Blog & Lifestyle</a></li><?php */?>
                         <li class="<?php echo($pa=='faq')?'active':'';?>"><a href="/faq">FAQ</a></li>
-                        <li class="<?php echo($pa=='villa-promotions')?'active':'';?>"><a href="/villa-promotions">Promotion</a></li>
+                        <?php /*?><li class="<?php echo($pa=='villa-promotions')?'active':'';?>"><a href="/villa-promotions">Promotion</a></li><?php */?>
+                        <li class="<?php echo($pa=='blog')?'active':'';?>"><a href="/blog">Lifestyle</a></li>
                         <li class="<?php echo($pa=='contact')?'active':'';?>"><a href="/contact">Contact</a></li>
                         
                     </ul>
@@ -95,7 +97,8 @@ if($pa=="propertydetail" || $pa=="forrent" || $page=='villa_private')
                         <?php /*?><li class="<?php echo($pa=='forrent')?'active':'';?>"><a href="/search-rent/thailand/all-beach/all-price/all-bedrooms/all-collections/all-sort.html">For Rent</a></li>
                         <li class="<?php echo($pa=='blog')?'active':'';?>"><a href="/blog">Blog & Lifestyle</a></li><?php */?>
                         <li class="<?php echo($pa=='faq')?'active':'';?>"><a href="/faq">FAQ</a></li>
-                        <li class="<?php echo($pa=='villa-promotions')?'active':'';?>"><a href="/villa-promotions">Promotion</a></li>
+                        <?php /*?><li class="<?php echo($pa=='villa-promotions')?'active':'';?>"><a href="/villa-promotions">Promotion</a></li><?php */?>
+                        <li class="<?php echo($pa=='blog')?'active':'';?>"><a href="/blog">Lifestyle</a></li>
                         <li class="<?php echo($pa=='contact')?'active':'';?>"><a href="/contact">Contact</a></li>
                     </ul>
                 </div><?php /*?> /.navbar-collapse <?php */?>
@@ -287,7 +290,8 @@ $(function() {
                         
                         <li class="<?php echo($pa=='yacht')?'active':'';?>"><a href="/yacht">Yacht</a></li>
                         <li class="<?php echo($pa=='contact')?'active':'';?>"><a href="/contact">Contact</a></li>
-                        <li class="<?php echo($pa=='villa-promotions')?'active':'';?>"><a href="/villa-promotions">Promotions</a></li>
+                        <?php /*?><li class="<?php echo($pa=='villa-promotions')?'active':'';?>"><a href="/villa-promotions">Promotion</a></li><?php */?>
+                        <li class="<?php echo($pa=='blog')?'active':'';?>"><a href="/blog">Lifestyle</a></li>
                         <li class="<?php echo($pa=='faq')?'active':'';?>"><a href="/faq">FAQ</a></li>
                         <!--<li class="<?php echo($pa=='service')?'active':'';?>"><a href="/our-service">Our Services</a></li> -->
                         

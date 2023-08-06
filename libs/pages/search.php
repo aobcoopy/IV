@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row h_form">
             <div class="col-md-3" onClick="openinig();"><!---->
-                <h3 class="mg-bn-title tsearch"><center>Search Villas <span class="mg-bn-big">For rates & availability</span></center></h3>
+                <h3 class="mg-bn-title tsearch txt_co_orange"><center>Search Villas <span class="mg-bn-big">For rates & availability</span></center></h3>
                 <?php /*?><center><i class="fa fa-angle-down ffd" aria-hidden="true" style="color:#fff; font-size:20px;"></i></center><?php */?>
             </div>
             <div class="col-md-9 ccc2">
@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                             <div class="col-md-2 nopad992">
-                                <button type="button" id="bt_search_1" onClick="searching1()" class="btn btn-main btn-block text_up fonn">Search Villas</button>
+                                <button type="button" id="bt_search_1" onClick="searching1()" class="btn btn-main btn-block text_up fonn co_orange">Search Villas</button>
                             </div>
                         </div>
                     </form>
